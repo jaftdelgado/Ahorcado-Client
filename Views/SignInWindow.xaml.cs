@@ -1,0 +1,39 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Shapes;
+
+namespace AhorcadoClient.Views
+{
+    /// <summary>
+    /// Lógica de interacción para SignInWindow.xaml
+    /// </summary>
+    public partial class SignInWindow : Window
+    {
+        public SignInWindow()
+        {
+            InitializeComponent();
+        }
+
+        private void NavigateToMain()
+        {
+            var mainWindow = new MainWindow();
+            mainWindow.Show();
+            Close();
+        }
+
+        private void Click_BtnSignIn(object sender, RoutedEventArgs e)
+        {
+            NavigateToMain();
+        }
+    }
+}
