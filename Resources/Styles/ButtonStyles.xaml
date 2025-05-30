@@ -34,6 +34,41 @@
             </Trigger>
         </Style.Triggers>
     </Style>
+    
+    <Style x:Key="SecondaryButtonStyle" TargetType="Button">
+        <Setter Property="Background" Value="{StaticResource SecondaryTextBrush}"/>
+        <Setter Property="FontFamily" Value="{StaticResource BarlowRegular}"/>
+        <Setter Property="FontSize" Value="12"/>
+        <Setter Property="Height" Value="34"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border Background="{TemplateBinding Background}" 
+                            BorderBrush="{TemplateBinding BorderBrush}" 
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            Padding="18 0" CornerRadius="12">
+                        <TextBlock Text="{TemplateBinding Content}" 
+                                   Foreground="{StaticResource PrimaryTextBrush}" 
+                                   VerticalAlignment="Center"
+                                   HorizontalAlignment="Center"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="{StaticResource PrimaryButtonHoverBrush}"/>
+            </Trigger>
+
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Opacity" Value="0.6"/>
+                <Setter Property="Cursor" Value="Arrow"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
 
     <Style x:Key="CheckBoxStyle" TargetType="CheckBox">
         <Setter Property="FontFamily" Value="{StaticResource BarlowRegular}"/>
