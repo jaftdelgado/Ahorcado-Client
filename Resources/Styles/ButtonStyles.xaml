@@ -145,7 +145,6 @@
                             </Grid.ColumnDefinitions>
 
                             <Grid Width="30" Height="30" Grid.Column="0">
-                                <Ellipse/>
                                 <Image x:Name="PART_ProfileImage"
                                        Source="/Resources/Images/default-profile-pic.png" 
                                        Stretch="Fill" 
