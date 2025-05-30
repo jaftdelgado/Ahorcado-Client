@@ -7,10 +7,11 @@
     <FontFamily x:Key="BarlowBold">pack://application:,,,/Resources/Fonts/Barlow-Bold.ttf#Barlow</FontFamily>
 
     <!-- Definición de colores -->
-    <Color x:Key="BackgroundColor">#171717</Color>
+    <Color x:Key="BackgroundColor">#161616</Color>
     <Color x:Key="PanelColor">#121212</Color>
     <Color x:Key="PanelHoverColor">#202020</Color>
     <Color x:Key="BorderColor">#242424</Color>
+    <Color x:Key="OverlayColor">#80000000</Color>
     <Color x:Key="PrimaryButtonColor">#FF0436</Color>
     <Color x:Key="PrimaryButtonHoverColor">#FF365E</Color>
     <Color x:Key="ComponentsHoverColor">#FEC006</Color>
@@ -22,6 +23,7 @@
     <SolidColorBrush x:Key="PanelBrush" Color="{StaticResource PanelColor}"/>
     <SolidColorBrush x:Key="PanelHoverBrush" Color="{StaticResource PanelHoverColor}"/>
     <SolidColorBrush x:Key="BorderBrush" Color="{StaticResource BorderColor}"/>
+    <SolidColorBrush x:Key="OverlayBrush" Color="{StaticResource OverlayColor}"/>
     <SolidColorBrush x:Key="PrimaryButtonBrush" Color="{StaticResource PrimaryButtonColor}"/>
     <SolidColorBrush x:Key="PrimaryButtonHoverBrush" Color="{StaticResource PrimaryButtonHoverColor}"/>
     <SolidColorBrush x:Key="ComponentsHoverBrush" Color="{StaticResource ComponentsHoverColor}"/>
