@@ -21,7 +21,7 @@ namespace AhorcadoClient.Views
 
         private void Click_BtnSignIn(object sender, RoutedEventArgs e)
         {
-            MessageDialog.Show("PRUEBA", "prueba de meesage", AlertType.SUCCESS);
+            NavigateToMain();
         }
     }
 }
