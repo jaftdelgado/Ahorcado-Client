@@ -42,6 +42,18 @@
   <wsdl:message name="IMainManager_LogIn_OutputMessage">
     <wsdl:part name="parameters" element="tns:LogInResponse" />
   </wsdl:message>
+  <wsdl:message name="IMainManager_RegisterPlayer_InputMessage">
+    <wsdl:part name="parameters" element="tns:RegisterPlayer" />
+  </wsdl:message>
+  <wsdl:message name="IMainManager_RegisterPlayer_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RegisterPlayerResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMainManager_UpdatePlayerInfo_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdatePlayerInfo" />
+  </wsdl:message>
+  <wsdl:message name="IMainManager_UpdatePlayerInfo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdatePlayerInfoResponse" />
+  </wsdl:message>
   <wsdl:message name="IMainManager_Ping_InputMessage">
     <wsdl:part name="parameters" element="tns:Ping" />
   </wsdl:message>
@@ -53,6 +65,14 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IPlayerManager/LogIn" message="tns:IMainManager_LogIn_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IPlayerManager/LogInResponse" message="tns:IMainManager_LogIn_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="RegisterPlayer">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPlayerManager/RegisterPlayer" message="tns:IMainManager_RegisterPlayer_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPlayerManager/RegisterPlayerResponse" message="tns:IMainManager_RegisterPlayer_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdatePlayerInfo">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPlayerManager/UpdatePlayerInfo" message="tns:IMainManager_UpdatePlayerInfo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPlayerManager/UpdatePlayerInfoResponse" message="tns:IMainManager_UpdatePlayerInfo_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="Ping">
       <wsdl:input wsaw:Action="http://tempuri.org/IMainManager/Ping" message="tns:IMainManager_Ping_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IMainManager/PingResponse" message="tns:IMainManager_Ping_OutputMessage" />
@@ -63,6 +83,24 @@
     <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
     <wsdl:operation name="LogIn">
       <soap12:operation soapAction="http://tempuri.org/IPlayerManager/LogIn" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegisterPlayer">
+      <soap12:operation soapAction="http://tempuri.org/IPlayerManager/RegisterPlayer" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdatePlayerInfo">
+      <soap12:operation soapAction="http://tempuri.org/IPlayerManager/UpdatePlayerInfo" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -86,7 +124,7 @@
       <wsa10:EndpointReference>
         <wsa10:Address>net.tcp://localhost:8083/Service</wsa10:Address>
         <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
-          <Upn>LAPTOP-7MMJ1218\fmontermi</Upn>
+          <Upn>MATEBOOK-D15\jafet</Upn>
         </Identity>
       </wsa10:EndpointReference>
     </wsdl:port>

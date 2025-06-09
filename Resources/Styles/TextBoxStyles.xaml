@@ -99,4 +99,88 @@
             </Trigger>
         </Style.Triggers>
     </Style>
+
+    <Style x:Key="ComboBoxStyle" TargetType="ComboBox">
+        <Setter Property="Background" Value="{StaticResource PanelBrush}"/>
+        <Setter Property="Height" Value="44"/>
+        <Setter Property="FontFamily" Value="{StaticResource BarlowRegular}"/>
+        <Setter Property="FontSize" Value="12"/>
+        <Setter Property="Padding" Value="6,3"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="BorderBrush" Value="{StaticResource BorderBrush}"/>
+        <Setter Property="Foreground" Value="{StaticResource PrimaryTextBrush}"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ComboBox">
+                    <Grid x:Name="RootGrid">
+                        <Border x:Name="ComboBoxBorder"
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="12"
+                                Padding="5">
+                            <Grid>
+                                <TextBlock Text="{TemplateBinding Tag}" 
+                                           Foreground="{StaticResource SecondaryTextBrush}"
+                                           FontSize="10"
+                                           FontWeight="SemiBold"
+                                           VerticalAlignment="Top"
+                                           Margin="8 2 5 0"/>
+                                <Grid Margin="0 14 0 0">
+                                    <ToggleButton x:Name="ToggleButton"
+                                                  Focusable="False"
+                                                  Background="Transparent"
+                                                  BorderThickness="0"
+                                                  HorizontalAlignment="Right" VerticalAlignment="Center"
+                                                  Width="20" Height="20"
+                                                  IsChecked="{Binding IsDropDownOpen, RelativeSource={RelativeSource TemplatedParent}, Mode=TwoWay}">
+                                        <ToggleButton.FocusVisualStyle>
+                                            <Style TargetType="ToggleButton">
+                                                <Setter Property="Background" Value="Transparent"/>
+                                                <Setter Property="BorderBrush" Value="Transparent"/>
+                                            </Style>
+                                        </ToggleButton.FocusVisualStyle>
+
+                                        <Path Data="M 4,6 L 8,10 L 12,6"
+                                              Stroke="{StaticResource SecondaryTextBrush}"
+                                              StrokeThickness="1.5"
+                                              StrokeLineJoin="Round"
+                                              StrokeStartLineCap="Round"
+                                              StrokeEndLineCap="Round"/>
+                                    </ToggleButton>
+
+                                    <ContentPresenter x:Name="ContentPresenter"
+                                          Content="{TemplateBinding SelectionBoxItem}"
+                                          Margin="8,0,30,0"
+                                          VerticalAlignment="Center"/>
+                                </Grid>
+                            </Grid>
+                        </Border>
+
+                        <Popup x:Name="Popup"
+                               Placement="Bottom"
+                               IsOpen="{TemplateBinding IsDropDownOpen}"
+                               AllowsTransparency="True" Focusable="False">
+                            <Border Background="{StaticResource PanelBrush}"
+                                    BorderBrush="{StaticResource BorderBrush}" 
+                                    BorderThickness="1"
+                                    CornerRadius="8" Margin="4">
+                                <ScrollViewer>
+                                    <StackPanel>
+                                        <ItemsPresenter/>
+                                    </StackPanel>
+                                </ScrollViewer>
+                            </Border>
+                        </Popup>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter TargetName="RootGrid" Property="Opacity" Value="0.5"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
 </ResourceDictionary>

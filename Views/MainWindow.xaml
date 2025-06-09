@@ -5,12 +5,40 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AhorcadoClient.Views"
         mc:Ignorable="d"
-        Title="MainWindow" Height="720" Width="1080"
+        Title="MainWindow"
+        Height="720"
+        Width="1080"
         WindowStartupLocation="CenterScreen">
-    <Grid Background="{StaticResource BackgroundBrush}">
-        <!-- Contenedor principal para páginas -->
-        <Frame x:Name="MainFrame" 
-               NavigationUIVisibility="Hidden"
-               Background="Transparent"/>
-    </Grid>
+    <Border Background="{StaticResource BackgroundBrush}">
+        <Grid>
+            <Grid x:Name="RootGrid">
+                <Frame x:Name="MainFrame"
+                       NavigationUIVisibility="Hidden"
+                       Background="Transparent" />
+            </Grid>
+
+            <Border x:Name="PopUpOverlay"
+                    Visibility="Collapsed"
+                    Grid.ColumnSpan="2"
+                    Background="Transparent"
+                    IsHitTestVisible="True">
+                <Canvas>
+                    <ContentControl x:Name="PopUpHost"
+                                    Canvas.Left="0"
+                                    Canvas.Top="0"
+                                    HorizontalAlignment="Left"
+                                    VerticalAlignment="Top" />
+                </Canvas>
+            </Border>
+
+            <Border x:Name="DialogOverlay"
+                    Background="#80000000"
+                    Visibility="Collapsed"
+                    Grid.ColumnSpan="2">
+                <ContentControl x:Name="DialogHost"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"/>
+            </Border>
+        </Grid>
+    </Border>
 </Window>

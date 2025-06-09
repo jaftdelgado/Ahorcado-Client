@@ -36,7 +36,7 @@
     </Style>
     
     <Style x:Key="SecondaryButtonStyle" TargetType="Button">
-        <Setter Property="Background" Value="{StaticResource SecondaryTextBrush}"/>
+        <Setter Property="Background" Value="{StaticResource SecondaryButtonBrush}"/>
         <Setter Property="FontFamily" Value="{StaticResource BarlowRegular}"/>
         <Setter Property="FontSize" Value="12"/>
         <Setter Property="Height" Value="34"/>
@@ -60,7 +60,7 @@
         </Setter>
         <Style.Triggers>
             <Trigger Property="IsMouseOver" Value="True">
-                <Setter Property="Background" Value="{StaticResource PrimaryButtonHoverBrush}"/>
+                <Setter Property="Background" Value="{StaticResource SecondaryTextBrush}"/>
             </Trigger>
 
             <Trigger Property="IsEnabled" Value="False">
@@ -118,12 +118,12 @@
         </Setter>
     </Style>
 
-    <Style x:Key="MainMenuButtonStyle" TargetType="Button">
-        <Setter Property="Background" Value="Transparent"/>
-        <Setter Property="FontFamily" Value="{StaticResource BarlowMedium}"/>
-        <Setter Property="FontSize" Value="12"/>
-        <Setter Property="Height" Value="32"/>
+    <Style x:Key="MainMenuButton" TargetType="Button">
+        <Setter Property="Background" Value="#33FFFFFF"/>
+        <Setter Property="FontFamily" Value="{StaticResource BarlowSemiBold}"/>
+        <Setter Property="FontSize" Value="17"/>
         <Setter Property="HorizontalContentAlignment" Value="Left"/>
+        <Setter Property="VerticalContentAlignment" Value="Top"/>
         <Setter Property="Cursor" Value="Hand"/>
         <Setter Property="Foreground" Value="{StaticResource PrimaryTextBrush}"/>
         <Setter Property="Template">
@@ -131,25 +131,30 @@
                 <ControlTemplate TargetType="Button">
                     <Grid>
                         <Border x:Name="BorderElement"
-                            Background="{TemplateBinding Background}" 
-                            Padding="12,0"
-                            CornerRadius="8">
-                            <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                                Background="{TemplateBinding Background}"
+                                Padding="16 20 32 20"
+                                CornerRadius="20">
+                            <StackPanel Orientation="Vertical"
+                                    HorizontalAlignment="Left"
+                                    VerticalAlignment="Center">
                                 <Image x:Name="IconImage"
-                                   Width="13" Height="13" Margin="0 0 6 0"
-                                   RenderOptions.BitmapScalingMode="HighQuality"
-                                   Source="{Binding Path=Tag[IconPath], RelativeSource={RelativeSource TemplatedParent}}"/>
+                                       Width="20" Height="20" Margin="0 0 0 6"
+                                       RenderOptions.BitmapScalingMode="HighQuality"
+                                       HorizontalAlignment="Left"
+                                       Source="{Binding Path=Tag[IconPath], RelativeSource={RelativeSource TemplatedParent}}"/>
                                 <TextBlock x:Name="ButtonText"
                                        Text="{TemplateBinding Content}" 
                                        Foreground="{TemplateBinding Foreground}" 
                                        FontWeight="{TemplateBinding FontWeight}" 
-                                       VerticalAlignment="Center"/>
+                                       VerticalAlignment="Center"
+                                       TextWrapping="Wrap"/>
                             </StackPanel>
                         </Border>
                     </Grid>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter TargetName="BorderElement" Property="Background" Value="#E5E5F9"/>
+                            <Setter TargetName="BorderElement" Property="Background" Value="{StaticResource PrimaryTextBrush}"/>
+                            <Setter TargetName="ButtonText" Property="Foreground" Value="{StaticResource BackgroundBrush}"/>
                             <Setter TargetName="IconImage"
                                 Property="Source"
                                 Value="{Binding Path=Tag[HoverIconPath], RelativeSource={RelativeSource TemplatedParent}}"/>

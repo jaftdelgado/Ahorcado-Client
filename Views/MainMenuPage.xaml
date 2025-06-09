@@ -3,6 +3,7 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:sys="clr-namespace:System;assembly=mscorlib"
       xmlns:local="clr-namespace:AhorcadoClient.Views"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
@@ -18,14 +19,11 @@
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
-                <!-- Encabezado -->
                 <RowDefinition Height="*"/>
-                <!-- Contenido principal -->
             </Grid.RowDefinitions>
 
             <!-- Barra de navegación superior -->
             <Border Grid.Row="0"
-                    Background="{StaticResource PanelBrush}"
                     Padding="10">
                 <Grid>
                     <Grid.ColumnDefinitions>
@@ -35,6 +33,47 @@
 
                     <Button Grid.Column="0"
                             Style="{StaticResource UserButtonStyle}"/>
+                </Grid>
+            </Border>
+
+            <Border Grid.Row="1">
+                <Grid>
+                    <StackPanel Orientation="Horizontal"
+                                VerticalAlignment="Bottom"
+                                Margin="20">
+                        <Button Style="{DynamicResource MainMenuButton}"
+                                Content="{DynamicResource Glb_CreateGame}" 
+                                Click="Click_BtnCreateGame">
+                            <Button.Tag>
+                                <ResourceDictionary>
+                                    <sys:String x:Key="IconPath">/Resources/Icons/game-icon.png</sys:String>
+                                    <sys:String x:Key="HoverIconPath">/Resources/Icons/game-hover-icon.png</sys:String>
+                                </ResourceDictionary>
+                            </Button.Tag>
+                        </Button>
+                        
+                        <Button Style="{DynamicResource MainMenuButton}"
+                                Content="{DynamicResource Glb_JoinGame}"
+                                Margin="20 0">
+                            <Button.Tag>
+                                <ResourceDictionary>
+                                    <sys:String x:Key="IconPath">/Resources/Icons/joingame-icon.png</sys:String>
+                                    <sys:String x:Key="HoverIconPath">/Resources/Icons/joingame-hover-icon.png</sys:String>
+                                </ResourceDictionary>
+                            </Button.Tag>
+                        </Button>
+                        
+                        <Button Style="{DynamicResource MainMenuButton}"
+                                Content="{DynamicResource Glb_Scoreboards}">
+                            <Button.Tag>
+                                <ResourceDictionary>
+                                    <sys:String x:Key="IconPath">/Resources/Icons/scoreboard-icon.png</sys:String>
+                                    <sys:String x:Key="HoverIconPath">/Resources/Icons/scoreboard-hover-icon.png</sys:String>
+                                </ResourceDictionary>
+                            </Button.Tag>
+                        </Button>
+
+                    </StackPanel>
                 </Grid>
             </Border>
         </Grid>

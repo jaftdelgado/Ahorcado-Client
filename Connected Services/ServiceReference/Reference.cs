@@ -228,6 +228,18 @@ namespace AhorcadoClient.ServiceReference {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPlayerManager/LogIn", ReplyAction="http://tempuri.org/IPlayerManager/LogInResponse")]
         System.Threading.Tasks.Task<AhorcadoClient.ServiceReference.PlayerDTO> LogInAsync(string username, string password);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPlayerManager/RegisterPlayer", ReplyAction="http://tempuri.org/IPlayerManager/RegisterPlayerResponse")]
+        bool RegisterPlayer(AhorcadoClient.ServiceReference.PlayerDTO player);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPlayerManager/RegisterPlayer", ReplyAction="http://tempuri.org/IPlayerManager/RegisterPlayerResponse")]
+        System.Threading.Tasks.Task<bool> RegisterPlayerAsync(AhorcadoClient.ServiceReference.PlayerDTO player);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPlayerManager/UpdatePlayerInfo", ReplyAction="http://tempuri.org/IPlayerManager/UpdatePlayerInfoResponse")]
+        bool UpdatePlayerInfo(AhorcadoClient.ServiceReference.PlayerDTO player);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPlayerManager/UpdatePlayerInfo", ReplyAction="http://tempuri.org/IPlayerManager/UpdatePlayerInfoResponse")]
+        System.Threading.Tasks.Task<bool> UpdatePlayerInfoAsync(AhorcadoClient.ServiceReference.PlayerDTO player);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMainManager/Ping", ReplyAction="http://tempuri.org/IMainManager/PingResponse")]
         bool Ping();
         
@@ -268,6 +280,22 @@ namespace AhorcadoClient.ServiceReference {
         
         public System.Threading.Tasks.Task<AhorcadoClient.ServiceReference.PlayerDTO> LogInAsync(string username, string password) {
             return base.Channel.LogInAsync(username, password);
+        }
+        
+        public bool RegisterPlayer(AhorcadoClient.ServiceReference.PlayerDTO player) {
+            return base.Channel.RegisterPlayer(player);
+        }
+        
+        public System.Threading.Tasks.Task<bool> RegisterPlayerAsync(AhorcadoClient.ServiceReference.PlayerDTO player) {
+            return base.Channel.RegisterPlayerAsync(player);
+        }
+        
+        public bool UpdatePlayerInfo(AhorcadoClient.ServiceReference.PlayerDTO player) {
+            return base.Channel.UpdatePlayerInfo(player);
+        }
+        
+        public System.Threading.Tasks.Task<bool> UpdatePlayerInfoAsync(AhorcadoClient.ServiceReference.PlayerDTO player) {
+            return base.Channel.UpdatePlayerInfoAsync(player);
         }
         
         public bool Ping() {

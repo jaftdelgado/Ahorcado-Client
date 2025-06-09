@@ -64,7 +64,7 @@ namespace AhorcadoClient.Views.Dialogs
 
             dialog.DialogTitle.Text = FindResourceString(title);
             dialog.DialogDescription.Text = FindResourceString(description);
-            dialog.SetAlertProperties("PrimaryButtonHoverBrush", "confirm-alert-icon.png", "Glb_Accept", Visibility.Visible);
+            dialog.SetAlertProperties("Glb_Accept", Visibility.Visible);
             dialog.BtnClose.Visibility = Visibility.Visible;
 
             if (string.IsNullOrEmpty(dangerButtonTextResourceKey))
@@ -101,26 +101,29 @@ namespace AhorcadoClient.Views.Dialogs
 
         private void ConfigureAlertType(AlertType alertType)
         {
+            string buttonTextResourceKey;
+
             switch (alertType)
             {
                 case AlertType.SUCCESS:
-                    SetAlertProperties("SuccessBrush", "success-alert-icon.png", "Glb_Accept", Visibility.Collapsed);
+                    buttonTextResourceKey = "Glb_Accept";
                     break;
                 case AlertType.WARNING:
-                    SetAlertProperties("WarningBrush", "warning-alert-icon.png", "Glb_TryAgain", Visibility.Collapsed);
+                    buttonTextResourceKey = "Glb_TryAgain";
                     break;
                 case AlertType.ERROR:
-                    SetAlertProperties("DangerBrush", "error-alert-icon.png", "Glb_Close", Visibility.Collapsed);
+                    buttonTextResourceKey = "Glb_Close";
+                    break;
+                default:
+                    buttonTextResourceKey = "Glb_Confirm";
                     break;
             }
+
+            SetAlertProperties(buttonTextResourceKey, Visibility.Collapsed);
         }
 
-        private void SetAlertProperties(string brushResourceKey, string iconSource, string buttonTextResourceKey, Visibility secondaryButtonVisibility)
+        private void SetAlertProperties(string buttonTextResourceKey, Visibility secondaryButtonVisibility)
         {
-            var brush = (SolidColorBrush)Application.Current.Resources[brushResourceKey];
-
-            HeaderBorder.Background = brush;
-            AlertIcon.Source = new System.Windows.Media.Imaging.BitmapImage(new Uri($"/Resources/Icons/{iconSource}", UriKind.Relative));
             BtnAccept.Content = FindResourceString(buttonTextResourceKey);
             BtnClose.Visibility = secondaryButtonVisibility;
         }

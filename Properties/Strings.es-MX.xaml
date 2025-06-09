@@ -3,18 +3,39 @@
                     xmlns:sys="clr-namespace:System;assembly=mscorlib">
     
     <!--Globals-->
+    <sys:String x:Key="Glb_SignIn">Iniciar Sesión</sys:String>
+    <sys:String x:Key="Glb_CreateGame">Crear Partida</sys:String>
+    <sys:String x:Key="Glb_JoinGame">Unirse a Partida</sys:String>
+    <sys:String x:Key="Glb_Scoreboards">Marcadores</sys:String>
     <sys:String x:Key="Glb_Loading">Cargando...</sys:String>
     <sys:String x:Key="Glb_Cancel">Cancelar</sys:String>
     <sys:String x:Key="Glb_Close">Cerrar</sys:String>
     <sys:String x:Key="Glb_TbUsername">Usuario:</sys:String>
     <sys:String x:Key="Glb_TbPassword">Contraseña:</sys:String>
     <sys:String x:Key="Glb_CheckBShowPassword">Mostrar contraseña</sys:String>
-    <sys:String x:Key="Glb_SignIn">Iniciar Sesión</sys:String>
+    <sys:String x:Key="Glb_CbCategory">Categoría:</sys:String>
+    <sys:String x:Key="Glb_CbDifficult">Dificultad:</sys:String>
+    <sys:String x:Key="GlbDialogT_NoConnection">Sin conexión al servidor</sys:String>
+    <sys:String x:Key="GlbDialogD_NoConnection">No se pudo establecer conexión con el servidor. Verifica la conexión a Internet o inténtalo de nuevo más tarde.</sys:String>
+    <sys:String x:Key="GlbDialogT_TimeOut">Tiempo de espera excedido</sys:String>
+    <sys:String x:Key="GlbDialogD_TimeOut">Se ha excedido el tiempo de espera. Por favor, verifica tu conexión a Internet y vuelve a intentarlo más tarde.</sys:String>
+    <sys:String x:Key="GlbDialogT_DBNoConnection">Sin conexión a la base de datos</sys:String>
+    <sys:String x:Key="GlbDialogD_DBNoConnection">No se pudo establecer conexión con la base de datos. Verifica la conexión a Internet o inténtalo de nuevo más tarde.</sys:String>
 
     <!--#region SignIn -->
     <sys:String x:Key="SignIn_Desc">Ingresa los datos de tu cuenta para poder acceder a Ahorcado.</sys:String>
     <sys:String x:Key="SignIn_NotAccount">¿Aún no tienes cuenta?</sys:String>
     <sys:String x:Key="SignIn_BtnRegister">Registrarse</sys:String>
+    <sys:String x:Key="SignIn_DialogTInvalidCreds">Usuario o contraseña inválido</sys:String>
+    <sys:String x:Key="SignIn_DialogDInvalidCreds">Por favor, verifica tu nombre de usuario y contraseña. Si necesitas crear una nueva contraseña, utiliza la opción "Restablecer".</sys:String>
+    <sys:String x:Key="SignIn_DialogTSignedIn">Sesión Iniciada</sys:String>
+    <sys:String x:Key="SignIn_DialogDSignedIn">Iniciaste sesión correctamente. Bienvenido, ya puedes utilizar todas las opciones para disfrutar de Ahorcado.</sys:String>
     <!--#endregion-->
 
+    <!--#region MainMenu -->
+    <!--#endregion-->
+    
+    <!--#region CreateGame -->
+    <sys:String x:Key="CreateGame_Desc">Configura tu partida de Ahorcado eligiendo la dificultad, la categoría y la palabra que se usará en el juego.</sys:String>
+    <!--#endregion-->
 </ResourceDictionary>

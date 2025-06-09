@@ -62,9 +62,14 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Model\Player.cs" />
     <Compile Include="Utilities\Animations.cs" />
+    <Compile Include="Utilities\CurrentSession.cs" />
     <Compile Include="Utilities\NavigationManager.cs" />
     <Compile Include="Utilities\ServiceClientManager.cs" />
+    <Compile Include="Views\CreateGameWindow.xaml.cs">
+      <DependentUpon>CreateGameWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Dialogs\LoadingDialog.xaml.cs">
       <DependentUpon>LoadingDialog.xaml</DependentUpon>
     </Compile>
@@ -109,6 +114,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Resources\Styles\UIElementals.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\CreateGameWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -176,9 +185,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Model\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Resource Include="Resources\Images\SignInBG.png" />
   </ItemGroup>
@@ -211,6 +218,18 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Icons\loading-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\game-hover-icon.png" />
+    <Resource Include="Resources\Icons\game-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\joingame-hover-icon.png" />
+    <Resource Include="Resources\Icons\joingame-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\scoreboard-hover-icon.png" />
+    <Resource Include="Resources\Icons\scoreboard-icon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

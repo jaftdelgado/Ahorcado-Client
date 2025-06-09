@@ -161,8 +161,7 @@ namespace AhorcadoClient.Utilities
                 {
                     await Application.Current.Dispatcher.InvokeAsync(() =>
                     {
-                        if (LoadingDialog.IsDialogVisible())
-                            LoadingDialog.Close();
+                        if (LoadingDialog.IsDialogVisible()) LoadingDialog.Close();
                     });
                 }
             }
