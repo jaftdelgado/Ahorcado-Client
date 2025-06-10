@@ -64,8 +64,11 @@
     </Compile>
     <Compile Include="Model\Player.cs" />
     <Compile Include="Utilities\Animations.cs" />
+    <Compile Include="Utilities\Constants.cs" />
     <Compile Include="Utilities\CurrentSession.cs" />
+    <Compile Include="Utilities\ImageUtilities.cs" />
     <Compile Include="Utilities\NavigationManager.cs" />
+    <Compile Include="Utilities\PasswordUtilities.cs" />
     <Compile Include="Utilities\ServiceClientManager.cs" />
     <Compile Include="Views\CreateGameWindow.xaml.cs">
       <DependentUpon>CreateGameWindow.xaml</DependentUpon>
@@ -81,6 +84,9 @@
     </Compile>
     <Compile Include="Views\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MatchPage.xaml.cs">
+      <DependentUpon>MatchPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\SignInWindow.xaml.cs">
       <DependentUpon>SignInWindow.xaml</DependentUpon>
@@ -134,6 +140,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\MainWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\MatchPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

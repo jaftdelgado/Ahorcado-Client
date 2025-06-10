@@ -1,9 +1,9 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:sys="clr-namespace:System;assembly=mscorlib">
-    
     <!--Globals-->
     <sys:String x:Key="Glb_SignIn">Iniciar Sesión</sys:String>
+    <sys:String x:Key="Glb_CreateAccount">Crear Cuenta</sys:String>
     <sys:String x:Key="Glb_CreateGame">Crear Partida</sys:String>
     <sys:String x:Key="Glb_JoinGame">Unirse a Partida</sys:String>
     <sys:String x:Key="Glb_Scoreboards">Marcadores</sys:String>
@@ -13,6 +13,14 @@
     <sys:String x:Key="Glb_TbUsername">Usuario:</sys:String>
     <sys:String x:Key="Glb_TbPassword">Contraseña:</sys:String>
     <sys:String x:Key="Glb_CheckBShowPassword">Mostrar contraseña</sys:String>
+    <sys:String x:Key="Glb_BtnSelectImage">Seleccionar Imagen</sys:String>
+    <sys:String x:Key="Glb_BtnDeleteImage">Eliminar Imagen</sys:String>
+    <sys:String x:Key="Glb_TbFirstName">Nombre(s):</sys:String>
+    <sys:String x:Key="Glb_TbLastName">Apellido(s):</sys:String>
+    <sys:String x:Key="Glb_TbEmailAddress">Correo Electrónico:</sys:String>
+    <sys:String x:Key="Glb_TbPhoneNumber">Teléfono:</sys:String>
+    <sys:String x:Key="Glb_TbBirthDay">Fecha de Nacimiento:</sys:String>
+    <sys:String x:Key="Glb_CbPreferedLanguage">Idioma Preferido:</sys:String>
     <sys:String x:Key="Glb_CbCategory">Categoría:</sys:String>
     <sys:String x:Key="Glb_CbDifficult">Dificultad:</sys:String>
     <sys:String x:Key="GlbDialogT_NoConnection">Sin conexión al servidor</sys:String>
@@ -21,6 +29,7 @@
     <sys:String x:Key="GlbDialogD_TimeOut">Se ha excedido el tiempo de espera. Por favor, verifica tu conexión a Internet y vuelve a intentarlo más tarde.</sys:String>
     <sys:String x:Key="GlbDialogT_DBNoConnection">Sin conexión a la base de datos</sys:String>
     <sys:String x:Key="GlbDialogD_DBNoConnection">No se pudo establecer conexión con la base de datos. Verifica la conexión a Internet o inténtalo de nuevo más tarde.</sys:String>
+    <sys:String x:Key="GlbDialogT_SelectProfilePic">Selecciona la imagen de perfil</sys:String>
 
     <!--#region SignIn -->
     <sys:String x:Key="SignIn_Desc">Ingresa los datos de tu cuenta para poder acceder a Ahorcado.</sys:String>
@@ -30,6 +39,13 @@
     <sys:String x:Key="SignIn_DialogDInvalidCreds">Por favor, verifica tu nombre de usuario y contraseña. Si necesitas crear una nueva contraseña, utiliza la opción "Restablecer".</sys:String>
     <sys:String x:Key="SignIn_DialogTSignedIn">Sesión Iniciada</sys:String>
     <sys:String x:Key="SignIn_DialogDSignedIn">Iniciaste sesión correctamente. Bienvenido, ya puedes utilizar todas las opciones para disfrutar de Ahorcado.</sys:String>
+    <!--#endregion-->
+    
+    <!--#region RegisterPlayer -->
+    <sys:String x:Key="CreateAccount_Desc">Ingresa todos los datos solicitado para poder crear tu cuenta de Ahorcado.</sys:String>
+    <sys:String x:Key="CreateAccount_PersonalInfo">Información Personal</sys:String>
+    <sys:String x:Key="CreateAccount_UserPreferences">Preferencias del Jugador</sys:String>
+    <sys:String x:Key="CreateAccount_AccessInfo">Información de Acceso</sys:String>
     <!--#endregion-->
 
     <!--#region MainMenu -->

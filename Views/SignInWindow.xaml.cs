@@ -1,8 +1,12 @@
 ﻿using AhorcadoClient.Model;
 using AhorcadoClient.Utilities;
 using AhorcadoClient.Views.Dialogs;
+using System.Collections.Generic;
+using System.Net;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Input;
 
 namespace AhorcadoClient.Views
 {
@@ -63,9 +67,96 @@ namespace AhorcadoClient.Views
             });
         }
 
+        private void UpdateFormButtonState()
+        {
+            var requiredFields = new List<TextBox>
+            {
+                TbFirstName, TbLastName,
+                TbPhoneNumber, TbEmailAddress,
+                TbUsername, TbPassword,
+                TbBirthDay
+            };
+
+            bool allFieldsFilled = true;
+
+            foreach (var field in requiredFields)
+            {
+                if (string.IsNullOrWhiteSpace(field.Text))
+                {
+                    allFieldsFilled = false;
+                    break;
+                }
+            }
+
+            BtnCreateAccount.IsEnabled = allFieldsFilled;
+        }
+
         private async void Click_BtnSignIn(object sender, RoutedEventArgs e)
         {
             await Login();
+        }
+
+        private void Click_BtnCreateAccount(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Click_BtnSelectImage(object sender, RoutedEventArgs e)
+        {
+            ImageUtilities.SelectProfileImage(PlayerProfilePic, "GlbDialogT_SelectProfilePic", () =>
+            {
+                BtnDeleteImage.IsEnabled = true;
+            });
+        }
+
+        private void Click_BtnRegister(object sender, MouseButtonEventArgs e)
+        {
+            SignInPanel.Visibility = Visibility.Collapsed;
+            CreateAccountPanel.Visibility = Visibility.Visible;
+        }
+
+        private void Click_BtnDeleteImage(object sender, RoutedEventArgs e)
+        {
+            ImageUtilities.SetImageSource(PlayerProfilePic, null, Constants.DEFAULT_PROFILE_PIC_PATH);
+            BtnDeleteImage.IsEnabled = false;
+        }
+
+        private void Click_BtnCancel(object sender, RoutedEventArgs e)
+        {
+            CreateAccountPanel.Visibility = Visibility.Collapsed;
+            SignInPanel.Visibility = Visibility.Visible;
+        }
+
+        private void RequiredFields_TextChanged(object sender, RoutedEventArgs e)
+        {
+            UpdateFormButtonState();
+        }
+        
+        private void Password_TextChanged(object sender, RoutedEventArgs e)
+        {
+            if (sender is TextBox textBox && PbPassword.Password != textBox.Text)
+                PbPassword.Password = textBox.Text;
+            else if (sender is PasswordBox passwordBox && TbPassword.Text != passwordBox.Password)
+                TbPassword.Text = passwordBox.Password;
+
+            UpdateFormButtonState();
+        }
+
+        private void ShowPasswordCheckBox_Checked(object sender, RoutedEventArgs e)
+        {
+            PasswordUtilities.ShowPassword(TbPassword, PbPassword);
+            UpdateFormButtonState();
+        }
+
+        private void ShowPasswordCheckBox_Unchecked(object sender, RoutedEventArgs e)
+        {
+            PasswordUtilities.HidePassword(TbPassword, PbPassword);
+            UpdateFormButtonState();
+        }
+
+        private void TextBlock_MouseLeftButtonUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+
         }
     }
 }

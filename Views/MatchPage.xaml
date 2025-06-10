@@ -1,0 +1,79 @@
+﻿<Page x:Class="AhorcadoClient.Views.MatchPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:AhorcadoClient.Views"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="MatchPage">
+
+    <Grid Background="{StaticResource BackgroundBrush}">
+        <Image Source="/Resources/Images/MainMenuBG.png" 
+           Stretch="UniformToFill"
+           Opacity="0.05"/>
+
+        <!-- Estructura principal -->
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Border Grid.Column="1"
+                    Background="{StaticResource PanelBrush}"
+                    CornerRadius="16"
+                    BorderBrush="{StaticResource BorderBrush}"
+                    BorderThickness="1">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <StackPanel Grid.Row="2" HorizontalAlignment="Center">
+                        <!-- Primera fila -->
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="5">
+                            <Button Content="Q" Click="Key_Click" Style="{StaticResource KeyboardButtonStyle}"/>
+                            <Button Content="W" Click="Key_Click" Style="{StaticResource KeyboardButtonStyle}" Margin="3 0 0 0"/>
+                            <Button Content="E" Click="Key_Click" Style="{StaticResource KeyboardButtonStyle}" Margin="3 0 0 0"/>
+                            <Button Content="R" Click="Key_Click" Style="{StaticResource KeyboardButtonStyle}" Margin="3 0 0 0"/>
+                            <Button Content="T" Click="Key_Click" Style="{StaticResource KeyboardButtonStyle}" Margin="3 0 0 0"/>
+                            <Button Content="Y" Click="Key_Click" Style="{StaticResource KeyboardButtonStyle}" Margin="3 0 0 0"/>
+                            <Button Content="U" Click="Key_Click" Style="{StaticResource KeyboardButtonStyle}" Margin="3 0 0 0"/>
+                            <Button Content="I" Click="Key_Click" Style="{StaticResource KeyboardButtonStyle}" Margin="3 0 0 0"/>
+                            <Button Content="O" Click="Key_Click" Style="{StaticResource KeyboardButtonStyle}" Margin="3 0 0 0"/>
+                            <Button Content="P" Click="Key_Click" Style="{StaticResource KeyboardButtonStyle}" Margin="3 0 0 0"/>
+                        </StackPanel>
+
+                        <!-- Segunda fila -->
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="5">
+                            <Button Content="A" Click="Key_Click" Style="{StaticResource KeyboardButtonStyle}"/>
+                            <Button Content="S" Click="Key_Click" Style="{StaticResource KeyboardButtonStyle}" Margin="3 0 0 0"/>
+                            <Button Content="D" Click="Key_Click" Style="{StaticResource KeyboardButtonStyle}" Margin="3 0 0 0"/>
+                            <Button Content="F" Click="Key_Click" Style="{StaticResource KeyboardButtonStyle}" Margin="3 0 0 0"/>
+                            <Button Content="G" Click="Key_Click" Style="{StaticResource KeyboardButtonStyle}" Margin="3 0 0 0"/>
+                            <Button Content="H" Click="Key_Click" Style="{StaticResource KeyboardButtonStyle}" Margin="3 0 0 0"/>
+                            <Button Content="J" Click="Key_Click" Style="{StaticResource KeyboardButtonStyle}" Margin="3 0 0 0"/>
+                            <Button Content="K" Click="Key_Click" Style="{StaticResource KeyboardButtonStyle}" Margin="3 0 0 0"/>
+                            <Button Content="L" Click="Key_Click" Style="{StaticResource KeyboardButtonStyle}" Margin="3 0 0 0"/>
+                        </StackPanel>
+
+                        <!-- Tercera fila -->
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="5">
+                            <Button Content="Z" Click="Key_Click" Style="{StaticResource KeyboardButtonStyle}"/>
+                            <Button Content="X" Click="Key_Click" Style="{StaticResource KeyboardButtonStyle}" Margin="3 0 0 0"/>
+                            <Button Content="C" Click="Key_Click" Style="{StaticResource KeyboardButtonStyle}" Margin="3 0 0 0"/>
+                            <Button Content="V" Click="Key_Click" Style="{StaticResource KeyboardButtonStyle}" Margin="3 0 0 0"/>
+                            <Button Content="B" Click="Key_Click" Style="{StaticResource KeyboardButtonStyle}" Margin="3 0 0 0"/>
+                            <Button Content="N" Click="Key_Click" Style="{StaticResource KeyboardButtonStyle}" Margin="3 0 0 0"/>
+                            <Button Content="M" Click="Key_Click" Style="{StaticResource KeyboardButtonStyle}" Margin="3 0 0 0"/>
+                        </StackPanel>
+                    </StackPanel>
+
+                </Grid>
+            </Border>
+        </Grid>
+    </Grid>
+</Page>
