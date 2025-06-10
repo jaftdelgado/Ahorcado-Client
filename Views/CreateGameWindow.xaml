@@ -41,13 +41,21 @@
                     <ComboBox x:Name="CbDifficult"
                               Style="{StaticResource ComboBoxStyle}"
                               Tag="{DynamicResource Glb_CbDifficult}"
-                              Margin="0 0 10 0"/>
-                    
+                              Margin="5,10,5,91" Grid.Column="1"
+                              IsEnabled="False"
+                              SelectionChanged="CbDifficult_SelectionChanged"/>
+
                     <ComboBox x:Name="CbCategory"
-                              Grid.Column="1"
                               Style="{StaticResource ComboBoxStyle}"
                               Tag="{DynamicResource Glb_CbCategory}"
-                              Margin="10 0 0 0"/>
+                              Margin="0,10,10,91"
+                              SelectionChanged="CbCategory_SelectionChanged"/>
+                    
+                    <ComboBox x:Name="CbWord"
+                        Style="{StaticResource ComboBoxStyle}"
+                        Tag="{DynamicResource Glb_CbWord}"
+                        Margin="89,72,90,29" Grid.ColumnSpan="2"
+                        IsEnabled="False"/>
                 </Grid>
             </Border>
 
@@ -62,7 +70,8 @@
                             Margin="0 0 10 0"
                             Click="Click_BtnCancel"/>
                     <Button Style="{StaticResource PrimaryButtonStyle}"
-                            Content="{StaticResource Glb_CreateGame}"/>
+                            Content="{StaticResource Glb_CreateGame}"
+                            Click="Button_Click"/>
                 </StackPanel>
             </Border>
         </Grid>
