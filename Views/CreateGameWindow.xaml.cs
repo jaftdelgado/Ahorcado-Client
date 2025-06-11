@@ -31,6 +31,8 @@ namespace AhorcadoClient.Views
                 await Application.Current.Dispatcher.InvokeAsync(() =>
                 {
                     CbCategory.ItemsSource = categorias;
+                    CbWord.DisplayMemberPath = "Name";
+                    CbWord.SelectedValuePath = "CategoryID";
                     CbDifficult.IsEnabled = false;
                     CbWord.IsEnabled = false;
                 });
@@ -43,7 +45,7 @@ namespace AhorcadoClient.Views
             await ServiceClientManager.ExecuteServerAction(async () =>
             {
                 var client = ServiceClientManager.Instance.Client;
-                var dificultades = client.GetDifficults(CbCategory.SelectedItem.ToString());
+                var dificultades = client.GetDifficults((int)CbCategory.SelectedItem);
                 await Application.Current.Dispatcher.InvokeAsync(() =>
                 {
                     CbDifficult.ItemsSource = dificultades;
@@ -129,7 +131,7 @@ namespace AhorcadoClient.Views
             Close();
         }
 
-        private void Click_BtnCreateGame(object sender, RoutedEventArgs e)
+        private async void Click_BtnCreateGameAsync(object sender, RoutedEventArgs e)
         {
             if (CbCategory.SelectedItem == null)
             {
@@ -150,10 +152,10 @@ namespace AhorcadoClient.Views
             int playerId = CurrentSession.LoggedInPlayer.PlayerID;
             int palabraId = (int)CbWord.SelectedValue;
 
-            ServiceClientManager.ExecuteServerAction(async () =>
+            await ServiceClientManager.ExecuteServerAction(async () =>
             {
                 var client = ServiceClientManager.Instance.Client;
-                client.CreateGame(playerId, palabraId);
+                client.CreateMatch(playerId, palabraId);
                 await Application.Current.Dispatcher.InvokeAsync(() =>
                 {
                     MessageDialog.Show("Glb_CreateGame", "Partida creada correctamente.", AlertType.SUCCESS, Close);

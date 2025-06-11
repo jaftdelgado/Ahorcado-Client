@@ -71,7 +71,7 @@
                             Click="Click_BtnCancel"/>
                     <Button Style="{StaticResource PrimaryButtonStyle}"
                             Content="{StaticResource Glb_CreateGame}"
-                            Click="Button_Click"/>
+                            Click="Click_BtnCreateGameAsync"/>
                 </StackPanel>
             </Border>
         </Grid>
