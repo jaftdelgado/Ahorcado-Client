@@ -1,12 +1,15 @@
 ﻿using AhorcadoClient.Model;
+using AhorcadoClient.ServiceReference;
 using AhorcadoClient.Utilities;
 using AhorcadoClient.Views.Dialogs;
+using System;
 using System.Collections.Generic;
 using System.Net;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Media.Imaging;
 
 namespace AhorcadoClient.Views
 {
@@ -96,9 +99,9 @@ namespace AhorcadoClient.Views
             await Login();
         }
 
-        private void Click_BtnCreateAccount(object sender, RoutedEventArgs e)
+        private async void Click_BtnCreateAccount(object sender, RoutedEventArgs e)
         {
-
+            await RegisterAccount();
         }
 
         private void Click_BtnSelectImage(object sender, RoutedEventArgs e)
@@ -158,5 +161,51 @@ namespace AhorcadoClient.Views
         {
 
         }
+        private async Task RegisterAccount()
+        {
+            if (!DateTime.TryParse(TbBirthDay.Text.Trim(), out DateTime birthDay))
+            {
+                MessageDialog.Show("SignIn_DialogTInvalidDate", "SignIn_DialogDInvalidDate", AlertType.ERROR);
+                return;
+            }
+
+            var player = new PlayerDTO
+            {
+                FirstName = TbFirstName.Text.Trim(),
+                LastName = TbLastName.Text.Trim(),
+                BirthDay = birthDay,
+                PhoneNumber = TbPhoneNumber.Text.Trim(),
+                EmailAddress = TbEmailAddress.Text.Trim(),
+                Username = TbUsername.Text.Trim(),
+                Password = TbPassword.Text.Trim(),
+                ProfilePic = ImageUtilities.ImageToByteArray(PlayerProfilePic.Source as BitmapSource),
+                SelectedLanguageID = 1 // Puedes ajustar esto si usas selección de idioma
+            };
+
+            await ServiceClientManager.ExecuteServerAction(async () =>
+            {
+                var client = ServiceClientManager.Instance.Client;
+                if (client == null) return;
+
+                bool result = client.RegisterPlayer(player);
+
+                await Application.Current.Dispatcher.InvokeAsync(() =>
+                {
+                    if (result)
+                    {
+                        MessageDialog.Show("SignIn_DialogTAccountCreated", "SignIn_DialogDAccountCreated", AlertType.SUCCESS, () =>
+                        {
+                            CreateAccountPanel.Visibility = Visibility.Collapsed;
+                            SignInPanel.Visibility = Visibility.Visible;
+                        });
+                    }
+                    else
+                    {
+                        MessageDialog.Show("SignIn_DialogTUserExists", "SignIn_DialogDUserExists", AlertType.ERROR);
+                    }
+                });
+            });
+        }
+
     }
 }
