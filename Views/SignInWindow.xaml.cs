@@ -27,7 +27,7 @@ namespace AhorcadoClient.Views
         private async Task Login()
         {
             var user = TbUsername.Text;
-            var password = PbPassword.Password;
+            var password = PbLoginPassword.Password;
 
             await ServiceClientManager.ExecuteServerAction(async () =>
             {
