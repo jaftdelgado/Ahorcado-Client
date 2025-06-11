@@ -23,6 +23,7 @@
     <sys:String x:Key="Glb_CbPreferedLanguage">Idioma Preferido:</sys:String>
     <sys:String x:Key="Glb_CbCategory">Categoría:</sys:String>
     <sys:String x:Key="Glb_CbDifficult">Dificultad:</sys:String>
+    <sys:String x:Key="Glb_CbWord">Palabra:</sys:String>
     <sys:String x:Key="GlbDialogT_NoConnection">Sin conexión al servidor</sys:String>
     <sys:String x:Key="GlbDialogD_NoConnection">No se pudo establecer conexión con el servidor. Verifica la conexión a Internet o inténtalo de nuevo más tarde.</sys:String>
     <sys:String x:Key="GlbDialogT_TimeOut">Tiempo de espera excedido</sys:String>
@@ -53,6 +54,10 @@
     
     <!--#region CreateGame -->
     <sys:String x:Key="CreateGame_Desc">Configura tu partida de Ahorcado eligiendo la dificultad, la categoría y la palabra que se usará en el juego.</sys:String>
+    <sys:String x:Key="PorFavorSeleccionaCategoria">Por favor selecciona una categoría.</String>
+    <sys:String x:Key="PorFavorSeleccionaDificultad">Por favor selecciona una dificultad.</String>
+    <sys:String x:Key="PorFavorSeleccionaPalabra">Por favor selecciona una palabra.</String>
+    <sys:String x:Key="PartidaCreadaCorrectamente">Partida creada correctamente.</String>
     <!--#endregion-->
     
     <!--#region MatchWindow-->
