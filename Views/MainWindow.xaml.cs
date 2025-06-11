@@ -18,6 +18,5 @@ namespace AhorcadoClient.Views
             var navigationManager = NavigationManager.Instance;
             navigationManager.NavigateToPage(new MainMenuPage());
         }
-
     }
 }
