@@ -38,24 +38,34 @@
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
 
-                    <ComboBox x:Name="CbDifficult"
-                              Style="{StaticResource ComboBoxStyle}"
-                              Tag="{DynamicResource Glb_CbDifficult}"
-                              Margin="5,10,5,91" Grid.Column="1"
-                              IsEnabled="False"
-                              SelectionChanged="CbDifficult_SelectionChanged"/>
-
                     <ComboBox x:Name="CbCategory"
                               Style="{StaticResource ComboBoxStyle}"
                               Tag="{DynamicResource Glb_CbCategory}"
-                              Margin="0,10,10,91"
-                              SelectionChanged="CbCategory_SelectionChanged"/>
-                    
+                              DisplayMemberPath="CategoryName"
+                              SelectedValuePath="CategoryID"
+                              Margin="5,10,5,91"
+                              SelectionChanged="CbCategory_SelectionChanged" Grid.Column="1"/>
+
+                    <ComboBox x:Name="CbDifficult"
+                              Style="{StaticResource ComboBoxStyle}"
+                              Tag="{DynamicResource Glb_CbDifficult}"
+                              Margin="5,72,5,29"
+                              IsEnabled="False"
+                              SelectionChanged="CbDifficult_SelectionChanged"/>
+
                     <ComboBox x:Name="CbWord"
+                              Style="{StaticResource ComboBoxStyle}"
+                              Tag="{DynamicResource Glb_CbWord}"
+                              DisplayMemberPath="Word"
+                              SelectedValuePath="WordID"
+                              Margin="5,72,5,29"
+                              IsEnabled="False" Grid.Column="1"/>
+                    <ComboBox x:Name="CbLanguage"
                         Style="{StaticResource ComboBoxStyle}"
-                        Tag="{DynamicResource Glb_CbWord}"
-                        Margin="89,72,90,29" Grid.ColumnSpan="2"
-                        IsEnabled="False"/>
+                        Tag="{DynamicResource Glb_CbLanguage}"
+                        DisplayMemberPath="LanguageName"
+                        SelectedValuePath="LanguageID"
+                        Margin="5,10,5,91"/>
                 </Grid>
             </Border>
 

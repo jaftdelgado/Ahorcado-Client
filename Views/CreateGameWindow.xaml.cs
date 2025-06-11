@@ -11,6 +11,8 @@ namespace AhorcadoClient.Views
 {
     public partial class CreateGameWindow : UserControl
     {
+        int playerId = CurrentSession.LoggedInPlayer.PlayerID;
+
         public CreateGameWindow()
         {
             InitializeComponent();
@@ -20,6 +22,21 @@ namespace AhorcadoClient.Views
         private async void CreateGameWindow_Loaded(object sender, RoutedEventArgs e)
         {
             await CargarCategoriasAsync();
+            await CargarIdiomasAsync();
+        }
+
+        private async Task CargarIdiomasAsync()
+        {
+            await ServiceClientManager.ExecuteServerAction(async () =>
+            {
+                var client = ServiceClientManager.Instance.Client;
+                var idiomas = client.GetLanguages();
+                await Application.Current.Dispatcher.InvokeAsync(() =>
+                {
+                    CbLanguage.ItemsSource = idiomas;
+                    CbLanguage.DisplayMemberPath = "LanguageName";
+                });
+            });
         }
 
         private async Task CargarCategoriasAsync()
@@ -27,12 +44,10 @@ namespace AhorcadoClient.Views
             await ServiceClientManager.ExecuteServerAction(async () =>
             {
                 var client = ServiceClientManager.Instance.Client;
-                var categorias = client.GetCategories(); 
+                var categorias = client.GetCategories();
                 await Application.Current.Dispatcher.InvokeAsync(() =>
                 {
                     CbCategory.ItemsSource = categorias;
-                    CbWord.DisplayMemberPath = "Name";
-                    CbWord.SelectedValuePath = "CategoryID";
                     CbDifficult.IsEnabled = false;
                     CbWord.IsEnabled = false;
                 });
@@ -41,17 +56,28 @@ namespace AhorcadoClient.Views
 
         private async void CbCategory_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            if (CbLanguage.SelectedItem == null)
+            {
+                MessageDialog.Show("Error", "Por favor selecciona un idioma antes de elegir una categoría.", AlertType.ERROR);
+                CbCategory.SelectedItem = null;
+                return;
+            }
+
             if (CbCategory.SelectedItem == null) return;
+
+            var selectedCategory = (AhorcadoClient.ServiceReference.CategoryDTO)CbCategory.SelectedItem;
+            int categoryId = selectedCategory.CategoryID;
+            var language = (AhorcadoClient.ServiceReference.LanguageDTO)CbLanguage.SelectedItem;
+
             await ServiceClientManager.ExecuteServerAction(async () =>
             {
                 var client = ServiceClientManager.Instance.Client;
-                var dificultades = client.GetDifficults((int)CbCategory.SelectedItem);
+                var dificultades = client.GetDifficults(categoryId, language.LanguageID);
                 await Application.Current.Dispatcher.InvokeAsync(() =>
                 {
                     CbDifficult.ItemsSource = dificultades;
                     CbDifficult.IsEnabled = true;
                     CbWord.IsEnabled = false;
-                    CbWord.ItemsSource = null;
                 });
             });
         }
@@ -59,18 +85,19 @@ namespace AhorcadoClient.Views
         private async void CbDifficult_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (CbDifficult.SelectedItem == null || CbCategory.SelectedItem == null) return;
+
+            var selectedCategory = (AhorcadoClient.ServiceReference.CategoryDTO)CbCategory.SelectedItem;
+            int categoryId = selectedCategory.CategoryID;
+            int difficult = (int)CbDifficult.SelectedItem;
+            var language = (AhorcadoClient.ServiceReference.LanguageDTO)CbLanguage.SelectedItem;
+
             await ServiceClientManager.ExecuteServerAction(async () =>
             {
                 var client = ServiceClientManager.Instance.Client;
-                var palabras = client.GetWords(
-                            ((Category)CbCategory.SelectedItem).CategoryID,
-                            (int)CbDifficult.SelectedItem
-                );
+                var palabras = client.GetWords(categoryId, difficult, language.LanguageID);
                 await Application.Current.Dispatcher.InvokeAsync(() =>
                 {
                     CbWord.ItemsSource = palabras;
-                    CbWord.DisplayMemberPath = "word";
-                    CbWord.SelectedValuePath = "WordID";
                     CbWord.IsEnabled = true;
                 });
             });
@@ -149,7 +176,6 @@ namespace AhorcadoClient.Views
                 return;
             }
 
-            int playerId = CurrentSession.LoggedInPlayer.PlayerID;
             int palabraId = (int)CbWord.SelectedValue;
 
             await ServiceClientManager.ExecuteServerAction(async () =>

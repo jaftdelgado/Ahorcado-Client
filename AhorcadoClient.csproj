@@ -63,6 +63,7 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
     <Compile Include="Model\Category.cs" />
+    <Compile Include="Model\Language.cs" />
     <Compile Include="Model\Match.cs" />
     <Compile Include="Model\Player.cs" />
     <Compile Include="Model\Word.cs" />
@@ -174,7 +175,16 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="Connected Services\ServiceReference\AhorcadoClient.ServiceReference.CategoryDTO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReference\AhorcadoClient.ServiceReference.MatchDTO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Connected Services\ServiceReference\AhorcadoClient.ServiceReference.PlayerDTO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ServiceReference\AhorcadoClient.ServiceReference.WordDTO.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\ServiceReference\MainService.wsdl" />
@@ -185,6 +195,9 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Connected Services\ServiceReference\Service2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ServiceReference\Service3.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Properties\Settings.settings">
