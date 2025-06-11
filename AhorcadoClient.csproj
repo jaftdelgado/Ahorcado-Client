@@ -198,7 +198,9 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Resources\Images\ahorcado-base.png" />
+  </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Images\SignInBG.png" />
   </ItemGroup>
@@ -243,6 +245,14 @@
   <ItemGroup>
     <Resource Include="Resources\Icons\scoreboard-hover-icon.png" />
     <Resource Include="Resources\Icons\scoreboard-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\ahorcado-0.png" />
+    <Resource Include="Resources\Images\ahorcado-1.png" />
+    <Resource Include="Resources\Images\ahorcado-2.png" />
+    <Resource Include="Resources\Images\ahorcado-3.png" />
+    <Resource Include="Resources\Images\ahorcado-4.png" />
+    <Resource Include="Resources\Images\ahorcado-5.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
