@@ -18,17 +18,12 @@
             </Grid>
 
             <Border x:Name="PopUpOverlay"
+                    Background="#80000000"
                     Visibility="Collapsed"
-                    Grid.ColumnSpan="2"
-                    Background="Transparent"
-                    IsHitTestVisible="True">
-                <Canvas>
-                    <ContentControl x:Name="PopUpHost"
-                                    Canvas.Left="0"
-                                    Canvas.Top="0"
-                                    HorizontalAlignment="Left"
-                                    VerticalAlignment="Top" />
-                </Canvas>
+                    Grid.ColumnSpan="2">
+                <ContentControl x:Name="PopUpHost"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"/>
             </Border>
 
             <Border x:Name="DialogOverlay"

@@ -54,10 +54,10 @@
     
     <!--#region CreateGame -->
     <sys:String x:Key="CreateGame_Desc">Configura tu partida de Ahorcado eligiendo la dificultad, la categoría y la palabra que se usará en el juego.</sys:String>
-    <sys:String x:Key="PorFavorSeleccionaCategoria">Por favor selecciona una categoría.</String>
-    <sys:String x:Key="PorFavorSeleccionaDificultad">Por favor selecciona una dificultad.</String>
-    <sys:String x:Key="PorFavorSeleccionaPalabra">Por favor selecciona una palabra.</String>
-    <sys:String x:Key="PartidaCreadaCorrectamente">Partida creada correctamente.</String>
+    <sys:String x:Key="PorFavorSeleccionaCategoria">Por favor selecciona una categoría.</sys:String>
+    <sys:String x:Key="PorFavorSeleccionaDificultad">Por favor selecciona una dificultad.</sys:String>
+    <sys:String x:Key="PorFavorSeleccionaPalabra">Por favor selecciona una palabra.</sys:String>
+    <sys:String x:Key="PartidaCreadaCorrectamente">Partida creada correctamente.</sys:String>
     <!--#endregion-->
     
     <!--#region MatchWindow-->

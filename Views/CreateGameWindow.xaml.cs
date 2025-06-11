@@ -88,15 +88,15 @@ namespace AhorcadoClient.Views
 
             Action showAction = () =>
             {
-                var dialogHost = activeWindow.FindName("DialogHost") as ContentControl;
-                var dialogOverlay = activeWindow.FindName("DialogOverlay") as Border;
+                var dialogHost = activeWindow.FindName("PopUpHost") as ContentControl;
+                var dialogOverlay = activeWindow.FindName("PopUpOverlay") as Border;
 
                 if (dialogHost == null || dialogOverlay == null) return;
 
                 dialogHost.Content = createGameWindow;
                 dialogOverlay.Visibility = Visibility.Visible;
 
-                Utilities.Animations.BeginAnimation(createGameWindow, "PopupFadeInAnimation");
+                Animations.BeginAnimation(createGameWindow, "PopupFadeInAnimation");
             };
 
             if (Application.Current.Dispatcher.CheckAccess())
@@ -115,8 +115,8 @@ namespace AhorcadoClient.Views
             var activeWindow = GetActiveWindow();
             if (activeWindow != null)
             {
-                var dialogHost = activeWindow.FindName("DialogHost") as ContentControl;
-                var dialogOverlay = activeWindow.FindName("DialogOverlay") as Border;
+                var dialogHost = activeWindow.FindName("PopUpHost") as ContentControl;
+                var dialogOverlay = activeWindow.FindName("PopUpOverlay") as Border;
 
                 if (dialogHost != null && dialogOverlay != null)
                 {
