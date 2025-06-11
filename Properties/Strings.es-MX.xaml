@@ -47,6 +47,14 @@
     <sys:String x:Key="CreateAccount_PersonalInfo">Información Personal</sys:String>
     <sys:String x:Key="CreateAccount_UserPreferences">Preferencias del Jugador</sys:String>
     <sys:String x:Key="CreateAccount_AccessInfo">Información de Acceso</sys:String>
+    <sys:String x:Key="SignIn_DialogTAccountCreated">Cuenta creada</sys:String>
+    <sys:String x:Key="SignIn_DialogDAccountCreated">Tu cuenta ha sido creada exitosamente. Ahora puedes iniciar sesión</sys:String>
+    <sys:String x:Key="SignIn_DialogTUserExists">Error al crear cuenta</sys:String>
+    <sys:String x:Key="SignIn_DialogDUserExists">Ya existe un usuario con el mismo nombre o correo electrónico.</sys:String>
+    <sys:String x:Key="SignIn_DialogTEmptyFields">Campos incompletos</sys:String>
+    <sys:String x:Key="SignIn_DialogDEmptyFields">Por favor, completa todos los campos requeridos antes de continuar</sys:String>
+    <sys:String x:Key="SignIn_DialogTInvalidDate">Fecha inválida</sys:String>
+    <sys:String x:Key="SignIn_DialogDInvalidDate">Ingresa una fecha de nacimiento válida en el formato correcto</sys:String>
     <!--#endregion-->
 
     <!--#region MainMenu -->
