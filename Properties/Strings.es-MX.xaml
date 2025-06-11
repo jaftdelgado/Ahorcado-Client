@@ -64,6 +64,7 @@
     <sys:String x:Key="CreateGame_Desc">Configura tu partida de Ahorcado eligiendo la dificultad, la categoría y la palabra que se usará en el juego.</sys:String>
     <sys:String x:Key="PorFavorSeleccionaCategoria">Por favor selecciona una categoría.</sys:String>
     <sys:String x:Key="PorFavorSeleccionaDificultad">Por favor selecciona una dificultad.</sys:String>
+    <sys:String x:Key="Glb_CbLanguage">Idioma:</sys:String>
     <sys:String x:Key="PorFavorSeleccionaPalabra">Por favor selecciona una palabra.</sys:String>
     <sys:String x:Key="PartidaCreadaCorrectamente">Partida creada correctamente.</sys:String>
     <!--#endregion-->
@@ -72,5 +73,9 @@
     <sys:String x:Key="Match_Title">Partida</sys:String>
     <sys:String x:Key="Match_Desc">Pon a prueba tu ingenio adivinando la palabra oculta antes de que se complete el dibujo del ahorcado. Selecciona letras del alfabeto, evita errores y demuestra tu vocabulario. ¡Cada intento cuenta!</sys:String>
     <sys:String x:Key="Match_Attempts">INTENTOS</sys:String>
+    <!--#endregion-->
+
+    <!--#region JoinGameWindow-->
+    <sys:String x:Key="JoinGame_Desc">Selecciona la partida de tu preferencia en la tabla y da clic en "Unirse a partida". ¡Buena suerte!</sys:String>
     <!--#endregion-->
 </ResourceDictionary>

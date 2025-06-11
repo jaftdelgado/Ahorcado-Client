@@ -11,8 +11,8 @@
 namespace AhorcadoClient.ServiceReference {
     using System.Runtime.Serialization;
     using System;
-    using System.Collections.Generic;
-
+    
+    
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="PlayerDTO", Namespace="http://schemas.datacontract.org/2004/07/Services.DTOs")]
@@ -217,346 +217,504 @@ namespace AhorcadoClient.ServiceReference {
             }
         }
     }
-
+    
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name = "Category", Namespace = "http://schemas.datacontract.org/2004/07/Services.DTOs")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="CategoryDTO", Namespace="http://schemas.datacontract.org/2004/07/Services.DTOs")]
     [System.SerializableAttribute()]
-    public partial class Category : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged
-    {
+    public partial class CategoryDTO : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
         [System.NonSerializedAttribute()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-
+        
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int CategoryIDField;
-
+        
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string CategoryNameField;
-
+        
         [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData
-        {
-            get { return this.extensionDataField; }
-            set { this.extensionDataField = value; }
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
         }
-
+        
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public int CategoryID
-        {
-            get { return this.CategoryIDField; }
-            set
-            {
-                if ((this.CategoryIDField.Equals(value) != true))
-                {
+        public int CategoryID {
+            get {
+                return this.CategoryIDField;
+            }
+            set {
+                if ((this.CategoryIDField.Equals(value) != true)) {
                     this.CategoryIDField = value;
                     this.RaisePropertyChanged("CategoryID");
                 }
             }
         }
-
+        
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string CategoryName
-        {
-            get { return this.CategoryNameField; }
-            set
-            {
-                if ((object.ReferenceEquals(this.CategoryNameField, value) != true))
-                {
+        public string CategoryName {
+            get {
+                return this.CategoryNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CategoryNameField, value) != true)) {
                     this.CategoryNameField = value;
                     this.RaisePropertyChanged("CategoryName");
                 }
             }
         }
-
+        
         public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-
-        protected void RaisePropertyChanged(string propertyName)
-        {
+        
+        protected void RaisePropertyChanged(string propertyName) {
             System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null))
-            {
+            if ((propertyChanged != null)) {
                 propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
             }
         }
     }
-
+    
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name = "WordDTO", Namespace = "http://schemas.datacontract.org/2004/07/Services.DTOs")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="WordDTO", Namespace="http://schemas.datacontract.org/2004/07/Services.DTOs")]
     [System.SerializableAttribute()]
-    public partial class Word : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged
-    {
+    public partial class WordDTO : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
         [System.NonSerializedAttribute()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int WordIDField;
-
+        
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int CategoryIDField;
-
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int LanguageIDField;
-
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string wordField;
-
+        
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string DescriptionField;
-
+        
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int DifficultField;
-
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int LanguageIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string WordField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int WordIDField;
+        
         [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData
-        {
-            get { return this.extensionDataField; }
-            set { this.extensionDataField = value; }
-        }
-
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int WordID
-        {
-            get { return this.WordIDField; }
-            set
-            {
-                if ((this.WordIDField.Equals(value) != true))
-                {
-                    this.WordIDField = value;
-                    this.RaisePropertyChanged("WordID");
-                }
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
             }
         }
-
+        
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public int CategoryID
-        {
-            get { return this.CategoryIDField; }
-            set
-            {
-                if ((this.CategoryIDField.Equals(value) != true))
-                {
+        public int CategoryID {
+            get {
+                return this.CategoryIDField;
+            }
+            set {
+                if ((this.CategoryIDField.Equals(value) != true)) {
                     this.CategoryIDField = value;
                     this.RaisePropertyChanged("CategoryID");
                 }
             }
         }
-
+        
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public int LanguageID
-        {
-            get { return this.LanguageIDField; }
-            set
-            {
-                if ((this.LanguageIDField.Equals(value) != true))
-                {
-                    this.LanguageIDField = value;
-                    this.RaisePropertyChanged("LanguageID");
-                }
+        public string Description {
+            get {
+                return this.DescriptionField;
             }
-        }
-
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string word
-        {
-            get { return this.wordField; }
-            set
-            {
-                if ((object.ReferenceEquals(this.wordField, value) != true))
-                {
-                    this.wordField = value;
-                    this.RaisePropertyChanged("word");
-                }
-            }
-        }
-
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Description
-        {
-            get { return this.DescriptionField; }
-            set
-            {
-                if ((object.ReferenceEquals(this.DescriptionField, value) != true))
-                {
+            set {
+                if ((object.ReferenceEquals(this.DescriptionField, value) != true)) {
                     this.DescriptionField = value;
                     this.RaisePropertyChanged("Description");
                 }
             }
         }
-
+        
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public int Difficult
-        {
-            get { return this.DifficultField; }
-            set
-            {
-                if ((this.DifficultField.Equals(value) != true))
-                {
+        public int Difficult {
+            get {
+                return this.DifficultField;
+            }
+            set {
+                if ((this.DifficultField.Equals(value) != true)) {
                     this.DifficultField = value;
                     this.RaisePropertyChanged("Difficult");
                 }
             }
         }
-
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-
-        protected void RaisePropertyChanged(string propertyName)
-        {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null))
-            {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name = "MatchDTO", Namespace = "http://schemas.datacontract.org/2004/07/Services.DTOs")]
-    [System.SerializableAttribute()]
-    public partial class Match : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged
-    {
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int MatchIDField;
-
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int Player1Field;
-
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<int> Player2Field;
-
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int WordIDField;
-
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.DateTime CreateDateField;
-
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<System.DateTime> EndDateField;
-
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int StatusIDField;
-
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData
-        {
-            get { return this.extensionDataField; }
-            set { this.extensionDataField = value; }
-        }
-
+        
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public int MatchID
-        {
-            get { return this.MatchIDField; }
-            set
-            {
-                if ((this.MatchIDField.Equals(value) != true))
-                {
-                    this.MatchIDField = value;
-                    this.RaisePropertyChanged("MatchID");
+        public int LanguageID {
+            get {
+                return this.LanguageIDField;
+            }
+            set {
+                if ((this.LanguageIDField.Equals(value) != true)) {
+                    this.LanguageIDField = value;
+                    this.RaisePropertyChanged("LanguageID");
                 }
             }
         }
-
+        
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public int Player1
-        {
-            get { return this.Player1Field; }
-            set
-            {
-                if ((this.Player1Field.Equals(value) != true))
-                {
-                    this.Player1Field = value;
-                    this.RaisePropertyChanged("Player1");
+        public string Word {
+            get {
+                return this.WordField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.WordField, value) != true)) {
+                    this.WordField = value;
+                    this.RaisePropertyChanged("Word");
                 }
             }
         }
-
+        
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<int> Player2
-        {
-            get { return this.Player2Field; }
-            set
-            {
-                if ((this.Player2Field.Equals(value) != true))
-                {
-                    this.Player2Field = value;
-                    this.RaisePropertyChanged("Player2");
-                }
+        public int WordID {
+            get {
+                return this.WordIDField;
             }
-        }
-
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int WordID
-        {
-            get { return this.WordIDField; }
-            set
-            {
-                if ((this.WordIDField.Equals(value) != true))
-                {
+            set {
+                if ((this.WordIDField.Equals(value) != true)) {
                     this.WordIDField = value;
                     this.RaisePropertyChanged("WordID");
                 }
             }
         }
-
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="MatchDTO", Namespace="http://schemas.datacontract.org/2004/07/Services.DTOs")]
+    [System.SerializableAttribute()]
+    public partial class MatchDTO : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime CreateDateField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<System.DateTime> EndDateField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int MatchIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int Player1Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> Player2Field;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int StatusIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int WordIDField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.DateTime CreateDate
-        {
-            get { return this.CreateDateField; }
-            set
-            {
-                if ((this.CreateDateField.Equals(value) != true))
-                {
+        public System.DateTime CreateDate {
+            get {
+                return this.CreateDateField;
+            }
+            set {
+                if ((this.CreateDateField.Equals(value) != true)) {
                     this.CreateDateField = value;
                     this.RaisePropertyChanged("CreateDate");
                 }
             }
         }
-
+        
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<System.DateTime> EndDate
-        {
-            get { return this.EndDateField; }
-            set
-            {
-                if ((this.EndDateField.Equals(value) != true))
-                {
+        public System.Nullable<System.DateTime> EndDate {
+            get {
+                return this.EndDateField;
+            }
+            set {
+                if ((this.EndDateField.Equals(value) != true)) {
                     this.EndDateField = value;
                     this.RaisePropertyChanged("EndDate");
                 }
             }
         }
-
+        
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public int StatusID
-        {
-            get { return this.StatusIDField; }
-            set
-            {
-                if ((this.StatusIDField.Equals(value) != true))
-                {
+        public int MatchID {
+            get {
+                return this.MatchIDField;
+            }
+            set {
+                if ((this.MatchIDField.Equals(value) != true)) {
+                    this.MatchIDField = value;
+                    this.RaisePropertyChanged("MatchID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Player1 {
+            get {
+                return this.Player1Field;
+            }
+            set {
+                if ((this.Player1Field.Equals(value) != true)) {
+                    this.Player1Field = value;
+                    this.RaisePropertyChanged("Player1");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> Player2 {
+            get {
+                return this.Player2Field;
+            }
+            set {
+                if ((this.Player2Field.Equals(value) != true)) {
+                    this.Player2Field = value;
+                    this.RaisePropertyChanged("Player2");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int StatusID {
+            get {
+                return this.StatusIDField;
+            }
+            set {
+                if ((this.StatusIDField.Equals(value) != true)) {
                     this.StatusIDField = value;
                     this.RaisePropertyChanged("StatusID");
                 }
             }
         }
-
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int WordID {
+            get {
+                return this.WordIDField;
+            }
+            set {
+                if ((this.WordIDField.Equals(value) != true)) {
+                    this.WordIDField = value;
+                    this.RaisePropertyChanged("WordID");
+                }
+            }
+        }
+        
         public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-
-        protected void RaisePropertyChanged(string propertyName)
-        {
+        
+        protected void RaisePropertyChanged(string propertyName) {
             System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null))
-            {
+            if ((propertyChanged != null)) {
                 propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
             }
         }
     }
-
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="LanguageDTO", Namespace="http://schemas.datacontract.org/2004/07/Services.DTOs")]
+    [System.SerializableAttribute()]
+    public partial class LanguageDTO : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int LanguageIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string LanguageNameField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int LanguageID {
+            get {
+                return this.LanguageIDField;
+            }
+            set {
+                if ((this.LanguageIDField.Equals(value) != true)) {
+                    this.LanguageIDField = value;
+                    this.RaisePropertyChanged("LanguageID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string LanguageName {
+            get {
+                return this.LanguageNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.LanguageNameField, value) != true)) {
+                    this.LanguageNameField = value;
+                    this.RaisePropertyChanged("LanguageName");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="AvailableMatchDTO", Namespace="http://schemas.datacontract.org/2004/07/Services.DTOs")]
+    [System.SerializableAttribute()]
+    public partial class AvailableMatchDTO : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime CreateDateField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string CreatorNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int DifficultyField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int MatchIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string WordCategoryField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.DateTime CreateDate {
+            get {
+                return this.CreateDateField;
+            }
+            set {
+                if ((this.CreateDateField.Equals(value) != true)) {
+                    this.CreateDateField = value;
+                    this.RaisePropertyChanged("CreateDate");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string CreatorName {
+            get {
+                return this.CreatorNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CreatorNameField, value) != true)) {
+                    this.CreatorNameField = value;
+                    this.RaisePropertyChanged("CreatorName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Difficulty {
+            get {
+                return this.DifficultyField;
+            }
+            set {
+                if ((this.DifficultyField.Equals(value) != true)) {
+                    this.DifficultyField = value;
+                    this.RaisePropertyChanged("Difficulty");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int MatchID {
+            get {
+                return this.MatchIDField;
+            }
+            set {
+                if ((this.MatchIDField.Equals(value) != true)) {
+                    this.MatchIDField = value;
+                    this.RaisePropertyChanged("MatchID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string WordCategory {
+            get {
+                return this.WordCategoryField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.WordCategoryField, value) != true)) {
+                    this.WordCategoryField = value;
+                    this.RaisePropertyChanged("WordCategory");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReference.IMainManager")]
     public interface IMainManager {
@@ -584,20 +742,50 @@ namespace AhorcadoClient.ServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMainManager/Ping", ReplyAction="http://tempuri.org/IMainManager/PingResponse")]
         System.Threading.Tasks.Task<bool> PingAsync();
-
-        [System.ServiceModel.OperationContractAttribute(Action = "http://tempuri.org/IMainManager/GetCategories", ReplyAction = "http://tempuri.org/IMainManager/GetCategoriesResponse")]
-        System.Collections.Generic.List<AhorcadoClient.ServiceReference.Category> GetCategories();
-
-        [System.ServiceModel.OperationContractAttribute(Action = "http://tempuri.org/IMainManager/GetDifficults", ReplyAction = "http://tempuri.org/IMainManager/GetDifficultsResponse")]
-        System.Collections.Generic.List<int> GetDifficults(int categoryId);
-
-        [System.ServiceModel.OperationContractAttribute(Action = "http://tempuri.org/IMainManager/GetWords", ReplyAction = "http://tempuri.org/IMainManager/GetWordsResponse")]
-        System.Collections.Generic.List<AhorcadoClient.ServiceReference.Word> GetWords(int categoryId, int difficult);
-
-        [System.ServiceModel.OperationContractAttribute(Action = "http://tempuri.org/IMainManager/CreateMatch", ReplyAction = "http://tempuri.org/IMainManager/CreateMatchResponse")]
-        AhorcadoClient.ServiceReference.Match CreateMatch(int player1Id, int wordId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMainManager/GetCategories", ReplyAction="http://tempuri.org/IMainManager/GetCategoriesResponse")]
+        AhorcadoClient.ServiceReference.CategoryDTO[] GetCategories();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMainManager/GetCategories", ReplyAction="http://tempuri.org/IMainManager/GetCategoriesResponse")]
+        System.Threading.Tasks.Task<AhorcadoClient.ServiceReference.CategoryDTO[]> GetCategoriesAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMainManager/GetDifficults", ReplyAction="http://tempuri.org/IMainManager/GetDifficultsResponse")]
+        int[] GetDifficults(int categoryId, int languageId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMainManager/GetDifficults", ReplyAction="http://tempuri.org/IMainManager/GetDifficultsResponse")]
+        System.Threading.Tasks.Task<int[]> GetDifficultsAsync(int categoryId, int languageId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMainManager/GetWords", ReplyAction="http://tempuri.org/IMainManager/GetWordsResponse")]
+        AhorcadoClient.ServiceReference.WordDTO[] GetWords(int categoryId, int difficult, int languageId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMainManager/GetWords", ReplyAction="http://tempuri.org/IMainManager/GetWordsResponse")]
+        System.Threading.Tasks.Task<AhorcadoClient.ServiceReference.WordDTO[]> GetWordsAsync(int categoryId, int difficult, int languageId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMainManager/CreateMatch", ReplyAction="http://tempuri.org/IMainManager/CreateMatchResponse")]
+        AhorcadoClient.ServiceReference.MatchDTO CreateMatch(int player1Id, int wordId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMainManager/CreateMatch", ReplyAction="http://tempuri.org/IMainManager/CreateMatchResponse")]
+        System.Threading.Tasks.Task<AhorcadoClient.ServiceReference.MatchDTO> CreateMatchAsync(int player1Id, int wordId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMainManager/JoinMatch", ReplyAction="http://tempuri.org/IMainManager/JoinMatchResponse")]
+        AhorcadoClient.ServiceReference.MatchDTO JoinMatch(int matchId, int player2Id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMainManager/JoinMatch", ReplyAction="http://tempuri.org/IMainManager/JoinMatchResponse")]
+        System.Threading.Tasks.Task<AhorcadoClient.ServiceReference.MatchDTO> JoinMatchAsync(int matchId, int player2Id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMainManager/GetLanguages", ReplyAction="http://tempuri.org/IMainManager/GetLanguagesResponse")]
+        AhorcadoClient.ServiceReference.LanguageDTO[] GetLanguages();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMainManager/GetLanguages", ReplyAction="http://tempuri.org/IMainManager/GetLanguagesResponse")]
+        System.Threading.Tasks.Task<AhorcadoClient.ServiceReference.LanguageDTO[]> GetLanguagesAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMainManager/GetAvailableMatches", ReplyAction="http://tempuri.org/IMainManager/GetAvailableMatchesResponse")]
+        AhorcadoClient.ServiceReference.AvailableMatchDTO[] GetAvailableMatches();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMainManager/GetAvailableMatches", ReplyAction="http://tempuri.org/IMainManager/GetAvailableMatchesResponse")]
+        System.Threading.Tasks.Task<AhorcadoClient.ServiceReference.AvailableMatchDTO[]> GetAvailableMatchesAsync();
     }
-
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public interface IMainManagerChannel : AhorcadoClient.ServiceReference.IMainManager, System.ServiceModel.IClientChannel {
     }
@@ -656,25 +844,61 @@ namespace AhorcadoClient.ServiceReference {
         public System.Threading.Tasks.Task<bool> PingAsync() {
             return base.Channel.PingAsync();
         }
-
-        public System.Collections.Generic.List<AhorcadoClient.ServiceReference.Category> GetCategories()
-        {
+        
+        public AhorcadoClient.ServiceReference.CategoryDTO[] GetCategories() {
             return base.Channel.GetCategories();
         }
-
-        public System.Collections.Generic.List<int> GetDifficults(int categoryId)
-        {
-            return base.Channel.GetDifficults(categoryId);
+        
+        public System.Threading.Tasks.Task<AhorcadoClient.ServiceReference.CategoryDTO[]> GetCategoriesAsync() {
+            return base.Channel.GetCategoriesAsync();
         }
-
-        public System.Collections.Generic.List<AhorcadoClient.ServiceReference.Word> GetWords(int categoryId, int difficult)
-        {
-            return base.Channel.GetWords(categoryId, difficult);
+        
+        public int[] GetDifficults(int categoryId, int languageId) {
+            return base.Channel.GetDifficults(categoryId, languageId);
         }
-
-        public AhorcadoClient.ServiceReference.Match CreateMatch(int player1Id, int wordId)
-        {
+        
+        public System.Threading.Tasks.Task<int[]> GetDifficultsAsync(int categoryId, int languageId) {
+            return base.Channel.GetDifficultsAsync(categoryId, languageId);
+        }
+        
+        public AhorcadoClient.ServiceReference.WordDTO[] GetWords(int categoryId, int difficult, int languageId) {
+            return base.Channel.GetWords(categoryId, difficult, languageId);
+        }
+        
+        public System.Threading.Tasks.Task<AhorcadoClient.ServiceReference.WordDTO[]> GetWordsAsync(int categoryId, int difficult, int languageId) {
+            return base.Channel.GetWordsAsync(categoryId, difficult, languageId);
+        }
+        
+        public AhorcadoClient.ServiceReference.MatchDTO CreateMatch(int player1Id, int wordId) {
             return base.Channel.CreateMatch(player1Id, wordId);
+        }
+        
+        public System.Threading.Tasks.Task<AhorcadoClient.ServiceReference.MatchDTO> CreateMatchAsync(int player1Id, int wordId) {
+            return base.Channel.CreateMatchAsync(player1Id, wordId);
+        }
+        
+        public AhorcadoClient.ServiceReference.MatchDTO JoinMatch(int matchId, int player2Id) {
+            return base.Channel.JoinMatch(matchId, player2Id);
+        }
+        
+        public System.Threading.Tasks.Task<AhorcadoClient.ServiceReference.MatchDTO> JoinMatchAsync(int matchId, int player2Id) {
+            return base.Channel.JoinMatchAsync(matchId, player2Id);
+        }
+        
+        public AhorcadoClient.ServiceReference.LanguageDTO[] GetLanguages() {
+            return base.Channel.GetLanguages();
+        }
+        
+        public System.Threading.Tasks.Task<AhorcadoClient.ServiceReference.LanguageDTO[]> GetLanguagesAsync() {
+            return base.Channel.GetLanguagesAsync();
+        }
+        
+        public AhorcadoClient.ServiceReference.AvailableMatchDTO[] GetAvailableMatches() {
+            return base.Channel.GetAvailableMatches();
+        }
+        
+        public System.Threading.Tasks.Task<AhorcadoClient.ServiceReference.AvailableMatchDTO[]> GetAvailableMatchesAsync() {
+            return base.Channel.GetAvailableMatchesAsync();
         }
     }
 }
