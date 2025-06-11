@@ -58,4 +58,33 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="MatchDTO" nillable="true" type="tns:MatchDTO" />
+  <xs:complexType name="ArrayOfLanguageDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="LanguageDTO" nillable="true" type="tns:LanguageDTO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfLanguageDTO" nillable="true" type="tns:ArrayOfLanguageDTO" />
+  <xs:complexType name="LanguageDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="LanguageID" type="xs:int" />
+      <xs:element minOccurs="0" name="LanguageName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="LanguageDTO" nillable="true" type="tns:LanguageDTO" />
+  <xs:complexType name="ArrayOfAvailableMatchDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="AvailableMatchDTO" nillable="true" type="tns:AvailableMatchDTO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfAvailableMatchDTO" nillable="true" type="tns:ArrayOfAvailableMatchDTO" />
+  <xs:complexType name="AvailableMatchDTO">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CreateDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="CreatorName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Difficulty" type="xs:int" />
+      <xs:element minOccurs="0" name="MatchID" type="xs:int" />
+      <xs:element minOccurs="0" name="WordCategory" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AvailableMatchDTO" nillable="true" type="tns:AvailableMatchDTO" />
 </xs:schema>

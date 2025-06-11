@@ -13,5 +13,10 @@ namespace AhorcadoClient.Views
         {
             CreateGameWindow.Show();
         }
+
+        private void Click_BtnJoinMatch(object sender, System.Windows.RoutedEventArgs e)
+        {
+            JoinMatchPage.Show();
+        }
     }
 }

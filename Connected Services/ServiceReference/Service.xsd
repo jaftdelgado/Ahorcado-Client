@@ -73,6 +73,7 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="categoryId" type="xs:int" />
+        <xs:element minOccurs="0" name="languageId" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -88,6 +89,7 @@
       <xs:sequence>
         <xs:element minOccurs="0" name="categoryId" type="xs:int" />
         <xs:element minOccurs="0" name="difficult" type="xs:int" />
+        <xs:element minOccurs="0" name="languageId" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -125,6 +127,30 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/Services.DTOs" minOccurs="0" name="JoinMatchResult" nillable="true" type="q8:MatchDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetLanguages">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetLanguagesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/Services.DTOs" minOccurs="0" name="GetLanguagesResult" nillable="true" type="q9:ArrayOfLanguageDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAvailableMatches">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAvailableMatchesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/Services.DTOs" minOccurs="0" name="GetAvailableMatchesResult" nillable="true" type="q10:ArrayOfAvailableMatchDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

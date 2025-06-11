@@ -51,9 +51,10 @@
                                 </ResourceDictionary>
                             </Button.Tag>
                         </Button>
-                        
+
                         <Button Style="{DynamicResource MainMenuButton}"
                                 Content="{DynamicResource Glb_JoinGame}"
+                                Click="Click_BtnJoinMatch"
                                 Margin="20 0">
                             <Button.Tag>
                                 <ResourceDictionary>

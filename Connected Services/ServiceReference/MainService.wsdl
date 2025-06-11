@@ -91,6 +91,18 @@
   <wsdl:message name="IMainManager_JoinMatch_OutputMessage">
     <wsdl:part name="parameters" element="tns:JoinMatchResponse" />
   </wsdl:message>
+  <wsdl:message name="IMainManager_GetLanguages_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetLanguages" />
+  </wsdl:message>
+  <wsdl:message name="IMainManager_GetLanguages_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetLanguagesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMainManager_GetAvailableMatches_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAvailableMatches" />
+  </wsdl:message>
+  <wsdl:message name="IMainManager_GetAvailableMatches_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAvailableMatchesResponse" />
+  </wsdl:message>
   <wsdl:portType name="IMainManager">
     <wsdl:operation name="LogIn">
       <wsdl:input wsaw:Action="http://tempuri.org/IPlayerManager/LogIn" message="tns:IMainManager_LogIn_InputMessage" />
@@ -127,6 +139,14 @@
     <wsdl:operation name="JoinMatch">
       <wsdl:input wsaw:Action="http://tempuri.org/IMainManager/JoinMatch" message="tns:IMainManager_JoinMatch_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IMainManager/JoinMatchResponse" message="tns:IMainManager_JoinMatch_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLanguages">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMainManager/GetLanguages" message="tns:IMainManager_GetLanguages_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMainManager/GetLanguagesResponse" message="tns:IMainManager_GetLanguages_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAvailableMatches">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMainManager/GetAvailableMatches" message="tns:IMainManager_GetAvailableMatches_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMainManager/GetAvailableMatchesResponse" message="tns:IMainManager_GetAvailableMatches_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="NetTcpBinding_IMainManager" type="tns:IMainManager">
@@ -206,6 +226,24 @@
     </wsdl:operation>
     <wsdl:operation name="JoinMatch">
       <soap12:operation soapAction="http://tempuri.org/IMainManager/JoinMatch" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLanguages">
+      <soap12:operation soapAction="http://tempuri.org/IMainManager/GetLanguages" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAvailableMatches">
+      <soap12:operation soapAction="http://tempuri.org/IMainManager/GetAvailableMatches" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
