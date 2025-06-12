@@ -11,7 +11,7 @@ namespace AhorcadoClient.Utilities
     {
         public static void ShowPassword(TextBox TbPassword, PasswordBox PbPassword)
         {
-            TbPassword.Text = PbPassword.Password;
+            TbPassword.Text = PbPassword.Password; 
 
             PbPassword.Visibility = Visibility.Collapsed;
             TbPassword.Visibility = Visibility.Visible;

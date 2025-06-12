@@ -814,10 +814,10 @@ namespace AhorcadoClient.ServiceReference {
         System.Threading.Tasks.Task<AhorcadoClient.ServiceReference.MatchDTO> JoinMatchAsync(int matchId, int player2Id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMatchManager/GetAvailableMatches", ReplyAction="http://tempuri.org/IMatchManager/GetAvailableMatchesResponse")]
-        AhorcadoClient.ServiceReference.MatchDTO[] GetAvailableMatches();
+        AhorcadoClient.ServiceReference.MatchDTO[] GetAvailableMatches(int playerId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMatchManager/GetAvailableMatches", ReplyAction="http://tempuri.org/IMatchManager/GetAvailableMatchesResponse")]
-        System.Threading.Tasks.Task<AhorcadoClient.ServiceReference.MatchDTO[]> GetAvailableMatchesAsync();
+        System.Threading.Tasks.Task<AhorcadoClient.ServiceReference.MatchDTO[]> GetAvailableMatchesAsync(int playerId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMatchManager/GetPlayerMatchHistory", ReplyAction="http://tempuri.org/IMatchManager/GetPlayerMatchHistoryResponse")]
         AhorcadoClient.ServiceReference.PlayerMatchHistoryDTO[] GetPlayerMatchHistory(int playerId);
@@ -941,12 +941,12 @@ namespace AhorcadoClient.ServiceReference {
             return base.Channel.JoinMatchAsync(matchId, player2Id);
         }
         
-        public AhorcadoClient.ServiceReference.MatchDTO[] GetAvailableMatches() {
-            return base.Channel.GetAvailableMatches();
+        public AhorcadoClient.ServiceReference.MatchDTO[] GetAvailableMatches(int playerId) {
+            return base.Channel.GetAvailableMatches(playerId);
         }
         
-        public System.Threading.Tasks.Task<AhorcadoClient.ServiceReference.MatchDTO[]> GetAvailableMatchesAsync() {
-            return base.Channel.GetAvailableMatchesAsync();
+        public System.Threading.Tasks.Task<AhorcadoClient.ServiceReference.MatchDTO[]> GetAvailableMatchesAsync(int playerId) {
+            return base.Channel.GetAvailableMatchesAsync(playerId);
         }
         
         public AhorcadoClient.ServiceReference.PlayerMatchHistoryDTO[] GetPlayerMatchHistory(int playerId) {

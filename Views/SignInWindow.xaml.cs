@@ -63,6 +63,7 @@ namespace AhorcadoClient.Views
                     ProfilePic = dto.ProfilePic,
                     TotalScore = dto.TotalScore,
                     Username = dto.Username,
+                    Password = password,
                     SelectedLanguageID = dto.SelectedLanguageID
                 };
 
@@ -154,18 +155,73 @@ namespace AhorcadoClient.Views
 
         private void ShowPasswordCheckBox_Checked(object sender, RoutedEventArgs e)
         {
-            PasswordUtilities.ShowPassword(TbPassword, PbPassword);
+            PasswordUtilities.ShowPassword(TbLogInPassword, PbLoginPassword);
             UpdateFormButtonState();
         }
 
         private void ShowPasswordCheckBox_Unchecked(object sender, RoutedEventArgs e)
         {
-            PasswordUtilities.HidePassword(TbPassword, PbPassword);
+            PasswordUtilities.HidePassword(TbLogInPassword, PbLoginPassword);
             UpdateFormButtonState();
+        }
+
+        private bool ValidarCampos()
+        {
+            if (!System.Text.RegularExpressions.Regex.IsMatch(TbFirstName.Text, @"^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$"))
+            {
+                MessageDialog.Show("Validación", "El nombre solo debe contener letras y espacios.", AlertType.ERROR);
+                return false;
+            }
+            if (!System.Text.RegularExpressions.Regex.IsMatch(TbLastName.Text, @"^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$"))
+            {
+                MessageDialog.Show("Validación", "El apellido solo debe contener letras y espacios.", AlertType.ERROR);
+                return false;
+            }
+
+            if (!System.Text.RegularExpressions.Regex.IsMatch(TbPhoneNumber.Text, @"^\d{8,}$"))
+            {
+                MessageDialog.Show("Validación", "El teléfono debe contener solo números y al menos 8 dígitos.", AlertType.ERROR);
+                return false;
+            }
+
+            if (!DateTime.TryParse(TbBirthDay.Text, out DateTime birthDay) || birthDay > DateTime.Now)
+            {
+                MessageDialog.Show("Validación", "Introduce una fecha de nacimiento válida.", AlertType.ERROR);
+                return false;
+            }
+
+            if (TbUserName.Text.Length < 4)
+            {
+                MessageDialog.Show("Validación", "El usuario debe tener al menos 4 caracteres.", AlertType.ERROR);
+                return false;
+            }
+            if (TbPassword.Text.Length < 4)
+            {
+                MessageDialog.Show("Validación", "La contraseña debe tener al menos 4 caracteres.", AlertType.ERROR);
+                return false;
+            }
+
+            string[] peligrosos = { "'", "\"", ";", "--", "/*", "*/" };
+            foreach (var campo in new[] { TbFirstName.Text, TbLastName.Text, TbUserName.Text, TbPassword.Text })
+            {
+                foreach (var p in peligrosos)
+                {
+                    if (campo.Contains(p))
+                    {
+                        MessageDialog.Show("Validación", "No se permiten caracteres especiales como comillas, punto y coma o guiones.", AlertType.ERROR);
+                        return false;
+                    }
+                }
+            }
+
+            return true;
         }
 
         private async Task RegisterAccount()
         {
+            if (!ValidarCampos())
+                return;
+
             if (!DateTime.TryParse(TbBirthDay.Text.Trim(), out DateTime birthDay))
             {
                 MessageDialog.Show("SignIn_DialogTInvalidDate", "SignIn_DialogDInvalidDate", AlertType.ERROR);
