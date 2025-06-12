@@ -180,7 +180,7 @@ namespace AhorcadoClient.Views
                 Username = TbUserName.Text.Trim(),
                 Password = TbPassword.Text.Trim(),
                 ProfilePic = ImageUtilities.ImageToByteArray(PlayerProfilePic.Source as BitmapSource),
-                SelectedLanguageID = 1
+                SelectedLanguageID = (CbPreferedLanguage.SelectedItem as LanguageDTO)?.LanguageID ?? 1
             };
 
             await ServiceClientManager.ExecuteServerAction(async () =>

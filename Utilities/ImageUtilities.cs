@@ -231,6 +231,22 @@ namespace AhorcadoClient.Utilities
                 }
             }
         }
+        public static BitmapImage ByteArrayToImage(byte[] imageData)
+        {
+            if (imageData == null || imageData.Length == 0)
+                return null;
+
+            using (var ms = new MemoryStream(imageData))
+            {
+                var image = new BitmapImage();
+                image.BeginInit();
+                image.CacheOption = BitmapCacheOption.OnLoad;
+                image.StreamSource = ms;
+                image.EndInit();
+                image.Freeze(); // Para evitar errores de subprocesos
+                return image;
+            }
+        }
 
 
     }

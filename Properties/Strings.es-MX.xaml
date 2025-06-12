@@ -104,4 +104,11 @@
     <!--#region JoinGameWindow-->
     <sys:String x:Key="JoinGame_Desc">Selecciona la partida de tu preferencia en la tabla y da clic en "Unirse a partida". ¡Buena suerte!</sys:String>
     <!--#endregion-->
+    <!--#region EditProfileWindow-->
+    <sys:String x:Key="EditProfile_Desc">Modifica los datos que quieras de tu cuenta</sys:String>
+    <sys:String x:Key="EditProfile_DialogTChangesSaved">Perfil actualizado</sys:String>
+    <sys:String x:Key="EditProfile_DialogDChangesSaved">Tu información se ha guardado correctamente</sys:String>
+    <sys:String x:Key="EditProfile_DialogTUpdateFailed">Error al actualizar</sys:String>
+    <sys:String x:Key="EditProfile_DialogDUpdateFailed">No se pudo guardar la información. Intenta de nuevo más tarde</sys:String>
+    <!--#endregion-->
 </ResourceDictionary>
