@@ -53,10 +53,17 @@
     <!--#endregion-->
 
     <!--#region Difficulties-->
-        <sys:String x:Key="Difficulty_Easy">Fácil</sys:String>
-        <sys:String x:Key="Difficulty_Normal">Normal</sys:String>
-        <sys:String x:Key="Difficulty_Hard">Difícil</sys:String>
+    <sys:String x:Key="Difficulty_Easy">Fácil</sys:String>
+    <sys:String x:Key="Difficulty_Normal">Normal</sys:String>
+    <sys:String x:Key="Difficulty_Hard">Difícil</sys:String>
     <!--#endregion-->
+
+    <sys:String x:Key="Time_JustNow">Hace unos segundos</sys:String>
+    <sys:String x:Key="Time_SecondsAgo">Hace {0} s</sys:String>
+    <sys:String x:Key="Time_MinutesAgo">Hace {0} min</sys:String>
+    <sys:String x:Key="Time_HoursAgo">Hace {0} h</sys:String>
+    <sys:String x:Key="Time_Yesterday">Ayer</sys:String>
+    <sys:String x:Key="Time_DaysAgo">Hace {0} días</sys:String>
 
     <!--#region SignIn -->
     <sys:String x:Key="SignIn_Desc">Ingresa los datos de tu cuenta para poder acceder a Ahorcado.</sys:String>
@@ -98,10 +105,15 @@
     <!--#region MatchWindow-->
     <sys:String x:Key="Match_Title">Partida</sys:String>
     <sys:String x:Key="Match_Desc">Pon a prueba tu ingenio adivinando la palabra oculta antes de que se complete el dibujo del ahorcado. Selecciona letras del alfabeto, evita errores y demuestra tu vocabulario. ¡Cada intento cuenta!</sys:String>
+    <sys:String x:Key="Match_PlayersTitle">Jugadores</sys:String>
     <sys:String x:Key="Match_Attempts">INTENTOS</sys:String>
     <!--#endregion-->
 
     <!--#region JoinGameWindow-->
     <sys:String x:Key="JoinGame_Desc">Selecciona la partida de tu preferencia en la tabla y da clic en "Unirse a partida". ¡Buena suerte!</sys:String>
+    <sys:String x:Key="JoinGame_TableHPlayer">Jugador:</sys:String>
+    <sys:String x:Key="JoinGame_TableHCategory">Categoría:</sys:String>
+    <sys:String x:Key="JoinGame_TableHDifficulty">Dificultad:</sys:String>
+    <sys:String x:Key="JoinGame_TableHDate">Creada en:</sys:String>
     <!--#endregion-->
 </ResourceDictionary>

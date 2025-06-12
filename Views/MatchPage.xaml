@@ -16,9 +16,63 @@
         <!-- Estructura principal -->
         <Grid>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="4*"/>
+                <ColumnDefinition Width="6*"/>
             </Grid.ColumnDefinitions>
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <Border Background="{StaticResource PanelBrush}"
+                        BorderBrush="{StaticResource BorderBrush}"
+                        BorderThickness="1"
+                        CornerRadius="16"
+                        Margin="20 20 0 20">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+
+                        <Border BorderBrush="{StaticResource BorderBrush}"
+                                BorderThickness="0 0 0 1">
+                            <TextBlock Text="{StaticResource Match_PlayersTitle}"
+                                       Style="{StaticResource HeaderLabelStyle}"
+                                       Margin="20"/>
+                        </Border>
+
+                        <StackPanel Grid.Row="1">
+                            <Grid Margin="20 20 20 10">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Image Name="Player1Pic"
+                                       Width="48" Height="48"
+                                       HorizontalAlignment="Left"
+                                       Source="/Resources/Images/default-profile-pic.png"
+                                       VerticalAlignment="Center"
+                                       RenderOptions.BitmapScalingMode="HighQuality">
+                                    <Image.Clip>
+                                        <EllipseGeometry RadiusX="24" RadiusY="24" Center="24,24"/>
+                                    </Image.Clip>
+                                </Image>
+
+                                <StackPanel Grid.Column="1"
+                                            VerticalAlignment="Center"
+                                            HorizontalAlignment="Left">
+                                    <TextBlock x:Name="Player1Name"
+                                               Style="{StaticResource SubtitleLabelStyle}"/>
+                                </StackPanel>
+                            </Grid>
+                        </StackPanel> 
+                    </Grid>
+                </Border>
+            </Grid>
 
             <Border Grid.Column="1"
                     Background="{StaticResource PanelBrush}"

@@ -138,18 +138,40 @@ namespace AhorcadoClient.Views
 
         private async void Click_BtnCreateGame(object sender, RoutedEventArgs e)
         {
-            int palabraId = (int)CbWord.SelectedValue;
+            int palabraId = ((Word)CbWord.SelectedItem).WordID;
 
             await ServiceClientManager.ExecuteServerAction(async () =>
             {
                 var client = ServiceClientManager.Instance.Client;
-                client.CreateMatch(playerId, palabraId);
+                var matchDTO = client.CreateMatch(playerId, palabraId);
+
+                var match = new Match
+                {
+                    MatchID = matchDTO.MatchID,
+                    Player1 = matchDTO.Player1ID,
+                    Player2 = matchDTO.Player2ID,
+                    WordID = matchDTO.WordID,
+                    CreateDate = matchDTO.CreateDate,
+                    EndDate = matchDTO.EndDate,
+                    StatusID = matchDTO.StatusID,
+                    Word = new Word
+                    {
+                        WordID = matchDTO.Word.WordID,
+                        CategoryID = matchDTO.Word.CategoryID,
+                        LanguageID = matchDTO.Word.LanguageID,
+                        WordText = matchDTO.Word.Word,
+                        Description = matchDTO.Word.Description,
+                        Difficult = matchDTO.Word.Difficult
+                    }
+                };
+
                 await Application.Current.Dispatcher.InvokeAsync(() =>
                 {
-                    MessageDialog.Show("Glb_CreateGame", "Partida creada correctamente.", AlertType.SUCCESS, Close);
+                    Close();
+                    var navigationManager = NavigationManager.Instance;
+                    navigationManager.NavigateToPage(new MatchPage(match));
                 });
             });
-
         }
     }
 }

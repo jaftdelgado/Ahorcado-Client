@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using AhorcadoClient.Model;
+using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -20,10 +21,13 @@ namespace AhorcadoClient.Views
             }
         }
 
-        public MatchPage()
+        public MatchPage(Match match)
         {
             InitializeComponent();
-            Word = "HOLA MUNDO";
+
+            if (match?.Word != null)
+                Word = match.Word.WordText;
+
             UpdateAttemptsText();
         }
 

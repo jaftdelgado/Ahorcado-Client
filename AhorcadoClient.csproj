@@ -35,6 +35,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="PresentationFramework.Aero2, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\PresentationFramework.Aero2.1.0.1\lib\PresentationFramework.Aero2.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Runtime.Serialization" />
@@ -92,6 +95,9 @@
     <Compile Include="Views\JoinMatchPage.xaml.cs">
       <DependentUpon>JoinMatchPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\JoinMatchWindow.xaml.cs">
+      <DependentUpon>JoinMatchWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\MainMenuPage.xaml.cs">
       <DependentUpon>MainMenuPage.xaml</DependentUpon>
     </Compile>
@@ -124,7 +130,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Resources\Styles\DataGridStyles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Resources\Styles\LabelStyles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Resources\Styles\ScrollerStyles.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -155,6 +169,10 @@
     <Page Include="Views\JoinMatchPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\JoinMatchWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\MainMenuPage.xaml">
       <SubType>Designer</SubType>
@@ -191,9 +209,6 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="Connected Services\ServiceReference\AhorcadoClient.ServiceReference.AvailableMatchDTO.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
     <None Include="Connected Services\ServiceReference\AhorcadoClient.ServiceReference.CategoryDTO.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -222,6 +237,7 @@
     <None Include="Connected Services\ServiceReference\Service3.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -289,6 +305,9 @@
     <Resource Include="Resources\Images\ahorcado-3.png" />
     <Resource Include="Resources\Images\ahorcado-4.png" />
     <Resource Include="Resources\Images\ahorcado-5.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\sort-header-icon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
