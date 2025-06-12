@@ -497,14 +497,27 @@ namespace AhorcadoClient.ServiceReference {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string WordCategory {
+        public string Word {
             get {
-                return this.WordCategoryField;
+                return this.WordField;
             }
             set {
-                if ((object.ReferenceEquals(this.WordCategoryField, value) != true)) {
-                    this.WordCategoryField = value;
-                    this.RaisePropertyChanged("WordCategory");
+                if ((object.ReferenceEquals(this.WordField, value) != true)) {
+                    this.WordField = value;
+                    this.RaisePropertyChanged("Word");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int WordID {
+            get {
+                return this.WordIDField;
+            }
+            set {
+                if ((this.WordIDField.Equals(value) != true)) {
+                    this.WordIDField = value;
+                    this.RaisePropertyChanged("WordID");
                 }
             }
         }
@@ -630,67 +643,6 @@ namespace AhorcadoClient.ServiceReference {
                 if ((object.ReferenceEquals(this.ResultNameField, value) != true)) {
                     this.ResultNameField = value;
                     this.RaisePropertyChanged("ResultName");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="CategoryDTO", Namespace="http://schemas.datacontract.org/2004/07/Services.DTOs")]
-    [System.SerializableAttribute()]
-    public partial class CategoryDTO : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int CategoryIDField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string CategoryNameField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int CategoryID {
-            get {
-                return this.WordField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.WordField, value) != true)) {
-                    this.WordField = value;
-                    this.RaisePropertyChanged("Word");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int WordID {
-            get {
-                return this.WordIDField;
-            }
-            set {
-                if ((this.WordIDField.Equals(value) != true)) {
-                    this.WordIDField = value;
-                    this.RaisePropertyChanged("WordID");
                 }
             }
         }

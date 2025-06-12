@@ -18,8 +18,10 @@ namespace AhorcadoClient.Views
         public SignInWindow()
         {
             InitializeComponent();
-            Loaded += SignInWindow_Loaded;
             UpdateFormButtonState();
+
+            var languages = Model.Language.GetDefaultLanguages();
+            CbPreferedLanguage.ItemsSource = languages;
         }
 
         private void NavigateToMain()
@@ -206,26 +208,9 @@ namespace AhorcadoClient.Views
                     }
                 });
             });
+    
+        }
         
-    }
-        private async Task CargarIdiomasAsync()
-        {
-            await ServiceClientManager.ExecuteServerAction(async () =>
-            {
-                var client = ServiceClientManager.Instance.Client;
-                var idiomas = client.GetLanguages();
-                await Application.Current.Dispatcher.InvokeAsync(() =>
-                {
-                    CbPreferedLanguage.ItemsSource = idiomas;
-                    CbPreferedLanguage.DisplayMemberPath = "LanguageName";
-                });
-            });
-        }
-        private async void SignInWindow_Loaded(object sender, RoutedEventArgs e)
-        {
-            
-            await CargarIdiomasAsync();
-        }
         private void ValidateForm()
         {
             // Verifica si todos los campos obligatorios tienen contenido
