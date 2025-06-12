@@ -35,7 +35,7 @@ namespace AhorcadoClient.Views
 
         private void Click_BtnJoinMatch(object sender, System.Windows.RoutedEventArgs e)
         {
-            JoinMatchPage.Show();
+            JoinMatchWindow.Show();
         }
 
         private void Click_BtnViewScores(object sender, System.Windows.RoutedEventArgs e)

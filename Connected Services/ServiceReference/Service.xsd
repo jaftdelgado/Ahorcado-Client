@@ -84,7 +84,7 @@
   <xs:element name="GetAvailableMatchesResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/Services.DTOs" minOccurs="0" name="GetAvailableMatchesResult" nillable="true" type="q6:ArrayOfAvailableMatchDTO" />
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/Services.DTOs" minOccurs="0" name="GetAvailableMatchesResult" nillable="true" type="q6:ArrayOfMatchDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

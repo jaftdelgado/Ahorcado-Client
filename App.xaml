@@ -11,6 +11,8 @@
                 <ResourceDictionary Source="Resources/Styles/ButtonStyles.xaml"/>
                 <ResourceDictionary Source="Resources/Styles/TextBoxStyles.xaml"/>
                 <ResourceDictionary Source="Resources/Styles/LabelStyles.xaml"/>
+                <ResourceDictionary Source="Resources/Styles/ScrollerStyles.xaml"/>
+                <ResourceDictionary Source="Resources/Styles/DataGridStyles.xaml"/>
                 <ResourceDictionary Source="Resources/Styles/Animations.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
