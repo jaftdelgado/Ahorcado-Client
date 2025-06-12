@@ -430,7 +430,6 @@ namespace AhorcadoClient.Views
             }
         }
 
-
         private void RevealLetters(string guessedLetter)
         {
             int boxIndex = 0;
