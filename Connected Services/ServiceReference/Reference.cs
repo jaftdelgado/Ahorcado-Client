@@ -470,6 +470,131 @@ namespace AhorcadoClient.ServiceReference {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="PlayerMatchHistoryDTO", Namespace="http://schemas.datacontract.org/2004/07/AhorcadoServices.DTOs")]
+    [System.SerializableAttribute()]
+    public partial class PlayerMatchHistoryDTO : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<System.DateTime> EndDateField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int MatchIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string OpponentNameField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string PlayedWordField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int PointsField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ResultNameField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<System.DateTime> EndDate {
+            get {
+                return this.EndDateField;
+            }
+            set {
+                if ((this.EndDateField.Equals(value) != true)) {
+                    this.EndDateField = value;
+                    this.RaisePropertyChanged("EndDate");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int MatchID {
+            get {
+                return this.MatchIDField;
+            }
+            set {
+                if ((this.MatchIDField.Equals(value) != true)) {
+                    this.MatchIDField = value;
+                    this.RaisePropertyChanged("MatchID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string OpponentName {
+            get {
+                return this.OpponentNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.OpponentNameField, value) != true)) {
+                    this.OpponentNameField = value;
+                    this.RaisePropertyChanged("OpponentName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string PlayedWord {
+            get {
+                return this.PlayedWordField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.PlayedWordField, value) != true)) {
+                    this.PlayedWordField = value;
+                    this.RaisePropertyChanged("PlayedWord");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Points {
+            get {
+                return this.PointsField;
+            }
+            set {
+                if ((this.PointsField.Equals(value) != true)) {
+                    this.PointsField = value;
+                    this.RaisePropertyChanged("Points");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ResultName {
+            get {
+                return this.ResultNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ResultNameField, value) != true)) {
+                    this.ResultNameField = value;
+                    this.RaisePropertyChanged("ResultName");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="CategoryDTO", Namespace="http://schemas.datacontract.org/2004/07/Services.DTOs")]
     [System.SerializableAttribute()]
     public partial class CategoryDTO : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
@@ -755,6 +880,12 @@ namespace AhorcadoClient.ServiceReference {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMatchManager/GetAvailableMatches", ReplyAction="http://tempuri.org/IMatchManager/GetAvailableMatchesResponse")]
         System.Threading.Tasks.Task<AhorcadoClient.ServiceReference.AvailableMatchDTO[]> GetAvailableMatchesAsync();
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMatchManager/GetPlayerMatchHistory", ReplyAction="http://tempuri.org/IMatchManager/GetPlayerMatchHistoryResponse")]
+        AhorcadoClient.ServiceReference.PlayerMatchHistoryDTO[] GetPlayerMatchHistory(int playerId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMatchManager/GetPlayerMatchHistory", ReplyAction="http://tempuri.org/IMatchManager/GetPlayerMatchHistoryResponse")]
+        System.Threading.Tasks.Task<AhorcadoClient.ServiceReference.PlayerMatchHistoryDTO[]> GetPlayerMatchHistoryAsync(int playerId);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICategoryManager/GetCategories", ReplyAction="http://tempuri.org/ICategoryManager/GetCategoriesResponse")]
         AhorcadoClient.ServiceReference.CategoryDTO[] GetCategories();
         
@@ -859,6 +990,14 @@ namespace AhorcadoClient.ServiceReference {
         
         public System.Threading.Tasks.Task<AhorcadoClient.ServiceReference.AvailableMatchDTO[]> GetAvailableMatchesAsync() {
             return base.Channel.GetAvailableMatchesAsync();
+        }
+        
+        public AhorcadoClient.ServiceReference.PlayerMatchHistoryDTO[] GetPlayerMatchHistory(int playerId) {
+            return base.Channel.GetPlayerMatchHistory(playerId);
+        }
+        
+        public System.Threading.Tasks.Task<AhorcadoClient.ServiceReference.PlayerMatchHistoryDTO[]> GetPlayerMatchHistoryAsync(int playerId) {
+            return base.Channel.GetPlayerMatchHistoryAsync(playerId);
         }
         
         public AhorcadoClient.ServiceReference.CategoryDTO[] GetCategories() {

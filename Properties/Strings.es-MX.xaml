@@ -16,6 +16,7 @@
     <sys:String x:Key="Glb_CheckBShowPassword">Mostrar contraseña</sys:String>
     <sys:String x:Key="Glb_BtnSelectImage">Seleccionar Imagen</sys:String>
     <sys:String x:Key="Glb_BtnDeleteImage">Eliminar Imagen</sys:String>
+    <sys:String x:Key="Glb_Return">Regresar</sys:String>
     <sys:String x:Key="Glb_Score">Puntos:</sys:String>
     <sys:String x:Key="Glb_TbFirstName">Nombre(s):</sys:String>
     <sys:String x:Key="Glb_TbLastName">Apellido(s):</sys:String>
@@ -26,6 +27,7 @@
     <sys:String x:Key="Glb_CbCategory">Categoría:</sys:String>
     <sys:String x:Key="Glb_CbDifficult">Dificultad:</sys:String>
     <sys:String x:Key="Glb_CbWord">Palabra:</sys:String>
+    <sys:String x:Key="Glb_ViewScores">Historial de partidas:</sys:String>
     <sys:String x:Key="GlbDialogT_NoConnection">Sin conexión al servidor</sys:String>
     <sys:String x:Key="GlbDialogD_NoConnection">No se pudo establecer conexión con el servidor. Verifica la conexión a Internet o inténtalo de nuevo más tarde.</sys:String>
     <sys:String x:Key="GlbDialogT_TimeOut">Tiempo de espera excedido</sys:String>
@@ -103,5 +105,9 @@
 
     <!--#region JoinGameWindow-->
     <sys:String x:Key="JoinGame_Desc">Selecciona la partida de tu preferencia en la tabla y da clic en "Unirse a partida". ¡Buena suerte!</sys:String>
+    <!--#endregion-->
+
+    <!--#region ViewScoresWindow-->
+    <sys:String x:Key="ViewScores_Desc">Este es tu historial de partidas. ¡Bien jugado!</sys:String>
     <!--#endregion-->
 </ResourceDictionary>
