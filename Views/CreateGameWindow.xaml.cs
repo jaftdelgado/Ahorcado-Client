@@ -1,181 +1,143 @@
-﻿using AhorcadoClient.Model;
-using AhorcadoClient.Utilities;
+﻿using AhorcadoClient.Utilities;
+using AhorcadoClient.Model;
 using AhorcadoClient.Views.Dialogs;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Collections.Generic;
 
 namespace AhorcadoClient.Views
 {
     public partial class CreateGameWindow : UserControl
     {
-        int playerId = CurrentSession.LoggedInPlayer.PlayerID;
+        private int playerId = CurrentSession.LoggedInPlayer.PlayerID;
+
+        private List<Word> _allWords;
 
         public CreateGameWindow()
         {
             InitializeComponent();
             Loaded += CreateGameWindow_Loaded;
+
+            var categorias = Category.GetDefaultCategories();
+            CbCategory.ItemsSource = categorias;
+
+            var languages = Model.Language.GetDefaultLanguages();
+            CbLanguage.ItemsSource = languages;
+
+            var difficulties = Difficulty.GetDefaultDifficulties();
+            CbDifficulty.ItemsSource = difficulties;
+
+            UpdateFormButtonState();
         }
 
         private async void CreateGameWindow_Loaded(object sender, RoutedEventArgs e)
         {
-            await CargarCategoriasAsync();
-            await CargarIdiomasAsync();
+            await CargarPalabrasAsync();
         }
 
-        private async Task CargarIdiomasAsync()
+        private async Task CargarPalabrasAsync()
         {
             await ServiceClientManager.ExecuteServerAction(async () =>
             {
                 var client = ServiceClientManager.Instance.Client;
-                var idiomas = client.GetLanguages();
-                await Application.Current.Dispatcher.InvokeAsync(() =>
-                {
-                    CbLanguage.ItemsSource = idiomas;
-                    CbLanguage.DisplayMemberPath = "LanguageName";
-                });
-            });
-        }
+                var wordDTOs = client.GetWords();
 
-        private async Task CargarCategoriasAsync()
-        {
-            await ServiceClientManager.ExecuteServerAction(async () =>
-            {
-                var client = ServiceClientManager.Instance.Client;
-                var categorias = client.GetCategories();
+                var palabras = wordDTOs.Select(dto => new Word
+                {
+                    WordID = dto.WordID,
+                    CategoryID = dto.CategoryID,
+                    LanguageID = dto.LanguageID,
+                    WordText = dto.Word,
+                    Description = dto.Description,
+                    Difficult = dto.Difficult
+                }).ToList();
+
                 await Application.Current.Dispatcher.InvokeAsync(() =>
                 {
-                    CbCategory.ItemsSource = categorias;
-                    CbDifficult.IsEnabled = false;
+                    _allWords = palabras;
                     CbWord.IsEnabled = false;
-                });
-            });
-        }
-
-        private async void CbCategory_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            if (CbLanguage.SelectedItem == null)
-            {
-                MessageDialog.Show("Error", "Por favor selecciona un idioma antes de elegir una categoría.", AlertType.ERROR);
-                CbCategory.SelectedItem = null;
-                return;
-            }
-
-            if (CbCategory.SelectedItem == null) return;
-
-            var selectedCategory = (AhorcadoClient.ServiceReference.CategoryDTO)CbCategory.SelectedItem;
-            int categoryId = selectedCategory.CategoryID;
-            var language = (AhorcadoClient.ServiceReference.LanguageDTO)CbLanguage.SelectedItem;
-
-            await ServiceClientManager.ExecuteServerAction(async () =>
-            {
-                var client = ServiceClientManager.Instance.Client;
-                var dificultades = client.GetDifficults(categoryId, language.LanguageID);
-                await Application.Current.Dispatcher.InvokeAsync(() =>
-                {
-                    CbDifficult.ItemsSource = dificultades;
-                    CbDifficult.IsEnabled = true;
-                    CbWord.IsEnabled = false;
-                });
-            });
-        }
-
-        private async void CbDifficult_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            if (CbDifficult.SelectedItem == null || CbCategory.SelectedItem == null) return;
-
-            var selectedCategory = (AhorcadoClient.ServiceReference.CategoryDTO)CbCategory.SelectedItem;
-            int categoryId = selectedCategory.CategoryID;
-            int difficult = (int)CbDifficult.SelectedItem;
-            var language = (AhorcadoClient.ServiceReference.LanguageDTO)CbLanguage.SelectedItem;
-
-            await ServiceClientManager.ExecuteServerAction(async () =>
-            {
-                var client = ServiceClientManager.Instance.Client;
-                var palabras = client.GetWords(categoryId, difficult, language.LanguageID);
-                await Application.Current.Dispatcher.InvokeAsync(() =>
-                {
-                    CbWord.ItemsSource = palabras;
-                    CbWord.IsEnabled = true;
                 });
             });
         }
 
         public static void Show()
         {
-            var activeWindow = GetActiveWindow();
-            if (activeWindow == null) return;
-
-            var createGameWindow = new CreateGameWindow
-            {
-                Opacity = 0
-            };
-
-            Action showAction = () =>
-            {
-                var dialogHost = activeWindow.FindName("PopUpHost") as ContentControl;
-                var dialogOverlay = activeWindow.FindName("PopUpOverlay") as Border;
-
-                if (dialogHost == null || dialogOverlay == null) return;
-
-                dialogHost.Content = createGameWindow;
-                dialogOverlay.Visibility = Visibility.Visible;
-
-                Animations.BeginAnimation(createGameWindow, "PopupFadeInAnimation");
-            };
-
-            if (Application.Current.Dispatcher.CheckAccess())
-                showAction();
-            else
-                Application.Current.Dispatcher.Invoke(showAction);
-        }
-
-        private static Window GetActiveWindow()
-        {
-            return Application.Current.Windows.OfType<Window>().FirstOrDefault(w => w.IsActive);
+            PopUpUtilities.ShowDialog(new CreateGameWindow());
         }
 
         public void Close()
         {
-            var activeWindow = GetActiveWindow();
-            if (activeWindow != null)
-            {
-                var dialogHost = activeWindow.FindName("PopUpHost") as ContentControl;
-                var dialogOverlay = activeWindow.FindName("PopUpOverlay") as Border;
+            PopUpUtilities.CloseDialog();
+        }
 
-                if (dialogHost != null && dialogOverlay != null)
+        private void UpdateFormButtonState()
+        {
+            var requiredSelections = new List<ComboBox>
+            {
+                CbCategory,
+                CbLanguage,
+                CbDifficulty,
+                CbWord
+            };
+
+            bool allSelected = true;
+
+            foreach (var comboBox in requiredSelections)
+            {
+                if (comboBox.SelectedItem == null)
                 {
-                    dialogHost.Content = null;
-                    dialogOverlay.Visibility = Visibility.Collapsed;
+                    allSelected = false;
+                    break;
                 }
             }
+
+            BtnCreateGame.IsEnabled = allSelected;
         }
+
 
         private void Click_BtnCancel(object sender, RoutedEventArgs e)
         {
             Close();
         }
 
-        private async void Click_BtnCreateGameAsync(object sender, RoutedEventArgs e)
+        private void FiltrarYMostrarPalabras()
         {
-            if (CbCategory.SelectedItem == null)
+            if (CbLanguage.SelectedItem == null || CbCategory.SelectedItem == null || CbDifficulty.SelectedItem == null)
             {
-                MessageDialog.Show("Error", "PorFavorSeleccionaCategoria", AlertType.ERROR);
-                return;
-            }
-            if (CbDifficult.SelectedItem == null)
-            {
-                MessageDialog.Show("Error", "PorFavorSeleccionaDificultad", AlertType.ERROR);
-                return;
-            }
-            if (CbWord.SelectedItem == null)
-            {
-                MessageDialog.Show("Error", "PorFavorSeleccionaPalabra", AlertType.ERROR);
+                CbWord.IsEnabled = false;
+                CbWord.ItemsSource = null;
                 return;
             }
 
+            var categoria = (Category) CbCategory.SelectedItem;
+            var idioma = (Language) CbLanguage.SelectedItem;
+            var dificultad = (Difficulty) CbDifficulty.SelectedItem;
+
+            var filtradas = _allWords.Where(p =>
+                p.CategoryID == categoria.CategoryID &&
+                p.LanguageID == idioma.LanguageID &&
+                p.Difficult == dificultad.DifficultyID).ToList();
+
+            CbWord.ItemsSource = filtradas;
+            CbWord.IsEnabled = filtradas.Count > 0;
+        }
+
+        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            FiltrarYMostrarPalabras();
+            UpdateFormButtonState();
+        }
+
+        private void CbWord_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            UpdateFormButtonState();
+        }
+
+        private async void Click_BtnCreateGame(object sender, RoutedEventArgs e)
+        {
             int palabraId = (int)CbWord.SelectedValue;
 
             await ServiceClientManager.ExecuteServerAction(async () =>
@@ -188,7 +150,6 @@ namespace AhorcadoClient.Views
                 });
             });
 
-            //Enviar a la ventana de juego
         }
     }
 }

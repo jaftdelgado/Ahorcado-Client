@@ -105,7 +105,7 @@
         <Setter Property="Height" Value="44"/>
         <Setter Property="FontFamily" Value="{StaticResource BarlowRegular}"/>
         <Setter Property="FontSize" Value="12"/>
-        <Setter Property="Padding" Value="6,3"/>
+        <Setter Property="Padding" Value="6 3"/>
         <Setter Property="BorderThickness" Value="1"/>
         <Setter Property="BorderBrush" Value="{StaticResource BorderBrush}"/>
         <Setter Property="Foreground" Value="{StaticResource PrimaryTextBrush}"/>

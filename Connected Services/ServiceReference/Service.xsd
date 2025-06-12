@@ -45,61 +45,6 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="Ping">
-    <xs:complexType>
-      <xs:sequence />
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="PingResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="PingResult" type="xs:boolean" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="GetCategories">
-    <xs:complexType>
-      <xs:sequence />
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="GetCategoriesResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/Services.DTOs" minOccurs="0" name="GetCategoriesResult" nillable="true" type="q4:ArrayOfCategoryDTO" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="GetDifficults">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="categoryId" type="xs:int" />
-        <xs:element minOccurs="0" name="languageId" type="xs:int" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="GetDifficultsResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q5="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="GetDifficultsResult" nillable="true" type="q5:ArrayOfint" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="GetWords">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="categoryId" type="xs:int" />
-        <xs:element minOccurs="0" name="difficult" type="xs:int" />
-        <xs:element minOccurs="0" name="languageId" type="xs:int" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="GetWordsResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/Services.DTOs" minOccurs="0" name="GetWordsResult" nillable="true" type="q6:ArrayOfWordDTO" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
   <xs:element name="CreateMatch">
     <xs:complexType>
       <xs:sequence>
@@ -111,7 +56,7 @@
   <xs:element name="CreateMatchResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/Services.DTOs" minOccurs="0" name="CreateMatchResult" nillable="true" type="q7:MatchDTO" />
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/Services.DTOs" minOccurs="0" name="CreateMatchResult" nillable="true" type="q4:MatchDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -126,19 +71,7 @@
   <xs:element name="JoinMatchResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/Services.DTOs" minOccurs="0" name="JoinMatchResult" nillable="true" type="q8:MatchDTO" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="GetLanguages">
-    <xs:complexType>
-      <xs:sequence />
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="GetLanguagesResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/Services.DTOs" minOccurs="0" name="GetLanguagesResult" nillable="true" type="q9:ArrayOfLanguageDTO" />
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/Services.DTOs" minOccurs="0" name="JoinMatchResult" nillable="true" type="q5:MatchDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -150,7 +83,70 @@
   <xs:element name="GetAvailableMatchesResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/Services.DTOs" minOccurs="0" name="GetAvailableMatchesResult" nillable="true" type="q10:ArrayOfAvailableMatchDTO" />
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/Services.DTOs" minOccurs="0" name="GetAvailableMatchesResult" nillable="true" type="q6:ArrayOfAvailableMatchDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCategories">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCategoriesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/Services.DTOs" minOccurs="0" name="GetCategoriesResult" nillable="true" type="q7:ArrayOfCategoryDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetDifficults">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="categoryId" type="xs:int" />
+        <xs:element minOccurs="0" name="languageId" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetDifficultsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q8="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="GetDifficultsResult" nillable="true" type="q8:ArrayOfint" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetWords">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetWordsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/Services.DTOs" minOccurs="0" name="GetWordsResult" nillable="true" type="q9:ArrayOfWordDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetLanguages">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetLanguagesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/Services.DTOs" minOccurs="0" name="GetLanguagesResult" nillable="true" type="q10:ArrayOfLanguageDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Ping">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PingResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="PingResult" type="xs:boolean" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
