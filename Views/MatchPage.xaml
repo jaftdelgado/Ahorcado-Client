@@ -45,28 +45,59 @@
                         </Border>
 
                         <StackPanel Grid.Row="1">
-                            <Grid Margin="20 20 20 10">
+                            <Grid Margin="20 20 20 16">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto"/>
                                     <ColumnDefinition Width="Auto"/>
                                 </Grid.ColumnDefinitions>
 
                                 <Image Name="Player1Pic"
-                                       Width="48" Height="48"
+                                       Width="42" Height="42"
                                        HorizontalAlignment="Left"
                                        Source="/Resources/Images/default-profile-pic.png"
                                        VerticalAlignment="Center"
                                        RenderOptions.BitmapScalingMode="HighQuality">
                                     <Image.Clip>
-                                        <EllipseGeometry RadiusX="24" RadiusY="24" Center="24,24"/>
+                                        <EllipseGeometry RadiusX="21" RadiusY="21" Center="21 21"/>
                                     </Image.Clip>
                                 </Image>
 
                                 <StackPanel Grid.Column="1"
                                             VerticalAlignment="Center"
-                                            HorizontalAlignment="Left">
-                                    <TextBlock x:Name="Player1Name"
+                                            HorizontalAlignment="Left"
+                                            Margin="15 0">
+                                    <TextBlock x:Name="Player1Username"
                                                Style="{StaticResource SubtitleLabelStyle}"/>
+                                    <TextBlock x:Name="Player1FullName"
+                                               Style="{StaticResource DescriptionLabelStyle}"/>
+                                </StackPanel>
+                            </Grid>
+                            
+                            <Grid Margin="20 0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Image Name="Player2Pic"
+                                       Width="42" Height="42"
+                                       HorizontalAlignment="Left"
+                                       Source="/Resources/Images/default-profile-pic.png"
+                                       VerticalAlignment="Center"
+                                       RenderOptions.BitmapScalingMode="HighQuality">
+                                    <Image.Clip>
+                                        <EllipseGeometry RadiusX="21" RadiusY="21" Center="21 21"/>
+                                    </Image.Clip>
+                                </Image>
+
+                                <StackPanel Grid.Column="1"
+                                            VerticalAlignment="Center"
+                                            HorizontalAlignment="Left"
+                                            Margin="15 0">
+                                    <TextBlock x:Name="Player2Username"
+                                               Style="{StaticResource SubtitleLabelStyle}"/>
+                                    <TextBlock x:Name="Player2FullName"
+                                               Style="{StaticResource DescriptionLabelStyle}"/>
                                 </StackPanel>
                             </Grid>
                         </StackPanel> 
@@ -125,12 +156,26 @@
                             </StackPanel>
 
                             <StackPanel Grid.Column="1"
+                                        x:Name="WordSelected"
+                                        HorizontalAlignment="Right"
+                                        Visibility="Collapsed">
+                                <TextBlock Text="PALABRA"
+                                           Style="{StaticResource DescriptionLabelStyle}"/>
+                                <TextBlock Text="CIBERSEGURIDAD"
+                                           x:Name="WordText"
+                                           Style="{StaticResource SubtitleLabelStyle}"
+                                           FontFamily="{StaticResource BarlowSemiBold}"/>
+                            </StackPanel>
+
+                            <StackPanel x:Name="WordDescription"
+                                        Grid.Column="1"
                                         Orientation="Horizontal"
                                         HorizontalAlignment="Right">
                                 <StackPanel>
                                     <TextBlock Text="CATEGORÍA"
                                                Style="{StaticResource DescriptionLabelStyle}"/>
                                     <TextBlock Text="ANIMALES"
+                                               x:Name="WordCategory"
                                                Style="{StaticResource SubtitleLabelStyle}"
                                                FontFamily="{StaticResource BarlowSemiBold}"/>
                                 </StackPanel>
@@ -138,7 +183,8 @@
                                 <StackPanel Margin="20 0 0 0">
                                     <TextBlock Text="IDIOMA"
                                                Style="{StaticResource DescriptionLabelStyle}"/>
-                                    <TextBlock Text="ESPAÑOL"
+                                    <TextBlock x:Name="WordLanguage"
+                                               Text="ESPAÑOL"
                                                Style="{StaticResource SubtitleLabelStyle}"
                                                FontFamily="{StaticResource BarlowSemiBold}"/>
                                 </StackPanel>

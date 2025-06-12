@@ -1,12 +1,12 @@
 ﻿using AhorcadoClient.Utilities;
 using AhorcadoClient.Model;
-using AhorcadoClient.Views.Dialogs;
-using System;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Collections.Generic;
+using AhorcadoClient.CallbackServices;
+using AhorcadoClient.CallbackServiceReference;
 
 namespace AhorcadoClient.Views
 {
@@ -145,16 +145,22 @@ namespace AhorcadoClient.Views
                 var client = ServiceClientManager.Instance.Client;
                 var matchDTO = client.CreateMatch(playerId, palabraId);
 
-                var match = new Match
+                var player = CurrentSession.LoggedInPlayer;
+
+                var playerDTO = new PlayerInfoDTO
+                {
+                    PlayerId = player.PlayerID,
+                    Username = player.Username,
+                    FullName = $"{player.FirstName} {player.LastName}",
+                    ProfilePic = player.ProfilePic
+                };
+
+                var matchInfoDTO = new MatchInfoDTO
                 {
                     MatchID = matchDTO.MatchID,
-                    Player1 = matchDTO.Player1ID,
-                    Player2 = matchDTO.Player2ID,
-                    WordID = matchDTO.WordID,
-                    CreateDate = matchDTO.CreateDate,
-                    EndDate = matchDTO.EndDate,
-                    StatusID = matchDTO.StatusID,
-                    Word = new Word
+                    Player1 = playerDTO,
+                    Player2 = null,
+                    Word = new WordInfoDTO
                     {
                         WordID = matchDTO.Word.WordID,
                         CategoryID = matchDTO.Word.CategoryID,
@@ -165,11 +171,15 @@ namespace AhorcadoClient.Views
                     }
                 };
 
+                var gameCallback = new GameCallbackClient();
+
+                var gameService = new GameServiceClient(gameCallback);
+                gameService.JoinMatch(matchDTO.MatchID, playerDTO, matchInfoDTO.Word, 6);
+
                 await Application.Current.Dispatcher.InvokeAsync(() =>
                 {
                     Close();
-                    var navigationManager = NavigationManager.Instance;
-                    navigationManager.NavigateToPage(new MatchPage(match));
+                    NavigationManager.Instance.NavigateToPage(new MatchPage(matchInfoDTO, gameService));
                 });
             });
         }

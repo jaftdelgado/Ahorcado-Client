@@ -117,6 +117,10 @@
     <sys:String x:Key="JoinGame_TableHCategory">Categoría:</sys:String>
     <sys:String x:Key="JoinGame_TableHDifficulty">Dificultad:</sys:String>
     <sys:String x:Key="JoinGame_TableHDate">Creada en:</sys:String>
+    <sys:String x:Key="JoinGame_DialogTSuccess">Bienvenido a la partida</sys:String>
+    <sys:String x:Key="JoinGame_DialogDSuccess">Te has unido correctamente a la partida de Ahorcado. ¡Esperamos que disfrutes la partida!</sys:String>
+    <sys:String x:Key="JoinGame_DialogTError">Partida no disponible</sys:String>
+    <sys:String x:Key="JoinGame_DialogDError">La partida a la que intentas unirte ya está llena o se encuentra en curso. Intenta unirte a otra partida o crea una.</sys:String>
     <!--#endregion-->
 
     <!--#region ViewScoresWindow-->

@@ -1,5 +1,12 @@
-﻿using AhorcadoClient.Model;
+﻿using AhorcadoClient.CallbackServiceReference;
+using AhorcadoClient.CallbackServices;
+using AhorcadoClient.Utilities;
+using AhorcadoClient.Views.Dialogs;
+using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.Linq;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -8,8 +15,14 @@ namespace AhorcadoClient.Views
     public partial class MatchPage : Page
     {
         private string _word;
+        private MatchInfoDTO _matchInfo;
         private List<TextBox> _letterBoxes = new List<TextBox>();
         private int _remainingAttempts = 6;
+        private GameServiceClient _gameService;
+        private HashSet<string> _guessedLetters = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+
+        private bool IsPlayer1 => _matchInfo.Player1?.PlayerId == CurrentSession.LoggedInPlayer.PlayerID;
+        private bool IsPlayer2 => _matchInfo.Player2?.PlayerId == CurrentSession.LoggedInPlayer.PlayerID;
 
         public string Word
         {
@@ -21,20 +34,292 @@ namespace AhorcadoClient.Views
             }
         }
 
-        public MatchPage(Match match)
+        public MatchPage(MatchInfoDTO matchInfo, GameServiceClient gameService)
         {
             InitializeComponent();
 
-            if (match?.Word != null)
-                Word = match.Word.WordText;
+            _matchInfo = matchInfo;
+            _gameService = gameService;
 
+            _gameService.EnsureConnection();
+
+            if (matchInfo?.Word != null)
+            {
+                Word = matchInfo.Word.WordText;
+            }
+
+            SetPlayersInfo();
+            AttachCallbacks();
+            ConfigureUIByRole(matchInfo);
             UpdateAttemptsText();
+            UpdateHangmanImage();
+        }
+
+        private void SetPlayersInfo()
+        {
+            if (_matchInfo.Player1 != null)
+            {
+                Player1Username.Text = _matchInfo.Player1.Username ?? "Jugador 1";
+                Player1FullName.Text = _matchInfo.Player1.FullName ?? "";
+                ImageUtilities.SetImageSource(Player1Pic, _matchInfo.Player1.ProfilePic, Constants.DEFAULT_PROFILE_PIC_PATH);
+            }
+
+            if (_matchInfo.Player2 != null)
+            {
+                Player2Username.Text = _matchInfo.Player2.Username ?? "Jugador 2";
+                Player2FullName.Text = _matchInfo.Player2.FullName ?? "";
+                ImageUtilities.SetImageSource(
+                    Player2Pic,
+                    _matchInfo.Player2.ProfilePic,
+                    Constants.DEFAULT_PROFILE_PIC_PATH
+                );
+            }
+            else
+            {
+                Player2Username.Text = "Esperando jugador...";
+                Player2FullName.Text = "";
+            }
+        }
+
+        private void ConfigureUIByRole(MatchInfoDTO matchInfo)
+        {
+            if (IsPlayer1)
+            {
+                WordSelected.Visibility = Visibility.Visible;
+                WordText.Text = matchInfo.Word.WordText;
+                WordDescription.Visibility = Visibility.Collapsed;
+                KeyboardPanel.IsEnabled = false;
+
+                Word = matchInfo.Word.WordText; 
+
+                if (matchInfo.GuessedLetters != null)
+                {
+                    _guessedLetters = new HashSet<string>(matchInfo.GuessedLetters, StringComparer.OrdinalIgnoreCase);
+                    UpdateGuessedLetters(_guessedLetters);
+                }
+                else
+                {
+                    _guessedLetters.Clear();
+                }
+            }
+            else if (IsPlayer2)
+            {
+                WordSelected.Visibility = Visibility.Collapsed;
+                WordDescription.Visibility = Visibility.Visible;
+                KeyboardPanel.IsEnabled = true;
+            }
+        }
+
+        private void UpdatePlayerInfo(TextBlock usernameText, TextBlock fullNameText, Image profileImage, PlayerInfoDTO playerInfo)
+        {
+            usernameText.Text = playerInfo.Username ?? "Jugador";
+            fullNameText.Text = playerInfo.FullName ?? "";
+            ImageUtilities.SetImageSource(profileImage, playerInfo.ProfilePic, Constants.DEFAULT_PROFILE_PIC_PATH);
+        }
+
+        private void AttachCallbacks()
+        {
+            if (_gameService.Callback != null)
+            {
+                _gameService.Callback.OnMatchReadyAction = (matchId, matchInfo) => OnMatchReady(matchInfo);
+                _gameService.Callback.OnPlayerJoinedAction = (matchId, playerInfo) => OnPlayerJoined(playerInfo);
+                _gameService.Callback.OnPlayerLeftAction = (matchId, playerId) => OnPlayerLeft(playerId);
+                _gameService.Callback.OnLetterGuessedAction = (matchId, letter, isCorrect, remainingAttempts, isGameOver) =>
+                    OnLetterGuessed(letter, isCorrect, remainingAttempts, isGameOver);
+            }
+        }
+        private void OnMatchReady(MatchInfoDTO matchInfo)
+        {
+            Dispatcher.Invoke(() =>
+            {
+                _matchInfo = matchInfo;
+                SetPlayersInfo();
+
+                UpdateGameState(matchInfo.RemainingAttempts, matchInfo.GuessedLetters);
+
+                ShowMatchReadyNotification();
+            });
+        }
+
+        private void OnPlayerJoined(PlayerInfoDTO playerInfo)
+        {
+            Dispatcher.Invoke(() =>
+            {
+                if (_matchInfo.Player1?.PlayerId == playerInfo.PlayerId)
+                {
+                    UpdatePlayerInfo(Player1Username, Player1FullName, Player1Pic, playerInfo);
+                }
+                else if (_matchInfo.Player2?.PlayerId == playerInfo.PlayerId)
+                {
+                    UpdatePlayerInfo(Player2Username, Player2FullName, Player2Pic, playerInfo);
+
+                    // Habilitar teclado si soy el jugador 2
+                    if (IsPlayer2)
+                    {
+                        KeyboardPanel.IsEnabled = true;
+                    }
+                }
+            });
+        }
+
+        private void OnPlayerLeft(int playerId)
+        {
+            Dispatcher.Invoke(() =>
+            {
+                if (_matchInfo.Player1?.PlayerId == playerId)
+                {
+                    _matchInfo.Player1 = null;
+                    Player1Username.Text = "Jugador desconectado";
+                    Player1FullName.Text = "";
+                }
+                else if (_matchInfo.Player2?.PlayerId == playerId)
+                {
+                    _matchInfo.Player2 = null;
+                    Player2Username.Text = "Esperando jugador...";
+                    Player2FullName.Text = "";
+                    KeyboardPanel.IsEnabled = false;
+                }
+
+                MessageDialog.Show("Jugador abandonó", "El otro jugador ha abandonado la partida", AlertType.WARNING);
+            });
+        }
+
+        private void OnLetterGuessed(string letter, bool isCorrect, int remainingAttempts, bool isGameOver)
+        {
+            Dispatcher.Invoke(() =>
+            {
+                Debug.WriteLine($"Jugador {CurrentSession.LoggedInPlayer.PlayerID} recibió letra: {letter}");
+
+                UpdateGameState(remainingAttempts, new List<string> { letter });
+
+                ShowLetterGuessNotification(letter, isCorrect);
+
+                if (isGameOver)
+                {
+                    HandleGameOver(isCorrect);
+                    KeyboardPanel.IsEnabled = false;
+                }
+                else
+                {
+                    if (IsPlayer2 && _remainingAttempts > 0)
+                    {
+                        KeyboardPanel.IsEnabled = true;
+                    }
+                }
+            });
+        }
+
+        private void UpdateGameState(int remainingAttempts, IEnumerable<string> guessedLetters)
+        {
+            _remainingAttempts = remainingAttempts;
+            UpdateAttemptsText();
+            UpdateHangmanImage();
+
+            if (guessedLetters != null)
+            {
+                foreach (var letter in guessedLetters)
+                {
+                    _guessedLetters.Add(letter);
+                }
+
+                UpdateGuessedLetters(_guessedLetters);
+            }
+        }
+
+
+        private void UpdateGuessedLetters(IEnumerable<string> guessedLetters)
+        {
+            if (guessedLetters == null || _letterBoxes.Count == 0) return;
+
+            int boxIndex = 0;
+            for (int i = 0; i < Word.Length; i++)
+            {
+                if (Word[i] == ' ') continue;
+
+                string letter = Word[i].ToString();
+                if (guessedLetters.Any(l => l.Equals(letter, StringComparison.OrdinalIgnoreCase)))
+                {
+                    _letterBoxes[boxIndex].Text = letter.ToUpper();
+                }
+                else
+                {
+                    _letterBoxes[boxIndex].Text = ""; 
+                }
+
+                boxIndex++;
+            }
+        }
+
+
+        private void ShowLetterGuessNotification(string letter, bool isCorrect)
+        {
+            if (IsPlayer1)
+            {
+                string message = isCorrect
+                    ? $"El Jugador 2 acertó la letra '{letter}'"
+                    : $"El Jugador 2 intentó la letra '{letter}' (incorrecta)";
+
+                MessageDialog.Show("Turno del oponente", message,
+                    isCorrect ? AlertType.SUCCESS : AlertType.WARNING);
+            }
+            else if (IsPlayer2 && !isCorrect)
+            {
+                MessageDialog.Show("Letra incorrecta",
+                    $"La letra '{letter}' no está en la palabra",
+                    AlertType.WARNING);
+            }
+        }
+
+        private void HandleGameOver(bool isWordGuessed)
+        {
+            DisableAllKeyButtons();
+
+            if (_remainingAttempts <= 0)
+            {
+                RevealFullWord();
+                MessageDialog.Show("Fin del juego",
+                    IsPlayer1 ? "¡Ganaste! El jugador 2 no adivinó la palabra"
+                             : "¡Perdiste! No adivinaste la palabra",
+                    IsPlayer1 ? AlertType.SUCCESS : AlertType.ERROR);
+            }
+            else
+            {
+                MessageDialog.Show("Fin del juego",
+                    IsPlayer1 ? "¡Perdiste! El jugador 2 adivinó la palabra"
+                             : "¡Ganaste! Adivinaste la palabra",
+                    IsPlayer2 ? AlertType.SUCCESS : AlertType.ERROR);
+            }
+        }
+
+        private void ShowMatchReadyNotification()
+        {
+            if (_matchInfo.Player2?.PlayerId == CurrentSession.LoggedInPlayer.PlayerID)
+            {
+                MessageDialog.Show("Partida lista", "¡Te has unido a la partida!", AlertType.SUCCESS);
+            }
+            else if (IsPlayer1)
+            {
+                MessageDialog.Show("Jugador conectado", "Un jugador se ha unido a tu partida", AlertType.SUCCESS);
+            }
+        }
+
+        private void RevealFullWord()
+        {
+            int boxIndex = 0;
+            for (int i = 0; i < Word.Length; i++)
+            {
+                if (Word[i] == ' ') continue;
+                _letterBoxes[boxIndex].Text = Word[i].ToString();
+                boxIndex++;
+            }
         }
 
         private void GenerateLetterBoxes()
         {
             LetterPanel.Children.Clear();
             _letterBoxes.Clear();
+
+            if (string.IsNullOrEmpty(Word)) return;
 
             foreach (char c in Word)
             {
@@ -58,54 +343,46 @@ namespace AhorcadoClient.Views
             }
         }
 
-        private void Click_KeyButton(object sender, RoutedEventArgs e)
+        private async void Click_KeyButton(object sender, RoutedEventArgs e)
         {
-            if (sender is Button button)
+            if (!(sender is Button button) || !IsPlayer2) return;
+
+            string guessedLetter = button.Content.ToString();
+            button.IsEnabled = false;
+            KeyboardPanel.IsEnabled = false;
+
+            try
             {
-                string guessedLetter = button.Content.ToString().ToUpper();
-                button.IsEnabled = false;
-
-                bool matchFound = false;
-                int boxIndex = 0;
-
-                for (int i = 0; i < Word.Length; i++)
+                bool result = await Task.Run(() =>
                 {
-                    if (Word[i] == ' ')
-                        continue;
+                    _gameService.GuessLetter(_matchInfo.MatchID, CurrentSession.LoggedInPlayer.PlayerID, guessedLetter);
+                    return true;
+                });
+            }
+            catch (Exception ex)
+            {
+                MessageDialog.Show("Error", "No se pudo enviar la letra: " + ex.Message, AlertType.ERROR);
+                button.IsEnabled = true;
+                KeyboardPanel.IsEnabled = true;
+            }
+        }
 
-                    if (Word[i].ToString() == guessedLetter)
-                    {
-                        _letterBoxes[boxIndex].Text = guessedLetter;
-                        matchFound = true;
-                    }
 
+        private void RevealLetters(string guessedLetter)
+        {
+            int boxIndex = 0;
+            for (int i = 0; i < Word.Length; i++)
+            {
+                if (Word[i] == ' ')
+                {
                     boxIndex++;
+                    continue;
                 }
-
-                if (!matchFound)
+                if (Word[i].ToString().Equals(guessedLetter, StringComparison.OrdinalIgnoreCase))
                 {
-                    _remainingAttempts--;
-                    UpdateAttemptsText();
-                    UpdateHangmanImage();
-
-                    if (_remainingAttempts == 0)
-                    {
-                        MessageBox.Show("Has perdido. No te quedan más intentos.", "Fin del juego", MessageBoxButton.OK, MessageBoxImage.Error);
-                        DisableAllKeyButtons();
-                    }
-                    else
-                    {
-                        MessageBox.Show($"La letra '{guessedLetter}' no está en la palabra.", "Letra incorrecta", MessageBoxButton.OK, MessageBoxImage.Warning);
-                    }
+                    _letterBoxes[boxIndex].Text = guessedLetter.ToUpper();
                 }
-                else
-                {
-                    if (IsWordGuessed())
-                    {
-                        MessageBox.Show("¡Felicidades! Has adivinado la palabra.", "Victoria", MessageBoxButton.OK, MessageBoxImage.Information);
-                        DisableAllKeyButtons();
-                    }
-                }
+                boxIndex++;
             }
         }
 
@@ -117,7 +394,7 @@ namespace AhorcadoClient.Views
         private void UpdateHangmanImage()
         {
             string imagePath = $"/Resources/Images/ahorcado-{_remainingAttempts}.png";
-            HangmanImage.Source = new System.Windows.Media.Imaging.BitmapImage(new System.Uri(imagePath, System.UriKind.Relative));
+            HangmanImage.Source = new System.Windows.Media.Imaging.BitmapImage(new Uri(imagePath, UriKind.Relative));
         }
 
         private void DisableAllKeyButtons()
@@ -143,5 +420,6 @@ namespace AhorcadoClient.Views
             }
             return true;
         }
+
     }
 }
