@@ -92,6 +92,9 @@
     <Compile Include="Views\EditProfileWindow.xaml.cs">
       <DependentUpon>EditProfileWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\ViewScoresPage.xaml.cs">
+      <DependentUpon>ViewScoresPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\JoinMatchPage.xaml.cs">
       <DependentUpon>JoinMatchPage.xaml</DependentUpon>
     </Compile>
@@ -166,6 +169,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\ViewScoresPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Views\JoinMatchPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -221,6 +228,9 @@
     <None Include="Connected Services\ServiceReference\AhorcadoClient.ServiceReference.PlayerDTO.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Connected Services\ServiceReference\AhorcadoClient.ServiceReference.PlayerMatchHistoryDTO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Connected Services\ServiceReference\AhorcadoClient.ServiceReference.WordDTO.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -238,6 +248,9 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="packages.config" />
+    <None Include="Connected Services\ServiceReference\Service4.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

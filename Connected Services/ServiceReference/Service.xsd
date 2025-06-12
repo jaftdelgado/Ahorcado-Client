@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:import schemaLocation="http://localhost:8084/Service?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Services.DTOs" />
-  <xs:import schemaLocation="http://localhost:8084/Service?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:import schemaLocation="http://localhost:8084/Service?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/AhorcadoServices.DTOs" />
+  <xs:import schemaLocation="http://localhost:8084/Service?xsd=xsd4" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
   <xs:element name="LogIn">
     <xs:complexType>
       <xs:sequence>
@@ -87,6 +88,20 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="GetPlayerMatchHistory">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="playerId" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetPlayerMatchHistoryResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/AhorcadoServices.DTOs" minOccurs="0" name="GetPlayerMatchHistoryResult" nillable="true" type="q7:ArrayOfPlayerMatchHistoryDTO" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="GetCategories">
     <xs:complexType>
       <xs:sequence />
@@ -95,7 +110,7 @@
   <xs:element name="GetCategoriesResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/Services.DTOs" minOccurs="0" name="GetCategoriesResult" nillable="true" type="q7:ArrayOfCategoryDTO" />
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/Services.DTOs" minOccurs="0" name="GetCategoriesResult" nillable="true" type="q8:ArrayOfCategoryDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -110,7 +125,7 @@
   <xs:element name="GetDifficultsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q8="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="GetDifficultsResult" nillable="true" type="q8:ArrayOfint" />
+        <xs:element xmlns:q9="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="GetDifficultsResult" nillable="true" type="q9:ArrayOfint" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -122,7 +137,7 @@
   <xs:element name="GetWordsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/Services.DTOs" minOccurs="0" name="GetWordsResult" nillable="true" type="q9:ArrayOfWordDTO" />
+        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/Services.DTOs" minOccurs="0" name="GetWordsResult" nillable="true" type="q10:ArrayOfWordDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -134,7 +149,7 @@
   <xs:element name="GetLanguagesResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/Services.DTOs" minOccurs="0" name="GetLanguagesResult" nillable="true" type="q10:ArrayOfLanguageDTO" />
+        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/Services.DTOs" minOccurs="0" name="GetLanguagesResult" nillable="true" type="q11:ArrayOfLanguageDTO" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

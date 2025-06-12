@@ -38,6 +38,11 @@ namespace AhorcadoClient.Views
             JoinMatchWindow.Show();
         }
 
+        private void Click_BtnViewScores(object sender, System.Windows.RoutedEventArgs e)
+        {
+            ViewScoresPage.Show();
+        }
+
         private void Click_BtnProfile(object sender, System.Windows.RoutedEventArgs e)
         {
             EditProfileWindow.Show();

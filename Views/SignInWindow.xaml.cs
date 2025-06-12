@@ -18,6 +18,8 @@ namespace AhorcadoClient.Views
         public SignInWindow()
         {
             InitializeComponent();
+            Loaded += SignInWindow_Loaded;
+            UpdateFormButtonState();
         }
 
         private void NavigateToMain()
@@ -102,6 +104,7 @@ namespace AhorcadoClient.Views
         private async void Click_BtnCreateAccount(object sender, RoutedEventArgs e)
         {
             await RegisterAccount();
+            
         }
 
         private void Click_BtnSelectImage(object sender, RoutedEventArgs e)
@@ -133,6 +136,7 @@ namespace AhorcadoClient.Views
         private void RequiredFields_TextChanged(object sender, RoutedEventArgs e)
         {
             UpdateFormButtonState();
+            ValidateForm();
         }
         
         private void Password_TextChanged(object sender, RoutedEventArgs e)
@@ -143,6 +147,7 @@ namespace AhorcadoClient.Views
                 TbPassword.Text = passwordBox.Password;
 
             UpdateFormButtonState();
+            ValidateForm();
         }
 
         private void ShowPasswordCheckBox_Checked(object sender, RoutedEventArgs e)
@@ -172,7 +177,7 @@ namespace AhorcadoClient.Views
                 BirthDay = birthDay,
                 PhoneNumber = TbPhoneNumber.Text.Trim(),
                 EmailAddress = TbEmailAddress.Text.Trim(),
-                Username = TbUsername.Text.Trim(),
+                Username = TbUserName.Text.Trim(),
                 Password = TbPassword.Text.Trim(),
                 ProfilePic = ImageUtilities.ImageToByteArray(PlayerProfilePic.Source as BitmapSource),
                 SelectedLanguageID = 1
@@ -201,6 +206,39 @@ namespace AhorcadoClient.Views
                     }
                 });
             });
+        
+    }
+        private async Task CargarIdiomasAsync()
+        {
+            await ServiceClientManager.ExecuteServerAction(async () =>
+            {
+                var client = ServiceClientManager.Instance.Client;
+                var idiomas = client.GetLanguages();
+                await Application.Current.Dispatcher.InvokeAsync(() =>
+                {
+                    CbPreferedLanguage.ItemsSource = idiomas;
+                    CbPreferedLanguage.DisplayMemberPath = "LanguageName";
+                });
+            });
+        }
+        private async void SignInWindow_Loaded(object sender, RoutedEventArgs e)
+        {
+            
+            await CargarIdiomasAsync();
+        }
+        private void ValidateForm()
+        {
+            // Verifica si todos los campos obligatorios tienen contenido
+            bool isFormValid =
+                !string.IsNullOrWhiteSpace(TbFirstName.Text) &&
+                !string.IsNullOrWhiteSpace(TbLastName.Text) &&
+                !string.IsNullOrWhiteSpace(TbPhoneNumber.Text) &&
+                !string.IsNullOrWhiteSpace(TbEmailAddress.Text) &&
+                !string.IsNullOrWhiteSpace(TbBirthDay.Text) &&
+                CbPreferedLanguage.SelectedItem != null &&
+                !string.IsNullOrWhiteSpace(PbPassword.Password); // o TbPassword.Text si estás mostrando la contraseña
+
+            BtnCreateAccount.IsEnabled = isFormValid;
         }
 
     }
