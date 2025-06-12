@@ -70,7 +70,8 @@
                     <Button x:Name="BtnJoinGame"
                             Style="{StaticResource PrimaryButtonStyle}"
                             Content="{StaticResource Glb_JoinGame}"
-                            Click="Click_BtnJoinGame"/>
+                            Click="Click_BtnJoinGame"
+                            IsEnabled="False"/>
                 </StackPanel>
             </Border>
         </Grid>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ID="ea8391e1-fd2d-424b-bd8e-e534638f4e0a" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:8093/AhorcadoService" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="AhorcadoService3.xsd" MetadataType="Schema" ID="2c62d0e6-9abf-47ca-8f21-56fec5c25afd" SourceId="1" SourceUrl="http://localhost:8093/AhorcadoService?xsd=xsd3" />
+    <MetadataFile FileName="AhorcadoService.disco" MetadataType="Disco" ID="3c5b1903-a294-4fbc-8891-37f09900529b" SourceId="1" SourceUrl="http://localhost:8093/AhorcadoService?disco" />
+    <MetadataFile FileName="GameService.wsdl" MetadataType="Wsdl" ID="3b3db642-8e26-402c-bc74-8af386f63b1d" SourceId="1" SourceUrl="http://localhost:8093/AhorcadoService?wsdl" />
+    <MetadataFile FileName="AhorcadoService1.xsd" MetadataType="Schema" ID="975197b5-bf76-4d01-b7ef-6e2cf1706255" SourceId="1" SourceUrl="http://localhost:8093/AhorcadoService?xsd=xsd2" />
+    <MetadataFile FileName="AhorcadoService2.xsd" MetadataType="Schema" ID="1a292451-b76f-48b1-ab6d-b10d7221858b" SourceId="1" SourceUrl="http://localhost:8093/AhorcadoService?xsd=xsd0" />
+    <MetadataFile FileName="AhorcadoService.xsd" MetadataType="Schema" ID="b990dd76-9179-476d-b016-227cc792b277" SourceId="1" SourceUrl="http://localhost:8093/AhorcadoService?xsd=xsd1" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

@@ -60,6 +60,13 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="CallbackServices\GameCallbackClient.cs" />
+    <Compile Include="CallbackServices\GameServiceClient.cs" />
+    <Compile Include="Connected Services\CallbackServiceReference\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Connected Services\ServiceReference\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -94,9 +101,6 @@
     </Compile>
     <Compile Include="Views\ViewScoresPage.xaml.cs">
       <DependentUpon>ViewScoresPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\JoinMatchPage.xaml.cs">
-      <DependentUpon>JoinMatchPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\JoinMatchWindow.xaml.cs">
       <DependentUpon>JoinMatchWindow.xaml</DependentUpon>
@@ -173,10 +177,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Views\JoinMatchPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="Views\JoinMatchWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -216,6 +216,19 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="Connected Services\CallbackServiceReference\AhorcadoService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\CallbackServiceReference\AhorcadoService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\CallbackServiceReference\AhorcadoService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\CallbackServiceReference\AhorcadoService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\CallbackServiceReference\GameService.wsdl" />
     <None Include="Connected Services\ServiceReference\AhorcadoClient.ServiceReference.CategoryDTO.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -305,6 +318,7 @@
     <Resource Include="Resources\Icons\sort-header-icon.png" />
   </ItemGroup>
   <ItemGroup>
+    <WCFMetadataStorage Include="Connected Services\CallbackServiceReference\" />
     <WCFMetadataStorage Include="Connected Services\ServiceReference\" />
   </ItemGroup>
   <ItemGroup>
@@ -318,6 +332,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Connected Services\ServiceReference\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\CallbackServiceReference\AhorcadoService.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\CallbackServiceReference\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\CallbackServiceReference\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\CallbackServiceReference\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
