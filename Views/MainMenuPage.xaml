@@ -65,9 +65,10 @@
                                 </ResourceDictionary>
                             </Button.Tag>
                         </Button>
-                        
+
                         <Button Style="{DynamicResource MainMenuButton}"
-                                Content="{DynamicResource Glb_Scoreboards}">
+                                Content="{DynamicResource Glb_Scoreboards}"
+                                Click="Click_BtnViewScores">
                             <Button.Tag>
                                 <ResourceDictionary>
                                     <sys:String x:Key="IconPath">/Resources/Icons/scoreboard-icon.png</sys:String>

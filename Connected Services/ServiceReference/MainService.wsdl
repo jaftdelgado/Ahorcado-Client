@@ -34,7 +34,8 @@
       <xsd:import schemaLocation="http://localhost:8084/Service?xsd=xsd0" namespace="http://tempuri.org/" />
       <xsd:import schemaLocation="http://localhost:8084/Service?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
       <xsd:import schemaLocation="http://localhost:8084/Service?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Services.DTOs" />
-      <xsd:import schemaLocation="http://localhost:8084/Service?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+      <xsd:import schemaLocation="http://localhost:8084/Service?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/AhorcadoServices.DTOs" />
+      <xsd:import schemaLocation="http://localhost:8084/Service?xsd=xsd4" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="IMainManager_LogIn_InputMessage">
@@ -72,6 +73,12 @@
   </wsdl:message>
   <wsdl:message name="IMainManager_GetAvailableMatches_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetAvailableMatchesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMainManager_GetPlayerMatchHistory_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPlayerMatchHistory" />
+  </wsdl:message>
+  <wsdl:message name="IMainManager_GetPlayerMatchHistory_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPlayerMatchHistoryResponse" />
   </wsdl:message>
   <wsdl:message name="IMainManager_GetCategories_InputMessage">
     <wsdl:part name="parameters" element="tns:GetCategories" />
@@ -127,6 +134,10 @@
     <wsdl:operation name="GetAvailableMatches">
       <wsdl:input wsaw:Action="http://tempuri.org/IMatchManager/GetAvailableMatches" message="tns:IMainManager_GetAvailableMatches_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IMatchManager/GetAvailableMatchesResponse" message="tns:IMainManager_GetAvailableMatches_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPlayerMatchHistory">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMatchManager/GetPlayerMatchHistory" message="tns:IMainManager_GetPlayerMatchHistory_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMatchManager/GetPlayerMatchHistoryResponse" message="tns:IMainManager_GetPlayerMatchHistory_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetCategories">
       <wsdl:input wsaw:Action="http://tempuri.org/ICategoryManager/GetCategories" message="tns:IMainManager_GetCategories_InputMessage" />
@@ -206,6 +217,15 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="GetPlayerMatchHistory">
+      <soap12:operation soapAction="http://tempuri.org/IMatchManager/GetPlayerMatchHistory" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="GetCategories">
       <soap12:operation soapAction="http://tempuri.org/ICategoryManager/GetCategories" style="document" />
       <wsdl:input>
@@ -258,7 +278,7 @@
       <wsa10:EndpointReference>
         <wsa10:Address>net.tcp://localhost:8083/Service</wsa10:Address>
         <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
-          <Upn>MATEBOOK-D15\jafet</Upn>
+          <Upn>LAP\cecm1</Upn>
         </Identity>
       </wsa10:EndpointReference>
     </wsdl:port>
