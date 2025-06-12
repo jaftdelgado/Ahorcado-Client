@@ -8,6 +8,7 @@
     <sys:String x:Key="Glb_JoinGame">Unirse a Partida</sys:String>
     <sys:String x:Key="Glb_Scoreboards">Marcadores</sys:String>
     <sys:String x:Key="Glb_Loading">Cargando...</sys:String>
+    <sys:String x:Key="Glb_Accept">Aceptar</sys:String>
     <sys:String x:Key="Glb_Cancel">Cancelar</sys:String>
     <sys:String x:Key="Glb_Close">Cerrar</sys:String>
     <sys:String x:Key="Glb_TbUsername">Usuario:</sys:String>
@@ -15,6 +16,7 @@
     <sys:String x:Key="Glb_CheckBShowPassword">Mostrar contraseña</sys:String>
     <sys:String x:Key="Glb_BtnSelectImage">Seleccionar Imagen</sys:String>
     <sys:String x:Key="Glb_BtnDeleteImage">Eliminar Imagen</sys:String>
+    <sys:String x:Key="Glb_Score">Puntos:</sys:String>
     <sys:String x:Key="Glb_TbFirstName">Nombre(s):</sys:String>
     <sys:String x:Key="Glb_TbLastName">Apellido(s):</sys:String>
     <sys:String x:Key="Glb_TbEmailAddress">Correo Electrónico:</sys:String>
@@ -31,6 +33,30 @@
     <sys:String x:Key="GlbDialogT_DBNoConnection">Sin conexión a la base de datos</sys:String>
     <sys:String x:Key="GlbDialogD_DBNoConnection">No se pudo establecer conexión con la base de datos. Verifica la conexión a Internet o inténtalo de nuevo más tarde.</sys:String>
     <sys:String x:Key="GlbDialogT_SelectProfilePic">Selecciona la imagen de perfil</sys:String>
+
+    <!--#region Categories-->
+    <sys:String x:Key="Category_Animals">Animales</sys:String>
+    <sys:String x:Key="Category_Fruits">Frutas</sys:String>
+    <sys:String x:Key="Category_Countries">Países</sys:String>
+    <sys:String x:Key="Category_Sports">Deportes</sys:String>
+    <sys:String x:Key="Category_Movies">Películas</sys:String>
+    <sys:String x:Key="Category_Technology">Tecnología</sys:String>
+    <sys:String x:Key="Category_Food">Alimentos</sys:String>
+    <sys:String x:Key="Category_Colors">Colores</sys:String>
+    <sys:String x:Key="Category_Clothing">Ropa</sys:String>
+    <sys:String x:Key="Category_Music">Música</sys:String>
+    <!--#endregion-->
+
+    <!--#region Languages-->
+    <sys:String x:Key="Language_Spanish">Español (MX)</sys:String>
+    <sys:String x:Key="Language_English">Inglés (EU)</sys:String>
+    <!--#endregion-->
+
+    <!--#region Difficulties-->
+        <sys:String x:Key="Difficulty_Easy">Fácil</sys:String>
+        <sys:String x:Key="Difficulty_Normal">Normal</sys:String>
+        <sys:String x:Key="Difficulty_Hard">Difícil</sys:String>
+    <!--#endregion-->
 
     <!--#region SignIn -->
     <sys:String x:Key="SignIn_Desc">Ingresa los datos de tu cuenta para poder acceder a Ahorcado.</sys:String>

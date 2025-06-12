@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Windows;
 
 namespace AhorcadoClient.Model
 {
@@ -25,5 +26,14 @@ namespace AhorcadoClient.Model
         public string Password { get; set; }
 
         public int? SelectedLanguageID { get; set; }
+
+        public string DisplayScore
+        {
+            get
+            {
+                var label = Application.Current.TryFindResource("Glb_Score");
+                return $"{label} {TotalScore}";
+            }
+        }
     }
 }

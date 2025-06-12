@@ -157,10 +157,6 @@ namespace AhorcadoClient.Views
             UpdateFormButtonState();
         }
 
-        private void TextBlock_MouseLeftButtonUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
-        {
-
-        }
         private async Task RegisterAccount()
         {
             if (!DateTime.TryParse(TbBirthDay.Text.Trim(), out DateTime birthDay))
@@ -179,7 +175,7 @@ namespace AhorcadoClient.Views
                 Username = TbUsername.Text.Trim(),
                 Password = TbPassword.Text.Trim(),
                 ProfilePic = ImageUtilities.ImageToByteArray(PlayerProfilePic.Source as BitmapSource),
-                SelectedLanguageID = 1 // Puedes ajustar esto si usas selección de idioma
+                SelectedLanguageID = 1
             };
 
             await ServiceClientManager.ExecuteServerAction(async () =>

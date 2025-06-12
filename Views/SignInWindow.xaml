@@ -74,7 +74,9 @@
                         Background="{StaticResource PanelBrush}"
                         CornerRadius="16"
                         VerticalAlignment="Center" HorizontalAlignment="Center"
-                        BorderThickness="1" BorderBrush="{StaticResource BorderBrush}"
+                        BorderThickness="1" 
+                        BorderBrush="{StaticResource BorderBrush}"
+                        Visibility="Collapsed"
                         Width="560" Height="Auto">
                     <Grid>
                         <Grid.RowDefinitions>

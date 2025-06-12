@@ -6,8 +6,8 @@
         xmlns:local="clr-namespace:AhorcadoClient.Views"
         mc:Ignorable="d"
         Title="MainWindow"
-        Height="720"
-        Width="1080"
+        Height="620"
+        Width="980"
         WindowStartupLocation="CenterScreen">
     <Border Background="{StaticResource BackgroundBrush}">
         <Grid>

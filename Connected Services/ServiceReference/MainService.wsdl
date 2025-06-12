@@ -55,11 +55,23 @@
   <wsdl:message name="IMainManager_UpdatePlayerInfo_OutputMessage">
     <wsdl:part name="parameters" element="tns:UpdatePlayerInfoResponse" />
   </wsdl:message>
-  <wsdl:message name="IMainManager_Ping_InputMessage">
-    <wsdl:part name="parameters" element="tns:Ping" />
+  <wsdl:message name="IMainManager_CreateMatch_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateMatch" />
   </wsdl:message>
-  <wsdl:message name="IMainManager_Ping_OutputMessage">
-    <wsdl:part name="parameters" element="tns:PingResponse" />
+  <wsdl:message name="IMainManager_CreateMatch_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateMatchResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMainManager_JoinMatch_InputMessage">
+    <wsdl:part name="parameters" element="tns:JoinMatch" />
+  </wsdl:message>
+  <wsdl:message name="IMainManager_JoinMatch_OutputMessage">
+    <wsdl:part name="parameters" element="tns:JoinMatchResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMainManager_GetAvailableMatches_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAvailableMatches" />
+  </wsdl:message>
+  <wsdl:message name="IMainManager_GetAvailableMatches_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAvailableMatchesResponse" />
   </wsdl:message>
   <wsdl:message name="IMainManager_GetCategories_InputMessage">
     <wsdl:part name="parameters" element="tns:GetCategories" />
@@ -79,29 +91,17 @@
   <wsdl:message name="IMainManager_GetWords_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetWordsResponse" />
   </wsdl:message>
-  <wsdl:message name="IMainManager_CreateMatch_InputMessage">
-    <wsdl:part name="parameters" element="tns:CreateMatch" />
-  </wsdl:message>
-  <wsdl:message name="IMainManager_CreateMatch_OutputMessage">
-    <wsdl:part name="parameters" element="tns:CreateMatchResponse" />
-  </wsdl:message>
-  <wsdl:message name="IMainManager_JoinMatch_InputMessage">
-    <wsdl:part name="parameters" element="tns:JoinMatch" />
-  </wsdl:message>
-  <wsdl:message name="IMainManager_JoinMatch_OutputMessage">
-    <wsdl:part name="parameters" element="tns:JoinMatchResponse" />
-  </wsdl:message>
   <wsdl:message name="IMainManager_GetLanguages_InputMessage">
     <wsdl:part name="parameters" element="tns:GetLanguages" />
   </wsdl:message>
   <wsdl:message name="IMainManager_GetLanguages_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetLanguagesResponse" />
   </wsdl:message>
-  <wsdl:message name="IMainManager_GetAvailableMatches_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetAvailableMatches" />
+  <wsdl:message name="IMainManager_Ping_InputMessage">
+    <wsdl:part name="parameters" element="tns:Ping" />
   </wsdl:message>
-  <wsdl:message name="IMainManager_GetAvailableMatches_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetAvailableMatchesResponse" />
+  <wsdl:message name="IMainManager_Ping_OutputMessage">
+    <wsdl:part name="parameters" element="tns:PingResponse" />
   </wsdl:message>
   <wsdl:portType name="IMainManager">
     <wsdl:operation name="LogIn">
@@ -116,37 +116,37 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IPlayerManager/UpdatePlayerInfo" message="tns:IMainManager_UpdatePlayerInfo_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IPlayerManager/UpdatePlayerInfoResponse" message="tns:IMainManager_UpdatePlayerInfo_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="CreateMatch">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMatchManager/CreateMatch" message="tns:IMainManager_CreateMatch_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMatchManager/CreateMatchResponse" message="tns:IMainManager_CreateMatch_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="JoinMatch">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMatchManager/JoinMatch" message="tns:IMainManager_JoinMatch_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMatchManager/JoinMatchResponse" message="tns:IMainManager_JoinMatch_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAvailableMatches">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMatchManager/GetAvailableMatches" message="tns:IMainManager_GetAvailableMatches_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMatchManager/GetAvailableMatchesResponse" message="tns:IMainManager_GetAvailableMatches_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCategories">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICategoryManager/GetCategories" message="tns:IMainManager_GetCategories_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICategoryManager/GetCategoriesResponse" message="tns:IMainManager_GetCategories_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDifficults">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWordManager/GetDifficults" message="tns:IMainManager_GetDifficults_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWordManager/GetDifficultsResponse" message="tns:IMainManager_GetDifficults_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetWords">
+      <wsdl:input wsaw:Action="http://tempuri.org/IWordManager/GetWords" message="tns:IMainManager_GetWords_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IWordManager/GetWordsResponse" message="tns:IMainManager_GetWords_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLanguages">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILanguageManager/GetLanguages" message="tns:IMainManager_GetLanguages_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILanguageManager/GetLanguagesResponse" message="tns:IMainManager_GetLanguages_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="Ping">
       <wsdl:input wsaw:Action="http://tempuri.org/IMainManager/Ping" message="tns:IMainManager_Ping_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IMainManager/PingResponse" message="tns:IMainManager_Ping_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="GetCategories">
-      <wsdl:input wsaw:Action="http://tempuri.org/IMainManager/GetCategories" message="tns:IMainManager_GetCategories_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IMainManager/GetCategoriesResponse" message="tns:IMainManager_GetCategories_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="GetDifficults">
-      <wsdl:input wsaw:Action="http://tempuri.org/IMainManager/GetDifficults" message="tns:IMainManager_GetDifficults_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IMainManager/GetDifficultsResponse" message="tns:IMainManager_GetDifficults_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="GetWords">
-      <wsdl:input wsaw:Action="http://tempuri.org/IMainManager/GetWords" message="tns:IMainManager_GetWords_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IMainManager/GetWordsResponse" message="tns:IMainManager_GetWords_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="CreateMatch">
-      <wsdl:input wsaw:Action="http://tempuri.org/IMainManager/CreateMatch" message="tns:IMainManager_CreateMatch_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IMainManager/CreateMatchResponse" message="tns:IMainManager_CreateMatch_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="JoinMatch">
-      <wsdl:input wsaw:Action="http://tempuri.org/IMainManager/JoinMatch" message="tns:IMainManager_JoinMatch_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IMainManager/JoinMatchResponse" message="tns:IMainManager_JoinMatch_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="GetLanguages">
-      <wsdl:input wsaw:Action="http://tempuri.org/IMainManager/GetLanguages" message="tns:IMainManager_GetLanguages_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IMainManager/GetLanguagesResponse" message="tns:IMainManager_GetLanguages_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="GetAvailableMatches">
-      <wsdl:input wsaw:Action="http://tempuri.org/IMainManager/GetAvailableMatches" message="tns:IMainManager_GetAvailableMatches_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IMainManager/GetAvailableMatchesResponse" message="tns:IMainManager_GetAvailableMatches_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="NetTcpBinding_IMainManager" type="tns:IMainManager">
@@ -179,44 +179,8 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="Ping">
-      <soap12:operation soapAction="http://tempuri.org/IMainManager/Ping" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetCategories">
-      <soap12:operation soapAction="http://tempuri.org/IMainManager/GetCategories" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetDifficults">
-      <soap12:operation soapAction="http://tempuri.org/IMainManager/GetDifficults" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetWords">
-      <soap12:operation soapAction="http://tempuri.org/IMainManager/GetWords" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
     <wsdl:operation name="CreateMatch">
-      <soap12:operation soapAction="http://tempuri.org/IMainManager/CreateMatch" style="document" />
+      <soap12:operation soapAction="http://tempuri.org/IMatchManager/CreateMatch" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -225,16 +189,7 @@
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="JoinMatch">
-      <soap12:operation soapAction="http://tempuri.org/IMainManager/JoinMatch" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="GetLanguages">
-      <soap12:operation soapAction="http://tempuri.org/IMainManager/GetLanguages" style="document" />
+      <soap12:operation soapAction="http://tempuri.org/IMatchManager/JoinMatch" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -243,7 +198,52 @@
       </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="GetAvailableMatches">
-      <soap12:operation soapAction="http://tempuri.org/IMainManager/GetAvailableMatches" style="document" />
+      <soap12:operation soapAction="http://tempuri.org/IMatchManager/GetAvailableMatches" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCategories">
+      <soap12:operation soapAction="http://tempuri.org/ICategoryManager/GetCategories" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDifficults">
+      <soap12:operation soapAction="http://tempuri.org/IWordManager/GetDifficults" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetWords">
+      <soap12:operation soapAction="http://tempuri.org/IWordManager/GetWords" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLanguages">
+      <soap12:operation soapAction="http://tempuri.org/ILanguageManager/GetLanguages" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Ping">
+      <soap12:operation soapAction="http://tempuri.org/IMainManager/Ping" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -258,7 +258,7 @@
       <wsa10:EndpointReference>
         <wsa10:Address>net.tcp://localhost:8083/Service</wsa10:Address>
         <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
-          <Upn>LAP\cecm1</Upn>
+          <Upn>MATEBOOK-D15\jafet</Upn>
         </Identity>
       </wsa10:EndpointReference>
     </wsdl:port>

@@ -227,24 +227,25 @@
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
 
-                            <Grid Width="30" Height="30" Grid.Column="0">
+                            <Grid Width="38" Height="38" Grid.Column="0">
                                 <Image x:Name="PART_ProfileImage"
                                        Source="/Resources/Images/default-profile-pic.png" 
                                        Stretch="Fill" 
                                        RenderOptions.BitmapScalingMode="HighQuality">
                                     <Image.Clip>
-                                        <EllipseGeometry Center="15 15" RadiusX="15" RadiusY="15"/>
+                                        <EllipseGeometry Center="19 19" RadiusX="19" RadiusY="19"/>
                                     </Image.Clip>
                                 </Image>
                             </Grid>
 
-                            <StackPanel Grid.Column="1" Margin="8 0" VerticalAlignment="Center">
+                            <StackPanel Grid.Column="1" Margin="10 0" VerticalAlignment="Center">
                                 <TextBlock x:Name="PART_UserName" 
-                                       FontFamily="{StaticResource BarlowMedium}"
-                                       Style="{DynamicResource RegularLabelStyle}" />
-                                <TextBlock x:Name="PART_PlayerPoints" 
-                                       FontSize="11"
-                                       Style="{DynamicResource DescriptionLabelStyle}"/>
+                                           FontFamily="{StaticResource BarlowMedium}"
+                                           Style="{DynamicResource RegularLabelStyle}"
+                                           FontSize="15"/>
+                                <TextBlock x:Name="PART_PlayerPoints"
+                                           Style="{DynamicResource DescriptionLabelStyle}"
+                                           FontSize="13"/>
                             </StackPanel>
                         </Grid>
                     </Border>

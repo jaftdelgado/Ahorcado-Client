@@ -31,8 +31,10 @@
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
 
-                    <Button Grid.Column="0"
-                            Style="{StaticResource UserButtonStyle}"/>
+                    <Button x:Name="BtnProfile"
+                            Grid.Column="0"
+                            Style="{StaticResource UserButtonStyle}"
+                            Click="Click_BtnProfile"/>
                 </Grid>
             </Border>
 

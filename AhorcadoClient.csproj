@@ -63,6 +63,7 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
     <Compile Include="Model\Category.cs" />
+    <Compile Include="Model\Difficulty.cs" />
     <Compile Include="Model\Language.cs" />
     <Compile Include="Model\Match.cs" />
     <Compile Include="Model\Player.cs" />
@@ -74,6 +75,7 @@
     <Compile Include="Utilities\ImageUtilities.cs" />
     <Compile Include="Utilities\NavigationManager.cs" />
     <Compile Include="Utilities\PasswordUtilities.cs" />
+    <Compile Include="Utilities\PopUpUtilities.cs" />
     <Compile Include="Utilities\ServiceClientManager.cs" />
     <Compile Include="Views\CreateGameWindow.xaml.cs">
       <DependentUpon>CreateGameWindow.xaml</DependentUpon>
@@ -83,6 +85,9 @@
     </Compile>
     <Compile Include="Views\Dialogs\MessageDialog.xaml.cs">
       <DependentUpon>MessageDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\EditProfileWindow.xaml.cs">
+      <DependentUpon>EditProfileWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\JoinMatchPage.xaml.cs">
       <DependentUpon>JoinMatchPage.xaml</DependentUpon>
@@ -140,6 +145,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Dialogs\MessageDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\EditProfileWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
