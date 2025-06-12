@@ -85,13 +85,9 @@ namespace AhorcadoClient.Views
                     await Application.Current.Dispatcher.InvokeAsync(() =>
                     {
                         if (isWinner)
-                        {
                             ShowVictoryDialog(opponentUsername);
-                        }
                         else
-                        {
                             ShowDefeatDialog(opponentUsername);
-                        }
                     });
                 }
             });
@@ -429,7 +425,6 @@ namespace AhorcadoClient.Views
                 KeyboardPanel.IsEnabled = true;
             }
         }
-
 
         private void RevealLetters(string guessedLetter)
         {
