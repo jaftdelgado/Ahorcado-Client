@@ -213,7 +213,6 @@ namespace AhorcadoClient.Views
         
         private void ValidateForm()
         {
-            // Verifica si todos los campos obligatorios tienen contenido
             bool isFormValid =
                 !string.IsNullOrWhiteSpace(TbFirstName.Text) &&
                 !string.IsNullOrWhiteSpace(TbLastName.Text) &&
@@ -221,9 +220,18 @@ namespace AhorcadoClient.Views
                 !string.IsNullOrWhiteSpace(TbEmailAddress.Text) &&
                 !string.IsNullOrWhiteSpace(TbBirthDay.Text) &&
                 CbPreferedLanguage.SelectedItem != null &&
-                !string.IsNullOrWhiteSpace(PbPassword.Password); // o TbPassword.Text si estás mostrando la contraseña
+                !string.IsNullOrWhiteSpace(PbPassword.Password);
 
             BtnCreateAccount.IsEnabled = isFormValid;
+        }
+
+        private void OnLanguageChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (cbLanguages.SelectedItem is ComboBoxItem selectedItem)
+            {
+                string cultureCode = selectedItem.Tag.ToString();
+                ((App)Application.Current).ChangeCulture(cultureCode);
+            }
         }
 
     }

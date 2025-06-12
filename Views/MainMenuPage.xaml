@@ -10,12 +10,10 @@
       Title="MainMenuPage">
 
     <Grid Background="{StaticResource BackgroundBrush}">
-        <!-- Fondo con opacidad reducida -->
         <Image Source="/Resources/Images/MainMenuBG.png" 
                Stretch="UniformToFill"
                Opacity="0.05"/>
 
-        <!-- Estructura principal -->
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
@@ -27,14 +25,26 @@
                     Padding="10">
                 <Grid>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto"/>
                         <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
 
                     <Button x:Name="BtnProfile"
                             Grid.Column="0"
                             Style="{StaticResource UserButtonStyle}"
                             Click="Click_BtnProfile"/>
+                    <ComboBox x:Name="cbLanguages"
+                              Grid.Column="1"
+                              Width="120" 
+                              Style="{StaticResource ComboBoxStyle}"
+                              VerticalAlignment="Bottom" HorizontalAlignment="Left"
+                              Margin="20"
+                              Tag="{DynamicResource Glb_CbLanguage}"
+                              SelectionChanged="OnLanguageChanged">
+                        <ComboBoxItem Content="{DynamicResource Language_English}" Tag="en-US"/>
+                        <ComboBoxItem Content="{DynamicResource Language_Spanish}" Tag="es-MX" IsSelected="True"/>
+                    </ComboBox>
+
                 </Grid>
             </Border>
 

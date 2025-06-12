@@ -39,6 +39,7 @@ namespace AhorcadoClient.Views
             InitializeComponent();
 
             _matchInfo = matchInfo;
+            _remainingAttempts = 6;
             _gameService = gameService;
 
             _gameService.EnsureConnection();
@@ -53,6 +54,61 @@ namespace AhorcadoClient.Views
             ConfigureUIByRole(matchInfo);
             UpdateAttemptsText();
             UpdateHangmanImage();
+        }
+
+        private async Task DeclareMatchResultAsync(MatchInfoDTO match)
+        {
+            await ServiceClientManager.ExecuteServerAction(async () =>
+            {
+                var client = ServiceClientManager.Instance.Client;
+                int currentPlayerID = CurrentSession.LoggedInPlayer.PlayerID;
+
+                bool resultDeclared = false;
+                bool isWinner = false;
+                string opponentUsername = null;
+
+                if (match.Player1.PlayerId == currentPlayerID)
+                {
+                    resultDeclared = client.DeclareVictoryForPlayer1(match.MatchID);
+                    isWinner = resultDeclared;
+                    opponentUsername = match.Player2.Username;
+                }
+                else if (match.Player2.PlayerId == currentPlayerID)
+                {
+                    resultDeclared = client.DeclareVictoryForPlayer2(match.MatchID);
+                    isWinner = resultDeclared;
+                    opponentUsername = match.Player1.Username;
+                }
+
+                if (resultDeclared)
+                {
+                    await Application.Current.Dispatcher.InvokeAsync(() =>
+                    {
+                        if (isWinner)
+                        {
+                            ShowVictoryDialog(opponentUsername);
+                        }
+                        else
+                        {
+                            ShowDefeatDialog(opponentUsername);
+                        }
+                    });
+                }
+            });
+        }
+
+        private void ShowVictoryDialog(string opponentUsername)
+        {
+            string title = (string)Application.Current.Resources["Match_DialogTVictory"];
+            string message = string.Format((string)Application.Current.Resources["Match_DialogDVictory"], opponentUsername);
+            MessageDialog.Show(title, message, AlertType.SUCCESS, () => NavigationManager.Instance.NavigateToPage(new MainMenuPage()));
+        }
+
+        private void ShowDefeatDialog(string opponentUsername)
+        {
+            string title = (string)Application.Current.Resources["Match_DialogTDefeat"];
+            string message = string.Format((string)Application.Current.Resources["Match_DialogDDefeat"], opponentUsername);
+            MessageDialog.Show(title, message, AlertType.SUCCESS, () => NavigationManager.Instance.NavigateToPage(new MainMenuPage()));
         }
 
         private void SetPlayersInfo()
@@ -126,6 +182,7 @@ namespace AhorcadoClient.Views
                 _gameService.Callback.OnPlayerLeftAction = (matchId, playerId) => OnPlayerLeft(playerId);
                 _gameService.Callback.OnLetterGuessedAction = (matchId, letter, isCorrect, remainingAttempts, isGameOver) =>
                     OnLetterGuessed(letter, isCorrect, remainingAttempts, isGameOver);
+                _gameService.Callback.OnGameOverAction = (matchId, winnerPlayerId) => OnGameOver(winnerPlayerId);
             }
         }
         private void OnMatchReady(MatchInfoDTO matchInfo)
@@ -153,11 +210,7 @@ namespace AhorcadoClient.Views
                 {
                     UpdatePlayerInfo(Player2Username, Player2FullName, Player2Pic, playerInfo);
 
-                    // Habilitar teclado si soy el jugador 2
-                    if (IsPlayer2)
-                    {
-                        KeyboardPanel.IsEnabled = true;
-                    }
+                    if (IsPlayer2) KeyboardPanel.IsEnabled = true;
                 }
             });
         }
@@ -206,6 +259,28 @@ namespace AhorcadoClient.Views
                         KeyboardPanel.IsEnabled = true;
                     }
                 }
+            });
+        }
+
+        private void OnGameOver(int winnerPlayerId)
+        {
+            Dispatcher.Invoke(() =>
+            {
+                bool isWinner = winnerPlayerId == CurrentSession.LoggedInPlayer.PlayerID;
+                string opponentUsername = IsPlayer1 ? _matchInfo.Player2.Username : _matchInfo.Player1.Username;
+
+                if (isWinner)
+                {
+                    ShowVictoryDialog(opponentUsername);
+                }
+                else
+                {
+                    ShowDefeatDialog(opponentUsername);
+                }
+
+                KeyboardPanel.IsEnabled = false;
+                DisableAllKeyButtons();
+                RevealFullWord();
             });
         }
 
@@ -270,25 +345,13 @@ namespace AhorcadoClient.Views
             }
         }
 
-        private void HandleGameOver(bool isWordGuessed)
+        private async void HandleGameOver(bool isWordGuessed)
         {
             DisableAllKeyButtons();
 
-            if (_remainingAttempts <= 0)
-            {
-                RevealFullWord();
-                MessageDialog.Show("Fin del juego",
-                    IsPlayer1 ? "¡Ganaste! El jugador 2 no adivinó la palabra"
-                             : "¡Perdiste! No adivinaste la palabra",
-                    IsPlayer1 ? AlertType.SUCCESS : AlertType.ERROR);
-            }
-            else
-            {
-                MessageDialog.Show("Fin del juego",
-                    IsPlayer1 ? "¡Perdiste! El jugador 2 adivinó la palabra"
-                             : "¡Ganaste! Adivinaste la palabra",
-                    IsPlayer2 ? AlertType.SUCCESS : AlertType.ERROR);
-            }
+            if (_remainingAttempts <= 0) RevealFullWord();
+
+            await DeclareMatchResultAsync(_matchInfo);
         }
 
         private void ShowMatchReadyNotification()

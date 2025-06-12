@@ -109,6 +109,13 @@
     <sys:String x:Key="Match_Desc">Pon a prueba tu ingenio adivinando la palabra oculta antes de que se complete el dibujo del ahorcado. Selecciona letras del alfabeto, evita errores y demuestra tu vocabulario. ¡Cada intento cuenta!</sys:String>
     <sys:String x:Key="Match_PlayersTitle">Jugadores</sys:String>
     <sys:String x:Key="Match_Attempts">INTENTOS</sys:String>
+    <sys:String x:Key="Match_Category">CATEGORÍA</sys:String>
+    <sys:String x:Key="Match_Language">IDIOMA</sys:String>
+    <sys:String x:Key="Match_DialogTVictory">¡Has ganado!</sys:String>
+    <sys:String x:Key="Match_DialogDVictory">Felicidades, lograste adivinar la palabra y venciste a {0}.</sys:String>
+    <sys:String x:Key="Match_DialogTDefeat">Lo siento</sys:String>
+    <sys:String x:Key="Match_DialogDDefeat">Oh no... Has perdido contra {0}. ¡Mejor suerte la próxima vez!</sys:String>
+    <sys:String x:Key="Match_Result_Error">No se pudo registrar el resultado de la partida.</sys:String>
     <!--#endregion-->
 
     <!--#region JoinGameWindow-->

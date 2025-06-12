@@ -73,7 +73,6 @@ namespace AhorcadoClient.Views
                 var client = ServiceClientManager.Instance.Client;
                 var currentPlayer = CurrentSession.LoggedInPlayer;
 
-                // Obtener el DTO de jugador actual
                 var playerDTO = new PlayerInfoDTO
                 {
                     PlayerId = currentPlayer.PlayerID,
@@ -82,8 +81,6 @@ namespace AhorcadoClient.Views
                     ProfilePic = currentPlayer.ProfilePic
                 };
 
-                // Obtener el WordInfoDTO desde matchDTO.Word
-                // Asumiendo que client.JoinMatch devuelve el MatchInfoDTO actualizado
                 var matchDTO = client.JoinMatch(selectedMatch.MatchID, playerDTO.PlayerId);
 
                 if (matchDTO == null)

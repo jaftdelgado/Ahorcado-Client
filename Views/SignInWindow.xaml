@@ -283,6 +283,16 @@
                         </Border>
                     </Grid>
                 </Border>
+                <ComboBox x:Name="cbLanguages"
+                          Width="120" 
+                          Style="{StaticResource ComboBoxStyle}"
+                          VerticalAlignment="Bottom" HorizontalAlignment="Left"
+                          Margin="20"
+                          Tag="{DynamicResource Glb_CbLanguage}"
+                          SelectionChanged="OnLanguageChanged">
+                    <ComboBoxItem Content="{DynamicResource Language_English}" Tag="en-US"/>
+                    <ComboBoxItem Content="{DynamicResource Language_Spanish}" Tag="es-MX" IsSelected="True"/>
+                </ComboBox>
             </Grid>
         </Grid>
 

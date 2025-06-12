@@ -1,5 +1,8 @@
 ﻿using AhorcadoClient.Utilities;
+using System.Windows;
+using System;
 using System.Windows.Controls;
+using System.Linq;
 
 namespace AhorcadoClient.Views
 {
@@ -46,6 +49,16 @@ namespace AhorcadoClient.Views
         private void Click_BtnProfile(object sender, System.Windows.RoutedEventArgs e)
         {
             EditProfileWindow.Show();
+        }
+
+
+        private void OnLanguageChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (cbLanguages.SelectedItem is ComboBoxItem selectedItem)
+            {
+                string cultureCode = selectedItem.Tag.ToString();
+                ((App)Application.Current).ChangeCulture(cultureCode);
+            }
         }
     }
 }
