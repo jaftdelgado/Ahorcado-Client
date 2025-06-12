@@ -1,6 +1,8 @@
-﻿using AhorcadoClient.Utilities;
+using AhorcadoClient.Utilities;
 using System.Windows;
 using System;
+using AhorcadoClient.ServiceReference;
+using AhorcadoClient.Utilities;
 using System.Windows.Controls;
 using System.Linq;
 
@@ -48,7 +50,7 @@ namespace AhorcadoClient.Views
 
         private void Click_BtnProfile(object sender, System.Windows.RoutedEventArgs e)
         {
-            EditProfileWindow.Show();
+            EditProfileWindow.Show(CurrentSession.LoggedInPlayer);
         }
 
 
