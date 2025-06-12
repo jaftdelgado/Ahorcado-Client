@@ -95,9 +95,6 @@
     <Compile Include="Views\ViewScoresPage.xaml.cs">
       <DependentUpon>ViewScoresPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\JoinMatchPage.xaml.cs">
-      <DependentUpon>JoinMatchPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Views\JoinMatchWindow.xaml.cs">
       <DependentUpon>JoinMatchWindow.xaml</DependentUpon>
     </Compile>
@@ -170,10 +167,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\ViewScoresPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Views\JoinMatchPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
