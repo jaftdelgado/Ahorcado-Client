@@ -26,7 +26,7 @@ namespace AhorcadoClient.Views
             await ServiceClientManager.ExecuteServerAction(async () =>
             {
                 var client = ServiceClientManager.Instance.Client;
-                var partidas = client.GetAvailableMatches();
+                var partidas = client.GetAvailableMatches(CurrentSession.LoggedInPlayer.PlayerID);
                 await Application.Current.Dispatcher.InvokeAsync(() =>
                 {
                     DgMatches.ItemsSource = partidas;

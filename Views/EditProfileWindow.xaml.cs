@@ -19,7 +19,6 @@ namespace AhorcadoClient.Views
         {
             InitializeComponent();
             _player = player;
-            LoadPlayerData(_player);
             Loaded += SignInWindow_Loaded;
             UpdateFormButtonState();
         }
@@ -226,6 +225,7 @@ namespace AhorcadoClient.Views
         {
 
             await CargarIdiomasAsync();
+            LoadPlayerData(_player);
         }
     }
 }

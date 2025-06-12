@@ -63,6 +63,7 @@ namespace AhorcadoClient.Views
                     ProfilePic = dto.ProfilePic,
                     TotalScore = dto.TotalScore,
                     Username = dto.Username,
+                    Password = password,
                     SelectedLanguageID = dto.SelectedLanguageID
                 };
 

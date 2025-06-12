@@ -28,7 +28,7 @@ namespace AhorcadoClient.Views
             await ServiceClientManager.ExecuteServerAction(async () =>
             {
                 var client = ServiceClientManager.Instance.Client;
-                var matchDTOs = client.GetAvailableMatches();
+                var matchDTOs = client.GetAvailableMatches(CurrentSession.LoggedInPlayer.PlayerID);
 
                 var matches = matchDTOs.Select(dto => new Match
                 {
