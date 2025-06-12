@@ -155,13 +155,13 @@ namespace AhorcadoClient.Views
 
         private void ShowPasswordCheckBox_Checked(object sender, RoutedEventArgs e)
         {
-            PasswordUtilities.ShowPassword(TbPassword, PbPassword);
+            PasswordUtilities.ShowPassword(TbLogInPassword, PbLoginPassword);
             UpdateFormButtonState();
         }
 
         private void ShowPasswordCheckBox_Unchecked(object sender, RoutedEventArgs e)
         {
-            PasswordUtilities.HidePassword(TbPassword, PbPassword);
+            PasswordUtilities.HidePassword(TbLogInPassword, PbLoginPassword);
             UpdateFormButtonState();
         }
 

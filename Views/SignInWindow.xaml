@@ -45,10 +45,17 @@
                             <PasswordBox x:Name="PbLoginPassword"
                                         Style="{StaticResource PasswordBoxStyle}"
                                         Tag="{DynamicResource Glb_TbPassword}"/>
+                            <TextBox x:Name="TbLogInPassword"
+                                     Visibility="Collapsed"
+                                     Tag="{DynamicResource Glb_TbPassword}"
+                                     Style="{DynamicResource TextBoxStyle}"
+                                     TextChanged="Password_TextChanged"/>
                             <CheckBox x:Name="ShowPasswordCheckBox"
                                      Style="{StaticResource CheckBoxStyle}"
                                      Content="{DynamicResource Glb_CheckBShowPassword}"
-                                     Margin="0 10 0 20"/>
+                                     Margin="0 10 0 20"
+                                     Checked="ShowPasswordCheckBox_Checked"
+                                     Unchecked="ShowPasswordCheckBox_Unchecked"/>
 
                             <Button x:Name="BtnSignIn"
                                     Style="{StaticResource PrimaryButtonStyle}"
