@@ -85,13 +85,9 @@ namespace AhorcadoClient.Views
                     await Application.Current.Dispatcher.InvokeAsync(() =>
                     {
                         if (isWinner)
-                        {
                             ShowVictoryDialog(opponentUsername);
-                        }
                         else
-                        {
                             ShowDefeatDialog(opponentUsername);
-                        }
                     });
                 }
             });
