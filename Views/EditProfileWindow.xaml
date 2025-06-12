@@ -23,10 +23,10 @@
             <Border BorderBrush="{StaticResource BorderBrush}"
                 BorderThickness="0 0 0 1">
                 <StackPanel Margin="20">
-                    <TextBlock Text="{StaticResource Glb_CreateAccount}"
+                    <TextBlock
                            Style="{StaticResource HeaderLabelStyle}"
-                           Margin="0 0 0 2"/>
-                    <TextBlock Text="{StaticResource CreateAccount_Desc}"
+                           Margin="0 0 0 2"><Run Language="es-es" Text="Modificar cuenta"/></TextBlock>
+                    <TextBlock Text="{StaticResource EditProfile_Desc}"
                            TextWrapping="Wrap"
                            Style="{StaticResource DescriptionLabelStyle}"/>
                 </StackPanel>
@@ -112,12 +112,6 @@
                                      Style="{DynamicResource TextBoxStyle}"
                                      Margin="0 0 10 0"
                                      TextChanged="RequiredFields_TextChanged"/>
-                                <TextBox x:Name="TbEmailAddress" 
-                                     Grid.Column="1" Grid.Row="1"
-                                     Tag="{DynamicResource Glb_TbEmailAddress}"
-                                     Style="{DynamicResource TextBoxStyle}"
-                                     Margin="10 0 0 0"
-                                     TextChanged="RequiredFields_TextChanged"/>
                             </Grid>
                         </Grid>
 
@@ -165,7 +159,8 @@
                                     <ColumnDefinition Width="*"/>
                                 </Grid.ColumnDefinitions>
 
-                                <TextBox Grid.Column="0" 
+                                <TextBox x:Name="TbUserName"
+                                    Grid.Column="0" 
                                      VerticalAlignment="Top"
                                      Tag="{DynamicResource Glb_TbUsername}"
                                      Style="{DynamicResource TextBoxStyle}"
@@ -209,9 +204,9 @@
                         Click="Click_BtnCancel"/>
                     <Button x:Name="BtnEditAccount"
                         Style="{DynamicResource PrimaryButtonStyle}"
-                        Content="{DynamicResource Glb_CreateGame}"
+                        Content="Modificar"
                         Click="Click_BtnEditAccount"
-                        IsEnabled="False"/>
+                        IsEnabled="True"/>
                 </StackPanel>
             </Border>
         </Grid>
