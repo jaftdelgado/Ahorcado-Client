@@ -205,7 +205,7 @@
                                                      Style="{DynamicResource TextBoxStyle}"
                                                      TextChanged="RequiredFields_TextChanged"
                                                      Margin="0 0 10 0"/>
-                                            <ComboBox Grid.Row="3" Grid.Column="1"
+                                            <ComboBox  Grid.Column="1"
                       x:Name="CbPreferedLanguage"
                       Tag="{DynamicResource Glb_CbPreferedLanguage}"
                       Style="{DynamicResource ComboBoxStyle}"
@@ -228,7 +228,9 @@
                                                 <ColumnDefinition Width="*"/>
                                             </Grid.ColumnDefinitions>
 
-                                            <TextBox Grid.Column="0" 
+                                            <TextBox 
+                                                     x:Name="TbUserName"
+                                                     Grid.Column="0" 
                                                      VerticalAlignment="Top"
                                                      Tag="{DynamicResource Glb_TbUsername}"
                                                      Style="{DynamicResource TextBoxStyle}"
@@ -274,7 +276,7 @@
                                         Style="{DynamicResource PrimaryButtonStyle}"
                                         Content="{DynamicResource Glb_CreateGame}"
                                         Click="Click_BtnCreateAccount"
-                                        IsEnabled="False"/>
+                                        IsEnabled="True"/>
                             </StackPanel>
                         </Border>
                     </Grid>
