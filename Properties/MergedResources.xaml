@@ -3,5 +3,6 @@
                     xmlns:sys="clr-namespace:System;assembly=mscorlib">
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="Strings.es-MX.xaml"/>
+        <ResourceDictionary Source="Strings.en-US.xaml"/>
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

@@ -825,6 +825,24 @@ namespace AhorcadoClient.ServiceReference {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMatchManager/GetPlayerMatchHistory", ReplyAction="http://tempuri.org/IMatchManager/GetPlayerMatchHistoryResponse")]
         System.Threading.Tasks.Task<AhorcadoClient.ServiceReference.PlayerMatchHistoryDTO[]> GetPlayerMatchHistoryAsync(int playerId);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMatchManager/ForfeitMatch", ReplyAction="http://tempuri.org/IMatchManager/ForfeitMatchResponse")]
+        bool ForfeitMatch(int matchId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMatchManager/ForfeitMatch", ReplyAction="http://tempuri.org/IMatchManager/ForfeitMatchResponse")]
+        System.Threading.Tasks.Task<bool> ForfeitMatchAsync(int matchId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMatchManager/DeclareVictoryForPlayer2", ReplyAction="http://tempuri.org/IMatchManager/DeclareVictoryForPlayer2Response")]
+        bool DeclareVictoryForPlayer2(int matchId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMatchManager/DeclareVictoryForPlayer2", ReplyAction="http://tempuri.org/IMatchManager/DeclareVictoryForPlayer2Response")]
+        System.Threading.Tasks.Task<bool> DeclareVictoryForPlayer2Async(int matchId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMatchManager/DeclareVictoryForPlayer1", ReplyAction="http://tempuri.org/IMatchManager/DeclareVictoryForPlayer1Response")]
+        bool DeclareVictoryForPlayer1(int matchId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMatchManager/DeclareVictoryForPlayer1", ReplyAction="http://tempuri.org/IMatchManager/DeclareVictoryForPlayer1Response")]
+        System.Threading.Tasks.Task<bool> DeclareVictoryForPlayer1Async(int matchId);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICategoryManager/GetCategories", ReplyAction="http://tempuri.org/ICategoryManager/GetCategoriesResponse")]
         AhorcadoClient.ServiceReference.CategoryDTO[] GetCategories();
         
@@ -937,6 +955,30 @@ namespace AhorcadoClient.ServiceReference {
         
         public System.Threading.Tasks.Task<AhorcadoClient.ServiceReference.PlayerMatchHistoryDTO[]> GetPlayerMatchHistoryAsync(int playerId) {
             return base.Channel.GetPlayerMatchHistoryAsync(playerId);
+        }
+        
+        public bool ForfeitMatch(int matchId) {
+            return base.Channel.ForfeitMatch(matchId);
+        }
+        
+        public System.Threading.Tasks.Task<bool> ForfeitMatchAsync(int matchId) {
+            return base.Channel.ForfeitMatchAsync(matchId);
+        }
+        
+        public bool DeclareVictoryForPlayer2(int matchId) {
+            return base.Channel.DeclareVictoryForPlayer2(matchId);
+        }
+        
+        public System.Threading.Tasks.Task<bool> DeclareVictoryForPlayer2Async(int matchId) {
+            return base.Channel.DeclareVictoryForPlayer2Async(matchId);
+        }
+        
+        public bool DeclareVictoryForPlayer1(int matchId) {
+            return base.Channel.DeclareVictoryForPlayer1(matchId);
+        }
+        
+        public System.Threading.Tasks.Task<bool> DeclareVictoryForPlayer1Async(int matchId) {
+            return base.Channel.DeclareVictoryForPlayer1Async(matchId);
         }
         
         public AhorcadoClient.ServiceReference.CategoryDTO[] GetCategories() {

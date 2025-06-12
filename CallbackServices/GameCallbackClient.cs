@@ -9,6 +9,7 @@ namespace AhorcadoClient.CallbackServices
         public Action<int, int> OnPlayerLeftAction { get; set; }
         public Action<int, MatchInfoDTO> OnMatchReadyAction { get; set; }
         public Action<int, string, bool, int, bool> OnLetterGuessedAction { get; set; }
+        public Action<int, int> OnGameOverAction { get; set; }
 
         public GameCallbackClient()
         {
@@ -37,5 +38,12 @@ namespace AhorcadoClient.CallbackServices
             if (OnLetterGuessedAction != null)
                 OnLetterGuessedAction(matchId, letter, isCorrect, remainingAttempts, isGameOver);
         }
+
+        public void OnGameOver(int matchId, int winnerPlayerId)
+        {
+            if (OnGameOverAction != null)
+                OnGameOverAction(matchId, winnerPlayerId);
+        }
+
     }
 }

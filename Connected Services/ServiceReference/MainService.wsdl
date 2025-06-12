@@ -80,6 +80,24 @@
   <wsdl:message name="IMainManager_GetPlayerMatchHistory_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetPlayerMatchHistoryResponse" />
   </wsdl:message>
+  <wsdl:message name="IMainManager_ForfeitMatch_InputMessage">
+    <wsdl:part name="parameters" element="tns:ForfeitMatch" />
+  </wsdl:message>
+  <wsdl:message name="IMainManager_ForfeitMatch_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ForfeitMatchResponse" />
+  </wsdl:message>
+  <wsdl:message name="IMainManager_DeclareVictoryForPlayer2_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeclareVictoryForPlayer2" />
+  </wsdl:message>
+  <wsdl:message name="IMainManager_DeclareVictoryForPlayer2_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeclareVictoryForPlayer2Response" />
+  </wsdl:message>
+  <wsdl:message name="IMainManager_DeclareVictoryForPlayer1_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeclareVictoryForPlayer1" />
+  </wsdl:message>
+  <wsdl:message name="IMainManager_DeclareVictoryForPlayer1_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeclareVictoryForPlayer1Response" />
+  </wsdl:message>
   <wsdl:message name="IMainManager_GetCategories_InputMessage">
     <wsdl:part name="parameters" element="tns:GetCategories" />
   </wsdl:message>
@@ -138,6 +156,18 @@
     <wsdl:operation name="GetPlayerMatchHistory">
       <wsdl:input wsaw:Action="http://tempuri.org/IMatchManager/GetPlayerMatchHistory" message="tns:IMainManager_GetPlayerMatchHistory_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IMatchManager/GetPlayerMatchHistoryResponse" message="tns:IMainManager_GetPlayerMatchHistory_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ForfeitMatch">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMatchManager/ForfeitMatch" message="tns:IMainManager_ForfeitMatch_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMatchManager/ForfeitMatchResponse" message="tns:IMainManager_ForfeitMatch_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeclareVictoryForPlayer2">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMatchManager/DeclareVictoryForPlayer2" message="tns:IMainManager_DeclareVictoryForPlayer2_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMatchManager/DeclareVictoryForPlayer2Response" message="tns:IMainManager_DeclareVictoryForPlayer2_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeclareVictoryForPlayer1">
+      <wsdl:input wsaw:Action="http://tempuri.org/IMatchManager/DeclareVictoryForPlayer1" message="tns:IMainManager_DeclareVictoryForPlayer1_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IMatchManager/DeclareVictoryForPlayer1Response" message="tns:IMainManager_DeclareVictoryForPlayer1_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetCategories">
       <wsdl:input wsaw:Action="http://tempuri.org/ICategoryManager/GetCategories" message="tns:IMainManager_GetCategories_InputMessage" />
@@ -219,6 +249,33 @@
     </wsdl:operation>
     <wsdl:operation name="GetPlayerMatchHistory">
       <soap12:operation soapAction="http://tempuri.org/IMatchManager/GetPlayerMatchHistory" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ForfeitMatch">
+      <soap12:operation soapAction="http://tempuri.org/IMatchManager/ForfeitMatch" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeclareVictoryForPlayer2">
+      <soap12:operation soapAction="http://tempuri.org/IMatchManager/DeclareVictoryForPlayer2" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeclareVictoryForPlayer1">
+      <soap12:operation soapAction="http://tempuri.org/IMatchManager/DeclareVictoryForPlayer1" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

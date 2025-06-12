@@ -409,6 +409,9 @@ namespace AhorcadoClient.CallbackServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameManager/OnLetterGuessed")]
         void OnLetterGuessed(int matchId, string letter, bool isCorrect, int remainingAttempts, bool isGameOver);
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="http://tempuri.org/IGameManager/OnGameOver")]
+        void OnGameOver(int matchId, int winnerPlayerId);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]

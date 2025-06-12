@@ -125,6 +125,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Properties\Strings.en-US.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Properties\Strings.es-MX.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

@@ -67,6 +67,9 @@
   <wsdl:message name="IGameManager_OnLetterGuessed_OutputCallbackMessage">
     <wsdl:part name="parameters" element="tns:OnLetterGuessed" />
   </wsdl:message>
+  <wsdl:message name="IGameManager_OnGameOver_OutputCallbackMessage">
+    <wsdl:part name="parameters" element="tns:OnGameOver" />
+  </wsdl:message>
   <wsdl:portType name="IGameManager">
     <wsdl:operation name="JoinMatch">
       <wsdl:input wsaw:Action="http://tempuri.org/IGameManager/JoinMatch" message="tns:IGameManager_JoinMatch_InputMessage" />
@@ -91,6 +94,9 @@
     </wsdl:operation>
     <wsdl:operation name="OnLetterGuessed">
       <wsdl:output wsaw:Action="http://tempuri.org/IGameManager/OnLetterGuessed" message="tns:IGameManager_OnLetterGuessed_OutputCallbackMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="OnGameOver">
+      <wsdl:output wsaw:Action="http://tempuri.org/IGameManager/OnGameOver" message="tns:IGameManager_OnGameOver_OutputCallbackMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="NetTcpBinding_IGameManager" type="tns:IGameManager">
@@ -143,6 +149,12 @@
     </wsdl:operation>
     <wsdl:operation name="OnLetterGuessed">
       <soap12:operation soapAction="http://tempuri.org/IGameManager/OnLetterGuessed" style="document" />
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="OnGameOver">
+      <soap12:operation soapAction="http://tempuri.org/IGameManager/OnGameOver" style="document" />
       <wsdl:output>
         <soap12:body use="literal" />
       </wsdl:output>
