@@ -62,49 +62,81 @@ namespace AhorcadoClient.Views
             {
                 var client = ServiceClientManager.Instance.Client;
                 int currentPlayerID = CurrentSession.LoggedInPlayer.PlayerID;
-
                 bool resultDeclared = false;
                 bool isWinner = false;
                 string opponentUsername = null;
 
                 if (match.Player1.PlayerId == currentPlayerID)
                 {
-                    resultDeclared = client.DeclareVictoryForPlayer1(match.MatchID);
-                    isWinner = resultDeclared;
-                    opponentUsername = match.Player2.Username;
+                    // Jugador 1 solo declara victoria cuando Jugador 2 se queda sin intentos
+                    if (_remainingAttempts <= 0) // Jugador 2 perdió
+                    {
+                        resultDeclared = client.DeclareVictoryForPlayer1(match.MatchID);
+                        isWinner = resultDeclared;
+                    }
+                    opponentUsername = match.Player2?.Username;
                 }
-                else if (match.Player2.PlayerId == currentPlayerID)
+                else if (match.Player2?.PlayerId == currentPlayerID)
                 {
-                    resultDeclared = client.DeclareVictoryForPlayer2(match.MatchID);
-                    isWinner = resultDeclared;
+                    // Jugador 2 solo declara victoria cuando adivina la palabra
+                    if (_remainingAttempts > 0) // Aún quedan intentos (adivinó la palabra)
+                    {
+                        resultDeclared = client.DeclareVictoryForPlayer2(match.MatchID);
+                        isWinner = resultDeclared;
+                    }
                     opponentUsername = match.Player1.Username;
                 }
 
-                if (resultDeclared)
+                Application.Current.Dispatcher.Invoke(() =>
                 {
-                    await Application.Current.Dispatcher.InvokeAsync(() =>
+                    if (isWinner)
                     {
-                        if (isWinner)
-                            ShowVictoryDialog(opponentUsername);
-                        else
-                            ShowDefeatDialog(opponentUsername);
-                    });
-                }
+                        ShowVictoryDialog(opponentUsername);
+                    }
+                    else
+                    {
+                        ShowDefeatDialog(opponentUsername);
+                    }
+                });
             });
         }
 
         private void ShowVictoryDialog(string opponentUsername)
         {
-            string title = (string)Application.Current.Resources["Match_DialogTVictory"];
-            string message = string.Format((string)Application.Current.Resources["Match_DialogDVictory"], opponentUsername);
-            MessageDialog.Show(title, message, AlertType.SUCCESS, () => NavigationManager.Instance.NavigateToPage(new MainMenuPage()));
+            string title, message;
+
+            if (IsPlayer1)
+            {
+                title = (string)Application.Current.Resources["Match_DialogTVictoryP1"];
+                message = string.Format((string)Application.Current.Resources["Match_DialogDVictoryP1"], opponentUsername);
+            }
+            else
+            {
+                title = (string)Application.Current.Resources["Match_DialogTVictoryP2"];
+                message = string.Format((string)Application.Current.Resources["Match_DialogDVictoryP2"], opponentUsername);
+            }
+
+            MessageBox.Show(message, title, MessageBoxButton.OK, MessageBoxImage.Information);
+            NavigationManager.Instance.NavigateToPage(new MainMenuPage());
         }
 
         private void ShowDefeatDialog(string opponentUsername)
         {
-            string title = (string)Application.Current.Resources["Match_DialogTDefeat"];
-            string message = string.Format((string)Application.Current.Resources["Match_DialogDDefeat"], opponentUsername);
-            MessageDialog.Show(title, message, AlertType.SUCCESS, () => NavigationManager.Instance.NavigateToPage(new MainMenuPage()));
+            string title, message;
+
+            if (IsPlayer1)
+            {
+                title = (string)Application.Current.Resources["Match_DialogTDefeatP1"];
+                message = string.Format((string)Application.Current.Resources["Match_DialogDDefeatP1"], opponentUsername);
+            }
+            else
+            {
+                title = (string)Application.Current.Resources["Match_DialogTDefeatP2"];
+                message = string.Format((string)Application.Current.Resources["Match_DialogDDefeatP2"], opponentUsername);
+            }
+
+            MessageBox.Show(message, title, MessageBoxButton.OK, MessageBoxImage.Information);
+            NavigationManager.Instance.NavigateToPage(new MainMenuPage());
         }
 
         private void SetPlayersInfo()
@@ -181,6 +213,7 @@ namespace AhorcadoClient.Views
                 _gameService.Callback.OnGameOverAction = (matchId, winnerPlayerId) => OnGameOver(winnerPlayerId);
             }
         }
+
         private void OnMatchReady(MatchInfoDTO matchInfo)
         {
             Dispatcher.Invoke(() =>
@@ -262,21 +295,17 @@ namespace AhorcadoClient.Views
         {
             Dispatcher.Invoke(() =>
             {
+                RevealFullWord();
                 bool isWinner = winnerPlayerId == CurrentSession.LoggedInPlayer.PlayerID;
                 string opponentUsername = IsPlayer1 ? _matchInfo.Player2.Username : _matchInfo.Player1.Username;
 
                 if (isWinner)
-                {
                     ShowVictoryDialog(opponentUsername);
-                }
                 else
-                {
                     ShowDefeatDialog(opponentUsername);
-                }
 
                 KeyboardPanel.IsEnabled = false;
                 DisableAllKeyButtons();
-                RevealFullWord();
             });
         }
 
@@ -296,7 +325,6 @@ namespace AhorcadoClient.Views
                 UpdateGuessedLetters(_guessedLetters);
             }
         }
-
 
         private void UpdateGuessedLetters(IEnumerable<string> guessedLetters)
         {
@@ -321,7 +349,6 @@ namespace AhorcadoClient.Views
             }
         }
 
-
         private void ShowLetterGuessNotification(string letter, bool isCorrect)
         {
             if (IsPlayer1)
@@ -335,6 +362,7 @@ namespace AhorcadoClient.Views
             }
             else if (IsPlayer2 && !isCorrect)
             {
+                
                 MessageDialog.Show("Letra incorrecta",
                     $"La letra '{letter}' no está en la palabra",
                     AlertType.WARNING);
@@ -344,10 +372,16 @@ namespace AhorcadoClient.Views
         private async void HandleGameOver(bool isWordGuessed)
         {
             DisableAllKeyButtons();
+            RevealFullWord();
 
-            if (_remainingAttempts <= 0) RevealFullWord();
-
-            await DeclareMatchResultAsync(_matchInfo);
+            if (_remainingAttempts <= 0)
+            {
+                if (IsPlayer1) await DeclareMatchResultAsync(_matchInfo);
+            }
+            else if (isWordGuessed)
+            {
+                if (IsPlayer2) await DeclareMatchResultAsync(_matchInfo);
+            }
         }
 
         private void ShowMatchReadyNotification()
@@ -426,24 +460,6 @@ namespace AhorcadoClient.Views
             }
         }
 
-        private void RevealLetters(string guessedLetter)
-        {
-            int boxIndex = 0;
-            for (int i = 0; i < Word.Length; i++)
-            {
-                if (Word[i] == ' ')
-                {
-                    boxIndex++;
-                    continue;
-                }
-                if (Word[i].ToString().Equals(guessedLetter, StringComparison.OrdinalIgnoreCase))
-                {
-                    _letterBoxes[boxIndex].Text = guessedLetter.ToUpper();
-                }
-                boxIndex++;
-            }
-        }
-
         private void UpdateAttemptsText()
         {
             AttemptsText.Text = $"{_remainingAttempts}/6";
@@ -468,16 +484,5 @@ namespace AhorcadoClient.Views
                 }
             }
         }
-
-        private bool IsWordGuessed()
-        {
-            foreach (var box in _letterBoxes)
-            {
-                if (string.IsNullOrWhiteSpace(box.Text))
-                    return false;
-            }
-            return true;
-        }
-
     }
 }

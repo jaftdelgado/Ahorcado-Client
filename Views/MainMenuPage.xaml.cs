@@ -1,8 +1,5 @@
 using AhorcadoClient.Utilities;
 using System.Windows;
-using System;
-using AhorcadoClient.ServiceReference;
-using AhorcadoClient.Utilities;
 using System.Windows.Controls;
 using System.Linq;
 

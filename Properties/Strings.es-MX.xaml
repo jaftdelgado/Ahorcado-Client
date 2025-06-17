@@ -112,10 +112,14 @@
     <sys:String x:Key="Match_Attempts">INTENTOS</sys:String>
     <sys:String x:Key="Match_Category">CATEGORÍA</sys:String>
     <sys:String x:Key="Match_Language">IDIOMA</sys:String>
-    <sys:String x:Key="Match_DialogTVictory">¡Has ganado!</sys:String>
-    <sys:String x:Key="Match_DialogDVictory">Felicidades, lograste adivinar la palabra y venciste a {0}.</sys:String>
-    <sys:String x:Key="Match_DialogTDefeat">Lo siento</sys:String>
-    <sys:String x:Key="Match_DialogDDefeat">Oh no... Has perdido contra {0}. ¡Mejor suerte la próxima vez!</sys:String>
+    <sys:String x:Key="Match_DialogTVictoryP1">¡Has ganado!</sys:String>
+    <sys:String x:Key="Match_DialogDVictoryP1">Felicidades, {0} no logró adivinar tu palabra. ¡Obtienes 5 puntos!</sys:String>
+    <sys:String x:Key="Match_DialogTVictoryP2">¡Has ganado!</sys:String>
+    <sys:String x:Key="Match_DialogDVictoryP2">Felicidades, lograste adivinar la palabra de {0}. ¡Obtienes 10 puntos!</sys:String>
+    <sys:String x:Key="Match_DialogTDefeatP1">Has perdido</sys:String>
+    <sys:String x:Key="Match_DialogDDefeatP1">{0} adivinó correctamente la palabra que seleccionaste. ¡Sigue intentándolo!</sys:String>
+    <sys:String x:Key="Match_DialogTDefeatP2">Has perdido</sys:String>
+    <sys:String x:Key="Match_DialogDDefeatP2">No lograste adivinar la palabra seleccionada por {0}. ¡Ánimo para la próxima!</sys:String>
     <sys:String x:Key="Match_Result_Error">No se pudo registrar el resultado de la partida.</sys:String>
     <!--#endregion-->
 
