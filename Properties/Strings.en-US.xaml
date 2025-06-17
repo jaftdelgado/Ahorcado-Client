@@ -72,7 +72,8 @@
     <sys:String x:Key="SignIn_NotAccount">Don't have an account yet?</sys:String>
     <sys:String x:Key="SignIn_BtnRegister">Register</sys:String>
     <sys:String x:Key="SignIn_DialogTInvalidCreds">Invalid username or password</sys:String>
-    <sys:String x:Key="SignIn_DialogDInvalidCreds">Please check your username and password. If you need to create a new password, use the "Reset" option.</sys:String>
+    <sys:String x:Key="SignIn_DialogDInvalidCreds">Please check your username and password.</sys:String>
+    <sys:String x:Key="SignIn_DialogVInvalidCreds">Please enter your username and password.</sys:String>
     <sys:String x:Key="SignIn_DialogTSignedIn">Signed In</sys:String>
     <sys:String x:Key="SignIn_DialogDSignedIn">You have successfully signed in. Welcome, you can now use all the options to enjoy Hangman.</sys:String>
     <!--#endregion-->
