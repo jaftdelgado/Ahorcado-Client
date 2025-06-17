@@ -172,7 +172,7 @@
                                         Orientation="Horizontal"
                                         HorizontalAlignment="Right">
                                 <StackPanel>
-                                    <TextBlock Text="CATEGORÍA"
+                                    <TextBlock Text="{DynamicResource Match_Category}"
                                                Style="{StaticResource DescriptionLabelStyle}"/>
                                     <TextBlock Text="ANIMALES"
                                                x:Name="WordCategory"
@@ -181,7 +181,7 @@
                                 </StackPanel>
                                 
                                 <StackPanel Margin="20 0 0 0">
-                                    <TextBlock Text="IDIOMA"
+                                    <TextBlock Text="{StaticResource Match_Language}"
                                                Style="{StaticResource DescriptionLabelStyle}"/>
                                     <TextBlock x:Name="WordLanguage"
                                                Text="ESPAÑOL"

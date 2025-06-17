@@ -66,17 +66,8 @@ namespace AhorcadoClient.Views
 
         private void Click_BtnSignOut(object sender, RoutedEventArgs e)
         {
-            // Cierra la sesión del usuario
             CurrentSession.LogOut();
-            // Lanza evento para que MainWindow actúe
             SignOutRequested?.Invoke();
-
-
-
         }
-
-       
     }
-        
-    
 }
