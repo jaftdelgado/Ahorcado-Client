@@ -86,6 +86,11 @@
                                 </ResourceDictionary>
                             </Button.Tag>
                         </Button>
+                        <Button Style="{DynamicResource MainMenuButton}"
+                            Content="{DynamicResource Glb_SignOut}"
+                            Click="Click_BtnSignOut"
+                            Margin="20 0">
+                        </Button>
 
                     </StackPanel>
                 </Grid>

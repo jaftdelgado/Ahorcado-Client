@@ -96,10 +96,10 @@
                         <Border BorderBrush="{StaticResource BorderBrush}"
                                 BorderThickness="0 0 0 1">
                             <StackPanel Margin="20">
-                                <TextBlock Text="{StaticResource Glb_CreateAccount}"
+                                <TextBlock Text="{DynamicResource Glb_CreateAccount}"
                                            Style="{StaticResource HeaderLabelStyle}"
                                            Margin="0 0 0 2"/>
-                                <TextBlock Text="{StaticResource CreateAccount_Desc}"
+                                <TextBlock Text="{DynamicResource CreateAccount_Desc}"
                                            TextWrapping="Wrap"
                                            Style="{StaticResource DescriptionLabelStyle}"/>
                             </StackPanel>

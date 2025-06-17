@@ -50,39 +50,39 @@ namespace AhorcadoClient.Views
             BtnDeleteImage.IsEnabled = false;
         }
 
-        private bool ValidarCampos()
+        private bool ValidateFields()
         {
             if (!System.Text.RegularExpressions.Regex.IsMatch(TbFirstName.Text, @"^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$"))
             {
-                MessageDialog.Show("Validación", "El nombre solo debe contener letras y espacios.", AlertType.ERROR);
+                MessageDialog.Show("SignIn_DialogTValidation", "SignIn_DialogDNameLettersOnly", AlertType.ERROR);
                 return false;
             }
             if (!System.Text.RegularExpressions.Regex.IsMatch(TbLastName.Text, @"^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$"))
             {
-                MessageDialog.Show("Validación", "El apellido solo debe contener letras y espacios.", AlertType.ERROR);
+                MessageDialog.Show("SignIn_DialogTValidation", "SignIn_DialogDLastNameLettersOnly", AlertType.ERROR);
                 return false;
             }
 
-            if (!System.Text.RegularExpressions.Regex.IsMatch(TbPhoneNumber.Text, @"^\d{8,}$"))
+            if (!System.Text.RegularExpressions.Regex.IsMatch(TbPhoneNumber.Text, @"^\d{10}$"))
             {
-                MessageDialog.Show("Validación", "El teléfono debe contener solo números y al menos 8 dígitos.", AlertType.ERROR);
+                MessageDialog.Show("SignIn_DialogTValidation", "SignIn_DialogDPhoneInvalid", AlertType.ERROR);
                 return false;
             }
 
             if (!DateTime.TryParse(TbBirthDay.Text, out DateTime birthDay) || birthDay > DateTime.Now)
             {
-                MessageDialog.Show("Validación", "Introduce una fecha de nacimiento válida.", AlertType.ERROR);
+                MessageDialog.Show("SignIn_DialogTValidation", "SignIn_DialogDBirthDateInvalid", AlertType.ERROR);
                 return false;
             }
 
             if (TbUserName.Text.Length < 4)
             {
-                MessageDialog.Show("Validación", "El usuario debe tener al menos 4 caracteres.", AlertType.ERROR);
+                MessageDialog.Show("SignIn_DialogTValidation", "SignIn_DialogDUserShort", AlertType.ERROR);
                 return false;
             }
-            if (TbPassword.Text.Length < 4)
+            if (TbPassword.Text.Length < 8)
             {
-                MessageDialog.Show("Validación", "La contraseña debe tener al menos 4 caracteres.", AlertType.ERROR);
+                MessageDialog.Show("SignIn_DialogTValidation", "SignIn_DialogDPasswordShort", AlertType.ERROR);
                 return false;
             }
 
@@ -93,7 +93,7 @@ namespace AhorcadoClient.Views
                 {
                     if (campo.Contains(p))
                     {
-                        MessageDialog.Show("Validación", "No se permiten caracteres especiales como comillas, punto y coma o guiones.", AlertType.ERROR);
+                        MessageDialog.Show("SignIn_DialogTValidation", "SignIn_DialogDSpecialChars", AlertType.ERROR);
                         return false;
                     }
                 }
@@ -101,10 +101,9 @@ namespace AhorcadoClient.Views
 
             return true;
         }
-
         private async void Click_BtnEditAccount(object sender, RoutedEventArgs e)
         {
-            if (!ValidarCampos())
+            if (!ValidateFields())
                 return;
 
             if (!DateTime.TryParse(TbBirthDay.Text.Trim(), out DateTime birthDay))
@@ -132,7 +131,7 @@ namespace AhorcadoClient.Views
                 var client = ServiceClientManager.Instance.Client;
                 if (client == null) return;
 
-                bool result = client.UpdatePlayerInfo(player); // Usa tu método para actualizar al jugador
+                bool result = client.UpdatePlayerInfo(player); 
 
                 await Application.Current.Dispatcher.InvokeAsync(() =>
                 {
@@ -210,32 +209,25 @@ namespace AhorcadoClient.Views
         }
         private void ValidateForm()
         {
-            // Verifica si todos los campos obligatorios tienen contenido
             bool isFormValid =
                 !string.IsNullOrWhiteSpace(TbFirstName.Text) &&
                 !string.IsNullOrWhiteSpace(TbLastName.Text) &&
                 !string.IsNullOrWhiteSpace(TbPhoneNumber.Text) &&
                 !string.IsNullOrWhiteSpace(TbBirthDay.Text) &&
                 CbPreferedLanguage.SelectedItem != null &&
-                !string.IsNullOrWhiteSpace(PbPassword.Password); // o TbPassword.Text si estás mostrando la contraseña
-
+                !string.IsNullOrWhiteSpace(PbPassword.Password); 
             BtnEditAccount.IsEnabled = isFormValid;
         }
         public void LoadPlayerData(Player player)
         {
-            // Cargar datos de texto
             TbFirstName.Text = player.FirstName;
             TbLastName.Text = player.LastName;
             TbPhoneNumber.Text = player.PhoneNumber;
             TbBirthDay.Text = player.BirthDay.ToString("yyyy-MM-dd");
             TbUserName.Text = player.Username;
-                // Ajusta formato si es necesario
-
-            // Cargar contraseña
             TbPassword.Text = player.Password;
             PbPassword.Password = player.Password;
 
-            // Cargar imagen de perfil (si hay)
             if (player.ProfilePic != null)
             {
                 PlayerProfilePic.Source = ImageUtilities.ByteArrayToImage(player.ProfilePic);
@@ -247,7 +239,6 @@ namespace AhorcadoClient.Views
                 BtnDeleteImage.IsEnabled = false;
             }
 
-            // Seleccionar idioma en el ComboBox
             if (CbPreferedLanguage.ItemsSource is IEnumerable<LanguageDTO> languages)
             {
                 foreach (var language in languages)

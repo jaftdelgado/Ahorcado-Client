@@ -1,5 +1,7 @@
 using AhorcadoClient.Utilities;
 using System.Windows;
+using System;
+using AhorcadoClient.ServiceReference;
 using System.Windows.Controls;
 using System.Linq;
 
@@ -7,6 +9,8 @@ namespace AhorcadoClient.Views
 {
     public partial class MainMenuPage : Page
     {
+        public Action SignOutRequested { get; internal set; }
+
         public MainMenuPage()
         {
             InitializeComponent();
@@ -58,6 +62,12 @@ namespace AhorcadoClient.Views
                 string cultureCode = selectedItem.Tag.ToString();
                 ((App)Application.Current).ChangeCulture(cultureCode);
             }
+        }
+
+        private void Click_BtnSignOut(object sender, RoutedEventArgs e)
+        {
+            CurrentSession.LogOut();
+            SignOutRequested?.Invoke();
         }
     }
 }
