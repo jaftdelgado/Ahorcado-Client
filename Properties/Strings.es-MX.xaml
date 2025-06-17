@@ -7,6 +7,7 @@
     <sys:String x:Key="Glb_CreateGame">Crear Partida</sys:String>
     <sys:String x:Key="Glb_JoinGame">Unirse a Partida</sys:String>
     <sys:String x:Key="Glb_Scoreboards">Marcadores</sys:String>
+    <sys:String x:Key="Glb_SignOut">Cerrar sesión</sys:String>
     <sys:String x:Key="Glb_Loading">Cargando...</sys:String>
     <sys:String x:Key="Glb_Accept">Aceptar</sys:String>
     <sys:String x:Key="Glb_Cancel">Cancelar</sys:String>
@@ -149,5 +150,7 @@
     <sys:String x:Key="EditProfile_DialogDChangesSaved">Tu información se ha guardado correctamente</sys:String>
     <sys:String x:Key="EditProfile_DialogTUpdateFailed">Error al actualizar</sys:String>
     <sys:String x:Key="EditProfile_DialogDUpdateFailed">No se pudo guardar la información. Intenta de nuevo más tarde</sys:String>
+    <sys:String x:Key="EditProfile_Title">Modificar cuenta</sys:String>
+    <sys:String x:Key="EditProfile_BtnEdit">Modificar</sys:String>
     <!--#endregion-->
 </ResourceDictionary>

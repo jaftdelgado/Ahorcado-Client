@@ -108,6 +108,8 @@ namespace AhorcadoClient.Views
         private async void Click_BtnSignIn(object sender, RoutedEventArgs e)
         {
             await Login();
+         
+            
         }
 
         private async void Click_BtnCreateAccount(object sender, RoutedEventArgs e)
@@ -191,7 +193,7 @@ namespace AhorcadoClient.Views
             UpdateFormButtonState();
         }
 
-        private bool ValidarCampos()
+        private bool ValidateFields()
         {
             if (!System.Text.RegularExpressions.Regex.IsMatch(TbFirstName.Text, @"^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$"))
             {
@@ -251,7 +253,7 @@ namespace AhorcadoClient.Views
 
         private async Task RegisterAccount()
         {
-            if (!ValidarCampos())
+            if (!ValidateFields())
                 return;
 
             if (!DateTime.TryParse(TbBirthDay.Text.Trim(), out DateTime birthDay))
