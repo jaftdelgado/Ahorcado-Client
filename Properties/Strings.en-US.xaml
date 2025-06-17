@@ -76,6 +76,15 @@
     <sys:String x:Key="SignIn_DialogVInvalidCreds">Please enter your username and password.</sys:String>
     <sys:String x:Key="SignIn_DialogTSignedIn">Signed In</sys:String>
     <sys:String x:Key="SignIn_DialogDSignedIn">You have successfully signed in. Welcome, you can now use all the options to enjoy Hangman.</sys:String>
+    <sys:String x:Key="SignIn_DialogTValidation">Validation Error</sys:String>
+    <sys:String x:Key="SignIn_DialogDNameLettersOnly">First name can only contain letters and spaces.</sys:String>
+    <sys:String x:Key="SignIn_DialogDLastNameLettersOnly">Last name can only contain letters and spaces.</sys:String>
+    <sys:String x:Key="SignIn_DialogDPhoneInvalid">Phone number must contain exactly 10 digits.</sys:String>
+    <sys:String x:Key="SignIn_DialogDBirthDateInvalid">Invalid birth date. Please enter a valid past date.</sys:String>
+    <sys:String x:Key="SignIn_DialogDUserShort">Username must be at least 4 characters long.</sys:String>
+    <sys:String x:Key="SignIn_DialogDPasswordShort">Password must be at least 8 characters long.</sys:String>
+    <sys:String x:Key="SignIn_DialogDSpecialChars">Fields cannot contain special characters like ', ", ;, --, /* or */.</sys:String>
+
     <!--#endregion-->
 
     <!--#region RegisterPlayer -->
@@ -133,5 +142,15 @@
 
     <!--#region ViewScoresWindow-->
     <sys:String x:Key="ViewScores_Desc">This is your game history. Well played!</sys:String>
+    <!--#endregion-->
+    <!--#region EditProfileWindow-->
+    <sys:String x:Key="EditProfile_Desc">Modify the information you want from your account</sys:String>
+    <sys:String x:Key="EditProfile_DialogTChangesSaved">Profile updated</sys:String>
+    <sys:String x:Key="EditProfile_DialogDChangesSaved">Your information has been saved successfully</sys:String>
+    <sys:String x:Key="EditProfile_DialogTUpdateFailed">Update failed</sys:String>
+    <sys:String x:Key="EditProfile_DialogDUpdateFailed">Information could not be saved. Please try again later</sys:String>
+    <sys:String x:Key="EditProfile_Title">Edit account</sys:String>
+    <sys:String x:Key="EditProfile_BtnEdit">Edit</sys:String>
+
     <!--#endregion-->
 </ResourceDictionary>
