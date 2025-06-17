@@ -34,7 +34,13 @@ namespace AhorcadoClient.Views
         private async Task Login()
         {
             var user = TbUsername.Text;
-            var password = PbLoginPassword.Password;
+            var password = PbLogInPassword.Password;
+
+            if (string.IsNullOrWhiteSpace(user) || string.IsNullOrWhiteSpace(password))
+            {
+                MessageDialog.Show("SignIn_DialogTInvalidCreds", "SignIn_DialogVInvalidCreds", AlertType.ERROR);
+                return;
+            }
 
             await ServiceClientManager.ExecuteServerAction(async () =>
             {
@@ -153,15 +159,35 @@ namespace AhorcadoClient.Views
             ValidateForm();
         }
 
+        private void PasswordLogIn_TextChanged(object sender, RoutedEventArgs e)
+        {
+            if (sender is TextBox textBox && PbLogInPassword.Password != textBox.Text)
+                PbLogInPassword.Password = textBox.Text;
+            else if (sender is PasswordBox passwordBox && TbLogInPassword.Text != passwordBox.Password)
+                TbLogInPassword.Text = passwordBox.Password;
+        }
+
+        private void ShowPasswordLogInCheckBox_Checked(object sender, RoutedEventArgs e)
+        {
+            PasswordUtilities.ShowPassword(TbLogInPassword, PbLogInPassword);
+            UpdateFormButtonState();
+        }
+
+        private void ShowPasswordLogInCheckBox_Unchecked(object sender, RoutedEventArgs e)
+        {
+            PasswordUtilities.HidePassword(TbLogInPassword, PbLogInPassword);
+            UpdateFormButtonState();
+        }
+
         private void ShowPasswordCheckBox_Checked(object sender, RoutedEventArgs e)
         {
-            PasswordUtilities.ShowPassword(TbLogInPassword, PbLoginPassword);
+            PasswordUtilities.ShowPassword(TbPassword, PbPassword);
             UpdateFormButtonState();
         }
 
         private void ShowPasswordCheckBox_Unchecked(object sender, RoutedEventArgs e)
         {
-            PasswordUtilities.HidePassword(TbLogInPassword, PbLoginPassword);
+            PasswordUtilities.HidePassword(TbPassword, PbPassword);
             UpdateFormButtonState();
         }
 

@@ -72,7 +72,8 @@
     <sys:String x:Key="SignIn_NotAccount">¿Aún no tienes cuenta?</sys:String>
     <sys:String x:Key="SignIn_BtnRegister">Registrarse</sys:String>
     <sys:String x:Key="SignIn_DialogTInvalidCreds">Usuario o contraseña inválido</sys:String>
-    <sys:String x:Key="SignIn_DialogDInvalidCreds">Por favor, verifica tu nombre de usuario y contraseña. Si necesitas crear una nueva contraseña, utiliza la opción "Restablecer".</sys:String>
+    <sys:String x:Key="SignIn_DialogDInvalidCreds">Por favor, verifica tu nombre de usuario y contraseña.</sys:String>
+    <sys:String x:Key="SignIn_DialogVInvalidCreds">Por favor, ingresa tu nombre de usuario y contraseña.</sys:String>
     <sys:String x:Key="SignIn_DialogTSignedIn">Sesión Iniciada</sys:String>
     <sys:String x:Key="SignIn_DialogDSignedIn">Iniciaste sesión correctamente. Bienvenido, ya puedes utilizar todas las opciones para disfrutar de Ahorcado.</sys:String>
     <!--#endregion-->
