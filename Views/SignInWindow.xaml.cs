@@ -212,6 +212,12 @@ namespace AhorcadoClient.Views
                 return false;
             }
 
+            if (!System.Text.RegularExpressions.Regex.IsMatch(TbEmailAddress.Text, @"^[^@\s]+@[^@\s]+\.[^@\s]+$"))
+            {
+                MessageDialog.Show("SignIn_DialogTValidation", "SignIn_DialogDEmailInvalid", AlertType.ERROR);
+                return false;
+            }
+
             if (!DateTime.TryParse(TbBirthDay.Text, out DateTime birthDay) || birthDay > DateTime.Now)
             {
                 MessageDialog.Show("SignIn_DialogTValidation", "SignIn_DialogDBirthDateInvalid", AlertType.ERROR);
