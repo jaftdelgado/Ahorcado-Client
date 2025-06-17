@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System.Linq;
+using System.Windows;
 using AhorcadoClient.Utilities;
 
 namespace AhorcadoClient.Views
@@ -16,7 +17,27 @@ namespace AhorcadoClient.Views
             NavigationManager.Initialize(MainFrame);
 
             var navigationManager = NavigationManager.Instance;
-            navigationManager.NavigateToPage(new MainMenuPage());
+            NavigateToMainMenu();
+
+        }
+        private void NavigateToMainMenu()
+        {
+            var menuPage = new MainMenuPage();
+            menuPage.SignOutRequested += OnSignOutRequested;
+
+            MainFrame.Navigate(menuPage); // O el nombre de tu Frame
+        }
+
+        private void OnSignOutRequested()
+        {
+            var loginWindow = new SignInWindow();
+            loginWindow.Show();
+
+            // Cerrar MainWindow correctamente
+            Application.Current.Windows
+                .OfType<MainWindow>()
+                .FirstOrDefault()?
+                .Close();
         }
     }
 }

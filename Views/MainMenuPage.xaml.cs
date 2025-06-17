@@ -10,6 +10,8 @@ namespace AhorcadoClient.Views
 {
     public partial class MainMenuPage : Page
     {
+        public Action SignOutRequested { get; internal set; }
+
         public MainMenuPage()
         {
             InitializeComponent();
@@ -62,5 +64,20 @@ namespace AhorcadoClient.Views
                 ((App)Application.Current).ChangeCulture(cultureCode);
             }
         }
+
+        private void Click_BtnSignOut(object sender, RoutedEventArgs e)
+        {
+            // Cierra la sesión del usuario
+            CurrentSession.LogOut();
+            // Lanza evento para que MainWindow actúe
+            SignOutRequested?.Invoke();
+
+
+
+        }
+
+       
     }
+        
+    
 }

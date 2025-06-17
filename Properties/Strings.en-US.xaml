@@ -7,6 +7,7 @@
     <sys:String x:Key="Glb_CreateGame">Create Game</sys:String>
     <sys:String x:Key="Glb_JoinGame">Join Game</sys:String>
     <sys:String x:Key="Glb_Scoreboards">Scoreboards</sys:String>
+    <sys:String x:Key="Glb_SignOut">Sign out</sys:String>
     <sys:String x:Key="Glb_Loading">Loading...</sys:String>
     <sys:String x:Key="Glb_Accept">Accept</sys:String>
     <sys:String x:Key="Glb_Cancel">Cancel</sys:String>
