@@ -91,6 +91,15 @@
     <sys:String x:Key="SignIn_DialogDEmptyFields">Por favor, completa todos los campos requeridos antes de continuar</sys:String>
     <sys:String x:Key="SignIn_DialogTInvalidDate">Fecha inválida</sys:String>
     <sys:String x:Key="SignIn_DialogDInvalidDate">Ingresa una fecha de nacimiento válida en el formato correcto</sys:String>
+    <sys:String x:Key="SignIn_DialogTValidation">Validación</sys:String>
+    <sys:String x:Key="SignIn_DialogDNameLettersOnly">El nombre solo debe contener letras y espacios.</sys:String>
+    <sys:String x:Key="SignIn_DialogDLastNameLettersOnly">El apellido solo debe contener letras y espacios.</sys:String>
+    <sys:String x:Key="SignIn_DialogDPhoneInvalid">El teléfono debe contener solo números y 10 dígitos.</sys:String>
+    <sys:String x:Key="SignIn_DialogDEmailInvalid">Introduce un correo electrónico válido.</sys:String>
+    <sys:String x:Key="SignIn_DialogDBirthDateInvalid">Introduce una fecha de nacimiento válida.</sys:String>
+    <sys:String x:Key="SignIn_DialogDUserShort">El usuario debe tener al menos 4 caracteres.</sys:String>
+    <sys:String x:Key="SignIn_DialogDPasswordShort">La contraseña debe tener al menos 8 caracteres.</sys:String>
+    <sys:String x:Key="SignIn_DialogDSpecialChars">No se permiten caracteres especiales como comillas, punto y coma o guiones.</sys:String>
     <!--#endregion-->
 
     <!--#region MainMenu -->
