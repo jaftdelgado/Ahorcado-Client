@@ -7,10 +7,12 @@ using System.Windows.Controls;
 using System.Collections.Generic;
 using AhorcadoClient.CallbackServices;
 using AhorcadoClient.CallbackServiceReference;
+using System;
 
 namespace AhorcadoClient.Views
 {
     public partial class CreateGameWindow : UserControl
+
     {
         private int playerId = CurrentSession.LoggedInPlayer.PlayerID;
 

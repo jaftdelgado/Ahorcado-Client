@@ -24,11 +24,12 @@
                 BorderThickness="0 0 0 1">
                 <StackPanel Margin="20">
                     <TextBlock
-                           Style="{StaticResource HeaderLabelStyle}"
-                           Margin="0 0 0 2"><Run Language="es-es" Text="Modificar cuenta"/></TextBlock>
-                    <TextBlock Text="{StaticResource EditProfile_Desc}"
-                           TextWrapping="Wrap"
-                           Style="{StaticResource DescriptionLabelStyle}"/>
+                        Style="{StaticResource HeaderLabelStyle}"
+                        Margin="0 0 0 2"
+                        Text="{DynamicResource EditProfile_Title}" />
+                    <TextBlock Text="{DynamicResource EditProfile_Desc}"
+                        TextWrapping="Wrap"
+                        Style="{StaticResource DescriptionLabelStyle}"/>
                 </StackPanel>
             </Border>
 
@@ -204,7 +205,7 @@
                         Click="Click_BtnCancel"/>
                     <Button x:Name="BtnEditAccount"
                         Style="{DynamicResource PrimaryButtonStyle}"
-                        Content="Modificar"
+                        Content="{DynamicResource EditProfile_BtnEdit}"
                         Click="Click_BtnEditAccount"
                         IsEnabled="True"/>
                 </StackPanel>
