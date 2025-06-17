@@ -1,5 +1,6 @@
 ﻿using AhorcadoClient.CallbackServiceReference;
 using AhorcadoClient.CallbackServices;
+using AhorcadoClient.Model;
 using AhorcadoClient.Utilities;
 using AhorcadoClient.Views.Dialogs;
 using System;
@@ -54,6 +55,21 @@ namespace AhorcadoClient.Views
             ConfigureUIByRole(matchInfo);
             UpdateAttemptsText();
             UpdateHangmanImage();
+            SetWordDescription();
+        }
+
+        private void SetWordDescription()
+        {
+            if (_matchInfo?.Word == null) return;
+
+            var categories = Category.GetDefaultCategories();
+            var languages = Model.Language.GetDefaultLanguages();
+
+            var category = categories.Find(c => c.CategoryID == _matchInfo.Word.CategoryID);
+            var language = languages.Find(l => l.LanguageID == _matchInfo.Word.LanguageID);
+
+            WordCategory.Text = category?.CategoryName ?? "N/A";
+            WordLanguage.Text = language?.LanguageName ?? "N/A";
         }
 
         private async Task DeclareMatchResultAsync(MatchInfoDTO match)
@@ -68,8 +84,7 @@ namespace AhorcadoClient.Views
 
                 if (match.Player1.PlayerId == currentPlayerID)
                 {
-                    // Jugador 1 solo declara victoria cuando Jugador 2 se queda sin intentos
-                    if (_remainingAttempts <= 0) // Jugador 2 perdió
+                    if (_remainingAttempts <= 0)
                     {
                         resultDeclared = client.DeclareVictoryForPlayer1(match.MatchID);
                         isWinner = resultDeclared;
@@ -78,8 +93,7 @@ namespace AhorcadoClient.Views
                 }
                 else if (match.Player2?.PlayerId == currentPlayerID)
                 {
-                    // Jugador 2 solo declara victoria cuando adivina la palabra
-                    if (_remainingAttempts > 0) // Aún quedan intentos (adivinó la palabra)
+                    if (_remainingAttempts > 0)
                     {
                         resultDeclared = client.DeclareVictoryForPlayer2(match.MatchID);
                         isWinner = resultDeclared;
@@ -89,14 +103,9 @@ namespace AhorcadoClient.Views
 
                 Application.Current.Dispatcher.Invoke(() =>
                 {
-                    if (isWinner)
-                    {
-                        ShowVictoryDialog(opponentUsername);
-                    }
-                    else
-                    {
-                        ShowDefeatDialog(opponentUsername);
-                    }
+                    if (isWinner) ShowVictoryDialog(opponentUsername);
+
+                    else ShowDefeatDialog(opponentUsername);
                 });
             });
         }
@@ -283,10 +292,7 @@ namespace AhorcadoClient.Views
                 }
                 else
                 {
-                    if (IsPlayer2 && _remainingAttempts > 0)
-                    {
-                        KeyboardPanel.IsEnabled = true;
-                    }
+                    if (IsPlayer2 && _remainingAttempts > 0) KeyboardPanel.IsEnabled = true;
                 }
             });
         }
@@ -336,14 +342,12 @@ namespace AhorcadoClient.Views
                 if (Word[i] == ' ') continue;
 
                 string letter = Word[i].ToString();
+
                 if (guessedLetters.Any(l => l.Equals(letter, StringComparison.OrdinalIgnoreCase)))
-                {
                     _letterBoxes[boxIndex].Text = letter.ToUpper();
-                }
+
                 else
-                {
                     _letterBoxes[boxIndex].Text = ""; 
-                }
 
                 boxIndex++;
             }
