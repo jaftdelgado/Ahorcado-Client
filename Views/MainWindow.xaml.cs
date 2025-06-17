@@ -25,15 +25,15 @@ namespace AhorcadoClient.Views
             var menuPage = new MainMenuPage();
             menuPage.SignOutRequested += OnSignOutRequested;
 
-            MainFrame.Navigate(menuPage); // O el nombre de tu Frame
+            MainFrame.Navigate(menuPage);
         }
 
         private void OnSignOutRequested()
         {
             var loginWindow = new SignInWindow();
             loginWindow.Show();
-
-            // Cerrar MainWindow correctamente
+            
+            
             Application.Current.Windows
                 .OfType<MainWindow>()
                 .FirstOrDefault()?
