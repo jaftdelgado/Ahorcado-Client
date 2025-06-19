@@ -14,6 +14,7 @@ namespace AhorcadoClient.Views
             NavigationManager.Initialize(MainFrame);
         }
 
+
         private void MainWindow_Loaded(object sender, RoutedEventArgs e)
         {
             NavigationManager.Initialize(MainFrame);
