@@ -10,7 +10,10 @@ namespace AhorcadoClient.Views
         {
             InitializeComponent();
             Loaded += MainWindow_Loaded;
+
+            NavigationManager.Initialize(MainFrame);
         }
+
 
         private void MainWindow_Loaded(object sender, RoutedEventArgs e)
         {
@@ -25,7 +28,7 @@ namespace AhorcadoClient.Views
             var menuPage = new MainMenuPage();
             menuPage.SignOutRequested += OnSignOutRequested;
 
-            MainFrame.Navigate(menuPage); // O el nombre de tu Frame
+            MainFrame.Navigate(menuPage); 
         }
 
         private void OnSignOutRequested()
@@ -33,11 +36,11 @@ namespace AhorcadoClient.Views
             var loginWindow = new SignInWindow();
             loginWindow.Show();
 
-            // Cerrar MainWindow correctamente
             Application.Current.Windows
                 .OfType<MainWindow>()
                 .FirstOrDefault()?
                 .Close();
+            CurrentSession.LogOut();
         }
     }
 }
