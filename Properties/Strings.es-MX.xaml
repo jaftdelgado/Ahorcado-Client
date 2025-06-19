@@ -126,9 +126,15 @@
     <sys:String x:Key="Match_Attempts">INTENTOS</sys:String>
     <sys:String x:Key="Match_Category">CATEGORÍA</sys:String>
     <sys:String x:Key="Match_Language">IDIOMA</sys:String>
+    <sys:String x:Key="Match_DefaultPlayer1Name">Jugador 1</sys:String>
+    <sys:String x:Key="Match_DefaultPlayer2Name">Jugador 2</sys:String>
+    <sys:String x:Key="Match_WaitingForPlayer">Esperando jugador...</sys:String>
     <sys:String x:Key="Match_DialogMatchReadyP1Title">Jugador conectado</sys:String>
     <sys:String x:Key="Match_DialogMatchReadyP1Message">Un jugador se ha unido a tu partida</sys:String>
     <sys:String x:Key="Match_DialogMatchReadyP2Title">Partida lista</sys:String>
+    <sys:String x:Key="Match_DefaultOpponentName">Oponente</sys:String>
+    <sys:String x:Key="Match_GameEndedTitle">Partida terminada</sys:String>
+    <sys:String x:Key="Match_OpponentLeftMessage">{0} ha abandonado la partida.</sys:String>
     <sys:String x:Key="Match_DialogMatchReadyP2Message">¡Te has unido a la partida!</sys:String>
     <sys:String x:Key="Match_DialogTVictoryP1">¡Has ganado!</sys:String>
     <sys:String x:Key="Match_DialogDVictoryP1">Felicidades, {0} no logró adivinar tu palabra. ¡Obtienes 5 puntos!</sys:String>

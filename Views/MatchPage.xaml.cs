@@ -55,7 +55,7 @@ namespace AhorcadoClient.Views
             ConfigureUIByRole(matchInfo);
             WordHint.Text = _matchInfo.Word.Description;
             UpdateAttemptsText();
-            UpdateHangmanImage();
+            //UpdateHangmanImage();
             SetWordDescription();
         }
 
@@ -153,25 +153,21 @@ namespace AhorcadoClient.Views
         {
             if (_matchInfo.Player1 != null)
             {
-                Player1Username.Text = _matchInfo.Player1.Username ?? "Jugador 1";
-                Player1FullName.Text = _matchInfo.Player1.FullName ?? "";
+                Player1Username.Text = _matchInfo.Player1.Username ?? (string)Application.Current.FindResource("Match_DefaultPlayer1Name");
+                Player1FullName.Text = _matchInfo.Player1.FullName ?? string.Empty;
                 ImageUtilities.SetImageSource(Player1Pic, _matchInfo.Player1.ProfilePic, Constants.DEFAULT_PROFILE_PIC_PATH);
             }
 
             if (_matchInfo.Player2 != null)
             {
-                Player2Username.Text = _matchInfo.Player2.Username ?? "Jugador 2";
-                Player2FullName.Text = _matchInfo.Player2.FullName ?? "";
-                ImageUtilities.SetImageSource(
-                    Player2Pic,
-                    _matchInfo.Player2.ProfilePic,
-                    Constants.DEFAULT_PROFILE_PIC_PATH
-                );
+                Player2Username.Text = _matchInfo.Player2.Username ?? (string)Application.Current.FindResource("Match_DefaultPlayer2Name");
+                Player2FullName.Text = _matchInfo.Player2.FullName ?? string.Empty;
+                ImageUtilities.SetImageSource(Player2Pic, _matchInfo.Player2.ProfilePic, Constants.DEFAULT_PROFILE_PIC_PATH);
             }
             else
             {
-                Player2Username.Text = "Esperando jugador...";
-                Player2FullName.Text = "";
+                Player2Username.Text = (string)Application.Current.FindResource("Match_WaitingForPlayer");
+                Player2FullName.Text = string.Empty;
             }
         }
 
@@ -268,12 +264,16 @@ namespace AhorcadoClient.Views
                 if (isOpponentLeft)
                 {
                     string opponentUsername = IsPlayer1
-                        ? _matchInfo.Player2?.Username ?? "Oponente"
-                        : _matchInfo.Player1?.Username ?? "Oponente";
+                        ? _matchInfo.Player2?.Username ?? (string)Application.Current.FindResource("Match_DefaultOpponentName")
+                        : _matchInfo.Player1?.Username ?? (string)Application.Current.FindResource("Match_DefaultOpponentName");
+
+                    string message = string.Format(
+                        (string)Application.Current.FindResource("Match_OpponentLeftMessage"),
+                        opponentUsername);
 
                     MessageBox.Show(
-                        $"{opponentUsername} ha abandonado la partida.",
-                        "Partida terminada",
+                        message,
+                        (string)Application.Current.FindResource("Match_GameEndedTitle"),
                         MessageBoxButton.OK,
                         MessageBoxImage.Information);
 
