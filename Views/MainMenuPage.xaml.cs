@@ -39,10 +39,16 @@ namespace AhorcadoClient.Views
             var currentWindow = Application.Current.Windows
                 .OfType<MainWindow>()
                 .FirstOrDefault();
+
             var signInWindow = new SignInWindow();
             signInWindow.Show();
+
+            NavigationManager.Reset();
+
+            SignOutRequested?.Invoke();
             currentWindow?.Close();
         }
+
 
         private void Click_BtnCreateGame(object sender, System.Windows.RoutedEventArgs e)
         {

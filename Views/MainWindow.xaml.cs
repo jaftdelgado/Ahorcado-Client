@@ -9,20 +9,20 @@ namespace AhorcadoClient.Views
         public MainWindow()
         {
             InitializeComponent();
-            Loaded += MainWindow_Loaded;
-
             NavigationManager.Initialize(MainFrame);
-        }
 
+            Application.Current.MainWindow = this;
+
+            Loaded += MainWindow_Loaded;
+        }
 
         private void MainWindow_Loaded(object sender, RoutedEventArgs e)
         {
-            NavigationManager.Initialize(MainFrame);
-
             var navigationManager = NavigationManager.Instance;
             NavigateToMainMenu();
 
         }
+
         private void NavigateToMainMenu()
         {
             var menuPage = new MainMenuPage();
