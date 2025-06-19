@@ -53,6 +53,7 @@ namespace AhorcadoClient.Views
             SetPlayersInfo();
             AttachCallbacks();
             ConfigureUIByRole(matchInfo);
+            WordHint.Text = _matchInfo.Word.Description;
             UpdateAttemptsText();
             UpdateHangmanImage();
             SetWordDescription();
@@ -72,7 +73,7 @@ namespace AhorcadoClient.Views
             WordLanguage.Text = language?.LanguageName ?? "N/A";
         }
 
-        private async Task DeclareMatchResultAsync(MatchInfoDTO match)
+        private async Task DeclareMatchResult(MatchInfoDTO match)
         {
             await ServiceClientManager.ExecuteServerAction(async () =>
             {
@@ -253,25 +254,35 @@ namespace AhorcadoClient.Views
             });
         }
 
-        private void OnPlayerLeft(int playerId)
+        private async void OnPlayerLeft(int playerId)
         {
-            Dispatcher.Invoke(() =>
+            await Dispatcher.Invoke(async () =>
             {
-                if (_matchInfo.Player1?.PlayerId == playerId)
-                {
-                    _matchInfo.Player1 = null;
-                    Player1Username.Text = "Jugador desconectado";
-                    Player1FullName.Text = "";
-                }
-                else if (_matchInfo.Player2?.PlayerId == playerId)
-                {
-                    _matchInfo.Player2 = null;
-                    Player2Username.Text = "Esperando jugador...";
-                    Player2FullName.Text = "";
-                    KeyboardPanel.IsEnabled = false;
-                }
+                bool isCurrentPlayer = playerId == CurrentSession.LoggedInPlayer.PlayerID;
+                bool isOpponentLeft = !isCurrentPlayer;
 
-                MessageDialog.Show("Jugador abandonó", "El otro jugador ha abandonado la partida", AlertType.WARNING);
+                KeyboardPanel.IsEnabled = false;
+                DisableAllKeyButtons();
+                RevealFullWord();
+
+                if (isOpponentLeft)
+                {
+                    string opponentUsername = IsPlayer1
+                        ? _matchInfo.Player2?.Username ?? "Oponente"
+                        : _matchInfo.Player1?.Username ?? "Oponente";
+
+                    MessageBox.Show(
+                        $"{opponentUsername} ha abandonado la partida.",
+                        "Partida terminada",
+                        MessageBoxButton.OK,
+                        MessageBoxImage.Information);
+
+                    NavigationManager.Instance.NavigateToPage(new MainMenuPage());
+                }
+                else
+                {
+                    NavigationManager.Instance.NavigateToPage(new MainMenuPage());
+                }
             });
         }
 
@@ -279,8 +290,6 @@ namespace AhorcadoClient.Views
         {
             Dispatcher.Invoke(() =>
             {
-                Debug.WriteLine($"Jugador {CurrentSession.LoggedInPlayer.PlayerID} recibió letra: {letter}");
-
                 UpdateGameState(remainingAttempts, new List<string> { letter });
 
                 ShowLetterGuessNotification(letter, isCorrect);
@@ -367,9 +376,8 @@ namespace AhorcadoClient.Views
             else if (IsPlayer2 && !isCorrect)
             {
                 
-                MessageDialog.Show("Letra incorrecta",
-                    $"La letra '{letter}' no está en la palabra",
-                    AlertType.WARNING);
+                MessageBox.Show("Letra incorrecta",
+                    $"La letra '{letter}' no está en la palabra");
             }
         }
 
@@ -380,11 +388,11 @@ namespace AhorcadoClient.Views
 
             if (_remainingAttempts <= 0)
             {
-                if (IsPlayer1) await DeclareMatchResultAsync(_matchInfo);
+                if (IsPlayer1) await DeclareMatchResult(_matchInfo);
             }
             else if (isWordGuessed)
             {
-                if (IsPlayer2) await DeclareMatchResultAsync(_matchInfo);
+                if (IsPlayer2) await DeclareMatchResult(_matchInfo);
             }
         }
 
@@ -392,11 +400,19 @@ namespace AhorcadoClient.Views
         {
             if (_matchInfo.Player2?.PlayerId == CurrentSession.LoggedInPlayer.PlayerID)
             {
-                MessageDialog.Show("Partida lista", "¡Te has unido a la partida!", AlertType.SUCCESS);
+                MessageBox.Show(
+                    (string)Application.Current.FindResource("Match_DialogMatchReadyP2Message"),
+                    (string)Application.Current.FindResource("Match_DialogMatchReadyP2Title"),
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Information);
             }
             else if (IsPlayer1)
             {
-                MessageDialog.Show("Jugador conectado", "Un jugador se ha unido a tu partida", AlertType.SUCCESS);
+                MessageBox.Show(
+                    (string)Application.Current.FindResource("Match_DialogMatchReadyP1Message"),
+                    (string)Application.Current.FindResource("Match_DialogMatchReadyP1Title"),
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Information);
             }
         }
 
@@ -486,6 +502,21 @@ namespace AhorcadoClient.Views
                         if (innerChild is Button button) button.IsEnabled = false;
                     }
                 }
+            }
+        }
+
+        private void Click_BtnLeaveMatch(object sender, RoutedEventArgs e)
+        {
+            var result = MessageBox.Show(
+                (string)Application.Current.FindResource("Match_LeaveConfirmationMessage"),
+                (string)Application.Current.FindResource("Match_LeaveConfirmationTitle"),
+                MessageBoxButton.YesNo,
+                MessageBoxImage.Warning);
+
+            if (result == MessageBoxResult.Yes)
+            {
+                _gameService.LeaveMatch(_matchInfo.MatchID, CurrentSession.LoggedInPlayer.PlayerID);
+                NavigationManager.Instance.NavigateToPage(new MainMenuPage());
             }
         }
     }

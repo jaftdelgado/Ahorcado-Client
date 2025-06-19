@@ -826,10 +826,10 @@ namespace AhorcadoClient.ServiceReference {
         System.Threading.Tasks.Task<AhorcadoClient.ServiceReference.PlayerMatchHistoryDTO[]> GetPlayerMatchHistoryAsync(int playerId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMatchManager/ForfeitMatch", ReplyAction="http://tempuri.org/IMatchManager/ForfeitMatchResponse")]
-        bool ForfeitMatch(int matchId);
+        bool ForfeitMatch(int matchId, int forfeitingPlayerId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMatchManager/ForfeitMatch", ReplyAction="http://tempuri.org/IMatchManager/ForfeitMatchResponse")]
-        System.Threading.Tasks.Task<bool> ForfeitMatchAsync(int matchId);
+        System.Threading.Tasks.Task<bool> ForfeitMatchAsync(int matchId, int forfeitingPlayerId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMatchManager/DeclareVictoryForPlayer2", ReplyAction="http://tempuri.org/IMatchManager/DeclareVictoryForPlayer2Response")]
         bool DeclareVictoryForPlayer2(int matchId);
@@ -957,12 +957,12 @@ namespace AhorcadoClient.ServiceReference {
             return base.Channel.GetPlayerMatchHistoryAsync(playerId);
         }
         
-        public bool ForfeitMatch(int matchId) {
-            return base.Channel.ForfeitMatch(matchId);
+        public bool ForfeitMatch(int matchId, int forfeitingPlayerId) {
+            return base.Channel.ForfeitMatch(matchId, forfeitingPlayerId);
         }
         
-        public System.Threading.Tasks.Task<bool> ForfeitMatchAsync(int matchId) {
-            return base.Channel.ForfeitMatchAsync(matchId);
+        public System.Threading.Tasks.Task<bool> ForfeitMatchAsync(int matchId, int forfeitingPlayerId) {
+            return base.Channel.ForfeitMatchAsync(matchId, forfeitingPlayerId);
         }
         
         public bool DeclareVictoryForPlayer2(int matchId) {

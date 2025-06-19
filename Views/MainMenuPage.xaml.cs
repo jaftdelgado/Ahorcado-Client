@@ -1,9 +1,8 @@
 using AhorcadoClient.Utilities;
 using System.Windows;
 using System;
-using AhorcadoClient.ServiceReference;
 using System.Windows.Controls;
-using System.Linq;
+using AhorcadoClient.Views.Dialogs;
 
 namespace AhorcadoClient.Views
 {
@@ -66,8 +65,14 @@ namespace AhorcadoClient.Views
 
         private void Click_BtnSignOut(object sender, RoutedEventArgs e)
         {
-            CurrentSession.LogOut();
-            SignOutRequested?.Invoke();
+            MessageDialog.ShowConfirm(
+                "SignOut_DialogTSignOut", "SignOut_DialogDSignOut",
+                () =>
+                {
+                    CurrentSession.LogOut();
+                    SignOutRequested?.Invoke();
+                }
+            );
         }
     }
 }
