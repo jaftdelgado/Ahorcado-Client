@@ -252,19 +252,19 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\ServiceReference\MainService.wsdl" />
-    <None Include="Connected Services\ServiceReference\Service.xsd">
+    <None Include="Connected Services\ServiceReference\MainService.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\ServiceReference\Service1.xsd">
+    <None Include="Connected Services\ServiceReference\MainService1.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\ServiceReference\Service2.xsd">
+    <None Include="Connected Services\ServiceReference\MainService2.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\ServiceReference\Service3.xsd">
+    <None Include="Connected Services\ServiceReference\MainService3.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\ServiceReference\Service4.xsd">
+    <None Include="Connected Services\ServiceReference\MainService4.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="packages.config" />
@@ -326,7 +326,7 @@
     <WCFMetadataStorage Include="Connected Services\ServiceReference\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Connected Services\ServiceReference\Service.disco" />
+    <None Include="Connected Services\ServiceReference\MainService.disco" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Connected Services\ServiceReference\configuration91.svcinfo" />

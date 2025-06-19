@@ -47,5 +47,11 @@ namespace AhorcadoClient.Utilities
         {
             _mainFrame.Content = null;
         }
+        public Page CurrentPage => _mainFrame?.Content as Page;
+
+        public T CurrentPageAs<T>() where T : Page
+        {
+            return _mainFrame?.Content as T;
+        }
     }
 }

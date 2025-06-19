@@ -14,15 +14,22 @@ namespace AhorcadoClient.Views
     public partial class CreateGameWindow : UserControl
 
     {
-        private int playerId = CurrentSession.LoggedInPlayer.PlayerID;
-
+        private int playerId;
         private List<Word> _allWords;
 
         public CreateGameWindow()
         {
             InitializeComponent();
             Loaded += CreateGameWindow_Loaded;
+            var player = CurrentSession.LoggedInPlayer;
+            if (player == null)
+            {
+                MessageBox.Show("La sesión ha expirado. Por favor, inicia sesión nuevamente.");
+                PopUpUtilities.CloseDialog();
+                return;
+            }
 
+            playerId = player.PlayerID;
             var categorias = Category.GetDefaultCategories();
             CbCategory.ItemsSource = categorias;
 

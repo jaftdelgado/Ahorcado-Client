@@ -180,7 +180,7 @@ namespace AhorcadoClient.Views
                 WordDescription.Visibility = Visibility.Collapsed;
                 KeyboardPanel.IsEnabled = false;
 
-                Word = matchInfo.Word.WordText; 
+                Word = matchInfo.Word.WordText;
 
                 if (matchInfo.GuessedLetters != null)
                 {
@@ -276,6 +276,8 @@ namespace AhorcadoClient.Views
                         (string)Application.Current.FindResource("Match_GameEndedTitle"),
                         MessageBoxButton.OK,
                         MessageBoxImage.Information);
+                    DetachCallbacks();
+
 
                     NavigationManager.Instance.NavigateToPage(new MainMenuPage());
                 }
@@ -321,6 +323,8 @@ namespace AhorcadoClient.Views
 
                 KeyboardPanel.IsEnabled = false;
                 DisableAllKeyButtons();
+                DetachCallbacks();
+
             });
         }
 
@@ -356,7 +360,7 @@ namespace AhorcadoClient.Views
                     _letterBoxes[boxIndex].Text = letter.ToUpper();
 
                 else
-                    _letterBoxes[boxIndex].Text = ""; 
+                    _letterBoxes[boxIndex].Text = "";
 
                 boxIndex++;
             }
@@ -375,7 +379,7 @@ namespace AhorcadoClient.Views
             }
             else if (IsPlayer2 && !isCorrect)
             {
-                
+
                 MessageBox.Show("Letra incorrecta",
                     $"La letra '{letter}' no está en la palabra");
             }
@@ -516,8 +520,21 @@ namespace AhorcadoClient.Views
             if (result == MessageBoxResult.Yes)
             {
                 _gameService.LeaveMatch(_matchInfo.MatchID, CurrentSession.LoggedInPlayer.PlayerID);
+                DetachCallbacks();
                 NavigationManager.Instance.NavigateToPage(new MainMenuPage());
             }
         }
+        public void DetachCallbacks()
+        {
+            if (_gameService?.Callback != null)
+            {
+                _gameService.Callback.OnMatchReadyAction = null;
+                _gameService.Callback.OnPlayerJoinedAction = null;
+                _gameService.Callback.OnPlayerLeftAction = null;
+                _gameService.Callback.OnLetterGuessedAction = null;
+                _gameService.Callback.OnGameOverAction = null;
+            }
+        }
+
     }
 }

@@ -1,8 +1,9 @@
 using AhorcadoClient.Utilities;
-using System.Windows;
-using System;
-using System.Windows.Controls;
 using AhorcadoClient.Views.Dialogs;
+using System;
+using System.Linq;
+using System.Windows;
+using System.Windows.Controls;
 
 namespace AhorcadoClient.Views
 {
@@ -31,6 +32,16 @@ namespace AhorcadoClient.Views
 
             if (nameBlock != null) nameBlock.Text = player.Username;
             if (scoreBlock != null) scoreBlock.Text = player.DisplayScore;
+        }
+
+        private void NavigateToSignIn()
+        {
+            var currentWindow = Application.Current.Windows
+                .OfType<MainWindow>()
+                .FirstOrDefault();
+            var signInWindow = new SignInWindow();
+            signInWindow.Show();
+            currentWindow?.Close();
         }
 
         private void Click_BtnCreateGame(object sender, System.Windows.RoutedEventArgs e)
@@ -69,8 +80,9 @@ namespace AhorcadoClient.Views
                 "SignOut_DialogTSignOut", "SignOut_DialogDSignOut",
                 () =>
                 {
+                    NavigationManager.Instance.CurrentPageAs<MatchPage>()?.DetachCallbacks();
                     CurrentSession.LogOut();
-                    SignOutRequested?.Invoke();
+                    NavigateToSignIn();
                 }
             );
         }
