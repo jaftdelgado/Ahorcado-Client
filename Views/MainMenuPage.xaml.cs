@@ -71,7 +71,7 @@ namespace AhorcadoClient.Views
 
         private void Click_BtnViewScores(object sender, System.Windows.RoutedEventArgs e)
         {
-            ViewScoresPage.Show();
+            ScoreboardsWindows.Show();
         }
 
         private void Click_BtnProfile(object sender, System.Windows.RoutedEventArgs e)

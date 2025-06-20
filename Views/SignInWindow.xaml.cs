@@ -46,7 +46,6 @@ namespace AhorcadoClient.Views
             }
         }
 
-
         private async Task Login()
         {
             var user = TbUsername.Text;

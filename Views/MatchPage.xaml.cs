@@ -5,7 +5,6 @@ using AhorcadoClient.Utilities;
 using AhorcadoClient.Views.Dialogs;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
@@ -56,7 +55,6 @@ namespace AhorcadoClient.Views
             ConfigureUIByRole(matchInfo);
             WordHint.Text = _matchInfo.Word.Description;
             UpdateAttemptsText();
-            //UpdateHangmanImage();
             SetWordDescription();
         }
 
