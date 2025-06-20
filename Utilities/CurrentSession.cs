@@ -8,6 +8,8 @@ namespace AhorcadoClient.Utilities
         public static Player LoggedInPlayer { get; private set; }
         public static DateTime StartTime { get; set; }
         public static bool IsActive => LoggedInPlayer != null;
+        public static event Action ProfileUpdated;
+        public static event Action PointsUpdated;
 
         public static void SetUser(Player player)
         {
@@ -20,5 +22,15 @@ namespace AhorcadoClient.Utilities
             LoggedInPlayer = null;
             StartTime = DateTime.MinValue;
         }
+        public static void NotifyProfileUpdated()
+        {
+            ProfileUpdated?.Invoke();
+        }
+
+        public static void NotifyPointsUpdated()
+        {
+            PointsUpdated?.Invoke();
+        }
+
     }
 }

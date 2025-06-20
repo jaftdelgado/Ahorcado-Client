@@ -14,6 +14,12 @@ namespace AhorcadoClient.Views
         public MainMenuPage()
         {
             InitializeComponent();
+            Loaded += MainMenuPage_Loaded;
+            CurrentSession.ProfileUpdated += ConfigureProfileButton;
+            CurrentSession.PointsUpdated += ConfigureProfileButton;
+        }
+        private void MainMenuPage_Loaded(object sender, RoutedEventArgs e)
+        {
             ConfigureProfileButton();
         }
 
