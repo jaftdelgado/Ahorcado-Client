@@ -557,7 +557,7 @@ namespace AhorcadoClient.ServiceReference {
         private int PointsField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string ResultNameField;
+        private int ResultIDField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -635,14 +635,14 @@ namespace AhorcadoClient.ServiceReference {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string ResultName {
+        public int ResultID {
             get {
-                return this.ResultNameField;
+                return this.ResultIDField;
             }
             set {
-                if ((object.ReferenceEquals(this.ResultNameField, value) != true)) {
-                    this.ResultNameField = value;
-                    this.RaisePropertyChanged("ResultName");
+                if ((this.ResultIDField.Equals(value) != true)) {
+                    this.ResultIDField = value;
+                    this.RaisePropertyChanged("ResultID");
                 }
             }
         }

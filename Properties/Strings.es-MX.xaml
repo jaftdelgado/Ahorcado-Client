@@ -63,6 +63,11 @@
     <sys:String x:Key="Difficulty_Hard">Difícil</sys:String>
     <!--#endregion-->
 
+    <sys:String x:Key="Result_Win">Victoria</sys:String>
+    <sys:String x:Key="Result_Lose">Derrota</sys:String>
+    <sys:String x:Key="Result_Forfeit">Abandono</sys:String>
+    <sys:String x:Key="Result_Cancelled">Cancelada</sys:String>
+
     <sys:String x:Key="Time_JustNow">Hace unos segundos</sys:String>
     <sys:String x:Key="Time_SecondsAgo">Hace {0} s</sys:String>
     <sys:String x:Key="Time_MinutesAgo">Hace {0} min</sys:String>
@@ -162,8 +167,14 @@
     <!--#endregion-->
 
     <!--#region ViewScoresWindow-->
-    <sys:String x:Key="ViewScores_Desc">Este es tu historial de partidas. ¡Bien jugado!</sys:String>
+    <sys:String x:Key="Scoreboards_Desc">Este es tu historial de partidas. ¡Bien jugado!</sys:String>
+    <sys:String x:Key="Scoreboards_TableHOpponent">Oponente</sys:String>
+    <sys:String x:Key="Scoreboards_TableHWord">Palabra</sys:String>
+    <sys:String x:Key="Scoreboards_TableHResult">Resultado</sys:String>
+    <sys:String x:Key="Scoreboards_TableHScore">Puntaje</sys:String>
+    <sys:String x:Key="Scoreboards_TableHDate">Fecha</sys:String>
     <!--#endregion-->
+    
     <!--#region EditProfileWindow-->
     <sys:String x:Key="EditProfile_Desc">Modifica los datos que quieras de tu cuenta</sys:String>
     <sys:String x:Key="EditProfile_DialogTChangesSaved">Perfil actualizado</sys:String>

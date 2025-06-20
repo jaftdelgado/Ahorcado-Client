@@ -21,10 +21,10 @@
     <sys:String x:Key="Glb_BtnDeleteImage">Delete Image</sys:String>
     <sys:String x:Key="Glb_Return">Return</sys:String>
     <sys:String x:Key="Glb_Score">Points:</sys:String>
-    <sys:String x:Key="Glb_TbFirstName">First Name:</sys:String>
-    <sys:String x:Key="Glb_TbLastName">Last Name:</sys:String>
-    <sys:String x:Key="Glb_TbEmailAddress">Email Address:</sys:String>
-    <sys:String x:Key="Glb_TbPhoneNumber">Phone Number:</sys:String>
+    <sys:String x:Key="Glb_TbFirstName">First Name(s):</sys:String>
+    <sys:String x:Key="Glb_TbLastName">Last Name(s):</sys:String>
+    <sys:String x:Key="Glb_TbEmailAddress">Email:</sys:String>
+    <sys:String x:Key="Glb_TbPhoneNumber">Phone:</sys:String>
     <sys:String x:Key="Glb_TbBirthDay">Birth Date:</sys:String>
     <sys:String x:Key="Glb_CbPreferedLanguage">Preferred Language:</sys:String>
     <sys:String x:Key="Glb_CbCategory">Category:</sys:String>
@@ -63,10 +63,15 @@
     <sys:String x:Key="Difficulty_Hard">Hard</sys:String>
     <!--#endregion-->
 
+    <sys:String x:Key="Result_Win">Victory</sys:String>
+    <sys:String x:Key="Result_Lose">Defeat</sys:String>
+    <sys:String x:Key="Result_Forfeit">Forfeit</sys:String>
+    <sys:String x:Key="Result_Cancelled">Cancelled</sys:String>
+
     <sys:String x:Key="Time_JustNow">Just now</sys:String>
-    <sys:String x:Key="Time_SecondsAgo">{0} seconds ago</sys:String>
-    <sys:String x:Key="Time_MinutesAgo">{0} minutes ago</sys:String>
-    <sys:String x:Key="Time_HoursAgo">{0} hours ago</sys:String>
+    <sys:String x:Key="Time_SecondsAgo">{0} sec ago</sys:String>
+    <sys:String x:Key="Time_MinutesAgo">{0} min ago</sys:String>
+    <sys:String x:Key="Time_HoursAgo">{0} h ago</sys:String>
     <sys:String x:Key="Time_Yesterday">Yesterday</sys:String>
     <sys:String x:Key="Time_DaysAgo">{0} days ago</sys:String>
 
@@ -75,21 +80,21 @@
     <sys:String x:Key="SignIn_NotAccount">Don't have an account yet?</sys:String>
     <sys:String x:Key="SignIn_BtnRegister">Register</sys:String>
     <sys:String x:Key="SignIn_DialogTInvalidCreds">Invalid username or password</sys:String>
-    <sys:String x:Key="SignIn_DialogDInvalidCreds">Please check your username and password.</sys:String>
+    <sys:String x:Key="SignIn_DialogDInvalidCreds">Please verify your username and password.</sys:String>
     <sys:String x:Key="SignIn_DialogVInvalidCreds">Please enter your username and password.</sys:String>
     <sys:String x:Key="SignIn_DialogTSignedIn">Signed In</sys:String>
-    <sys:String x:Key="SignIn_DialogDSignedIn">You have successfully signed in. Welcome, you can now use all the options to enjoy Hangman.</sys:String>
+    <sys:String x:Key="SignIn_DialogDSignedIn">You have successfully signed in. Welcome! You can now use all the options to enjoy Hangman.</sys:String>
     <sys:String x:Key="SignOut_DialogTSignOut">Sign Out?</sys:String>
-    <sys:String x:Key="SignOut_DialogDSignOut">Are you sure you want to sign out? The next time you want to access the system, you will need to authenticate again.</sys:String>
+    <sys:String x:Key="SignOut_DialogDSignOut">Are you sure you want to sign out? Next time you want to access the system, you'll need to authenticate again.</sys:String>
     <!--#endregion-->
 
     <!--#region RegisterPlayer -->
-    <sys:String x:Key="CreateAccount_Desc">Enter all the requested data to create your Hangman account.</sys:String>
+    <sys:String x:Key="CreateAccount_Desc">Enter all the requested information to create your Hangman account.</sys:String>
     <sys:String x:Key="CreateAccount_PersonalInfo">Personal Information</sys:String>
     <sys:String x:Key="CreateAccount_UserPreferences">Player Preferences</sys:String>
     <sys:String x:Key="CreateAccount_AccessInfo">Access Information</sys:String>
     <sys:String x:Key="SignIn_DialogTAccountCreated">Account created</sys:String>
-    <sys:String x:Key="SignIn_DialogDAccountCreated">Your account has been created successfully. You can now sign in.</sys:String>
+    <sys:String x:Key="SignIn_DialogDAccountCreated">Your account has been successfully created. You can now sign in.</sys:String>
     <sys:String x:Key="SignIn_DialogTUserExists">Account creation error</sys:String>
     <sys:String x:Key="SignIn_DialogDUserExists">A user with the same username or email already exists.</sys:String>
     <sys:String x:Key="SignIn_DialogTEmptyFields">Incomplete fields</sys:String>
@@ -99,7 +104,7 @@
     <sys:String x:Key="SignIn_DialogTValidation">Validation</sys:String>
     <sys:String x:Key="SignIn_DialogDNameLettersOnly">Name should only contain letters and spaces.</sys:String>
     <sys:String x:Key="SignIn_DialogDLastNameLettersOnly">Last name should only contain letters and spaces.</sys:String>
-    <sys:String x:Key="SignIn_DialogDPhoneInvalid">Phone should contain only numbers and 10 digits.</sys:String>
+    <sys:String x:Key="SignIn_DialogDPhoneInvalid">Phone should only contain numbers and 10 digits.</sys:String>
     <sys:String x:Key="SignIn_DialogDEmailInvalid">Please enter a valid email address.</sys:String>
     <sys:String x:Key="SignIn_DialogDBirthDateInvalid">Please enter a valid birth date.</sys:String>
     <sys:String x:Key="SignIn_DialogDUserShort">Username must be at least 4 characters long.</sys:String>
@@ -108,7 +113,7 @@
     <!--#endregion-->
 
     <!--#region CreateGame -->
-    <sys:String x:Key="CreateGame_Desc">Configure your Hangman game by choosing the difficulty, category and the word to be used in the game.</sys:String>
+    <sys:String x:Key="CreateGame_Desc">Set up your Hangman game by choosing the difficulty, category and word to be used in the game.</sys:String>
     <sys:String x:Key="PorFavorSeleccionaCategoria">Please select a category.</sys:String>
     <sys:String x:Key="PorFavorSeleccionaDificultad">Please select a difficulty.</sys:String>
     <sys:String x:Key="Glb_CbLanguage">Language:</sys:String>
@@ -118,7 +123,7 @@
 
     <!--#region MatchWindow-->
     <sys:String x:Key="Match_Title">Game</sys:String>
-    <sys:String x:Key="Match_Desc">Test your wit by guessing the hidden word before the hangman drawing is complete. Select letters from the alphabet, avoid mistakes and demonstrate your vocabulary. Every attempt counts!</sys:String>
+    <sys:String x:Key="Match_Desc">Test your wit by guessing the hidden word before the hangman drawing is complete. Select letters from the alphabet, avoid mistakes and show your vocabulary. Every attempt counts!</sys:String>
     <sys:String x:Key="Match_PlayersTitle">Players</sys:String>
     <sys:String x:Key="Match_BtnLeaveMatch">Leave Game</sys:String>
     <sys:String x:Key="Match_WordHint">Hint</sys:String>
@@ -135,16 +140,16 @@
     <sys:String x:Key="Match_DefaultOpponentName">Opponent</sys:String>
     <sys:String x:Key="Match_GameEndedTitle">Game ended</sys:String>
     <sys:String x:Key="Match_OpponentLeftMessage">{0} has left the game.</sys:String>
-    <sys:String x:Key="Match_DialogMatchReadyP2Message">You have joined the game!</sys:String>
+    <sys:String x:Key="Match_DialogMatchReadyP2Message">You've joined the game!</sys:String>
     <sys:String x:Key="Match_DialogTVictoryP1">You won!</sys:String>
-    <sys:String x:Key="Match_DialogDVictoryP1">Congratulations, {0} failed to guess your word. You earn 5 points!</sys:String>
+    <sys:String x:Key="Match_DialogDVictoryP1">Congratulations, {0} couldn't guess your word. You get 5 points!</sys:String>
     <sys:String x:Key="Match_DialogTVictoryP2">You won!</sys:String>
-    <sys:String x:Key="Match_DialogDVictoryP2">Congratulations, you guessed {0}'s word correctly. You earn 10 points!</sys:String>
+    <sys:String x:Key="Match_DialogDVictoryP2">Congratulations, you guessed {0}'s word correctly. You get 10 points!</sys:String>
     <sys:String x:Key="Match_DialogTDefeatP1">You lost</sys:String>
     <sys:String x:Key="Match_DialogDDefeatP1">{0} correctly guessed the word you selected. Keep trying!</sys:String>
     <sys:String x:Key="Match_DialogTDefeatP2">You lost</sys:String>
-    <sys:String x:Key="Match_DialogDDefeatP2">You failed to guess the word selected by {0}. Better luck next time!</sys:String>
-    <sys:String x:Key="Match_LeaveConfirmationTitle">Confirm leaving</sys:String>
+    <sys:String x:Key="Match_DialogDDefeatP2">You couldn't guess the word selected by {0}. Better luck next time!</sys:String>
+    <sys:String x:Key="Match_LeaveConfirmationTitle">Confirm exit</sys:String>
     <sys:String x:Key="Match_LeaveConfirmationMessage">Are you sure you want to leave the game?</sys:String>
     <sys:String x:Key="Match_Result_Error">Could not register the game result.</sys:String>
     <!--#endregion-->
@@ -162,10 +167,16 @@
     <!--#endregion-->
 
     <!--#region ViewScoresWindow-->
-    <sys:String x:Key="ViewScores_Desc">This is your game history. Well played!</sys:String>
+    <sys:String x:Key="Scoreboards_Desc">This is your game history. Well played!</sys:String>
+    <sys:String x:Key="Scoreboards_TableHOpponent">Opponent</sys:String>
+    <sys:String x:Key="Scoreboards_TableHWord">Word</sys:String>
+    <sys:String x:Key="Scoreboards_TableHResult">Result</sys:String>
+    <sys:String x:Key="Scoreboards_TableHScore">Score</sys:String>
+    <sys:String x:Key="Scoreboards_TableHDate">Date</sys:String>
     <!--#endregion-->
+
     <!--#region EditProfileWindow-->
-    <sys:String x:Key="EditProfile_Desc">Modify any data you want from your account</sys:String>
+    <sys:String x:Key="EditProfile_Desc">Modify any account information you want</sys:String>
     <sys:String x:Key="EditProfile_DialogTChangesSaved">Profile updated</sys:String>
     <sys:String x:Key="EditProfile_DialogDChangesSaved">Your information has been saved successfully</sys:String>
     <sys:String x:Key="EditProfile_DialogTUpdateFailed">Update failed</sys:String>

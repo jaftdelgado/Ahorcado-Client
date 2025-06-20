@@ -76,9 +76,10 @@
     <Compile Include="Model\Difficulty.cs" />
     <Compile Include="Model\Language.cs" />
     <Compile Include="Model\Match.cs" />
+    <Compile Include="Model\MatchResult.cs" />
     <Compile Include="Model\Player.cs" />
+    <Compile Include="Model\PlayerMatchHistory.cs" />
     <Compile Include="Model\Word.cs" />
-    <Compile Include="ServiceReference\IMainManager.cs" />
     <Compile Include="Utilities\Animations.cs" />
     <Compile Include="Utilities\Constants.cs" />
     <Compile Include="Utilities\CurrentSession.cs" />
@@ -99,8 +100,8 @@
     <Compile Include="Views\EditProfileWindow.xaml.cs">
       <DependentUpon>EditProfileWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\ViewScoresPage.xaml.cs">
-      <DependentUpon>ViewScoresPage.xaml</DependentUpon>
+    <Compile Include="Views\ScoreboardsWindows.xaml.cs">
+      <DependentUpon>ScoreboardsWindows.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\JoinMatchWindow.xaml.cs">
       <DependentUpon>JoinMatchWindow.xaml</DependentUpon>
@@ -177,9 +178,9 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\ViewScoresPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
+    <Page Include="Views\ScoreboardsWindows.xaml">
       <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\JoinMatchWindow.xaml">
       <SubType>Designer</SubType>
@@ -322,6 +323,10 @@
     <Resource Include="Resources\Icons\sort-header-icon.png" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Resources\Icons\signout-hover-icon.png" />
+    <Resource Include="Resources\Icons\signout-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
     <WCFMetadataStorage Include="Connected Services\CallbackServiceReference\" />
     <WCFMetadataStorage Include="Connected Services\ServiceReference\" />
   </ItemGroup>
@@ -354,10 +359,6 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\Icons\signout-hover-icon.png" />
-    <Resource Include="Resources\Icons\signout-icon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
