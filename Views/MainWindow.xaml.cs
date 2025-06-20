@@ -27,7 +27,6 @@ namespace AhorcadoClient.Views
         private void NavigateToMainMenu()
         {
             var menuPage = new MainMenuPage();
-
             MainFrame.Navigate(menuPage); 
         }
 
@@ -35,7 +34,6 @@ namespace AhorcadoClient.Views
         {
             var loginWindow = new SignInWindow();
             loginWindow.Show();
-
             Application.Current.Windows
                 .OfType<MainWindow>()
                 .FirstOrDefault()?
