@@ -37,6 +37,7 @@ namespace AhorcadoClient.Views
 
         public MatchPage(MatchInfoDTO matchInfo, GameServiceClient gameService)
         {
+            App.ApplyCurrentCulture();
             InitializeComponent();
 
             _matchInfo = matchInfo;
@@ -104,16 +105,32 @@ namespace AhorcadoClient.Views
 
                 if (resultDeclared)
                 {
-                    var updatedPlayer = client.GetPlayerById(currentPlayerID); // Asegúrate de tener este método
-                    if (updatedPlayer != null)
+                    var updatedPlayerDto = client.GetPlayerById(currentPlayerID);
+                    if (updatedPlayerDto != null)
                     {
                         Application.Current.Dispatcher.Invoke(() =>
                         {
-                            CurrentSession.SetUser(updatedPlayer); // Reemplaza todo el objeto
-                            CurrentSession.NotifyPointsUpdated();   // Notifica al menú
+                            var updatedPlayer = new Player
+                            {
+                                PlayerID = updatedPlayerDto.PlayerID,
+                                FirstName = updatedPlayerDto.FirstName,
+                                LastName = updatedPlayerDto.LastName,
+                                BirthDay = updatedPlayerDto.BirthDay,
+                                PhoneNumber = updatedPlayerDto.PhoneNumber,
+                                EmailAddress = updatedPlayerDto.EmailAddress,
+                                ProfilePic = updatedPlayerDto.ProfilePic,
+                                TotalScore = updatedPlayerDto.TotalScore,
+                                Username = updatedPlayerDto.Username,
+                                Password = updatedPlayerDto.Password,
+                                SelectedLanguageID = updatedPlayerDto.SelectedLanguageID
+                            };
+
+                            CurrentSession.SetUser(updatedPlayer);
+                            CurrentSession.NotifyPointsUpdated();
                         });
                     }
                 }
+
                 Application.Current.Dispatcher.Invoke(() =>
                 {
                     if (isWinner) ShowVictoryDialog(opponentUsername);
