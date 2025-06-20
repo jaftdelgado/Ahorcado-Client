@@ -101,6 +101,7 @@ namespace AhorcadoClient.Views
                     }
                     opponentUsername = match.Player1.Username;
                 }
+
                 if (resultDeclared)
                 {
                     var updatedPlayer = client.GetPlayerById(currentPlayerID); // Asegúrate de tener este método
