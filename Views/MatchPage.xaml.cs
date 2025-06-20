@@ -536,6 +536,7 @@ namespace AhorcadoClient.Views
                 NavigationManager.Instance.NavigateToPage(new MainMenuPage());
             }
         }
+
         public void DetachCallbacks()
         {
             if (_gameService?.Callback != null)
