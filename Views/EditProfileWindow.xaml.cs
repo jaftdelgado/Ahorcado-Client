@@ -4,6 +4,7 @@ using AhorcadoClient.Utilities;
 using AhorcadoClient.Views.Dialogs;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -33,6 +34,7 @@ namespace AhorcadoClient.Views
         public void Close()
         {
             PopUpUtilities.CloseDialog();
+        
         }
 
 
@@ -137,9 +139,19 @@ namespace AhorcadoClient.Views
                 {
                     if (result)
                     {
+                        currentPlayer.FirstName = player.FirstName;
+                        currentPlayer.LastName = player.LastName;
+                        currentPlayer.BirthDay = player.BirthDay;
+                        currentPlayer.PhoneNumber = player.PhoneNumber;
+                        currentPlayer.Username = player.Username;
+                        currentPlayer.Password = player.Password;
+                        currentPlayer.ProfilePic = player.ProfilePic;
+                        currentPlayer.SelectedLanguageID = player.SelectedLanguageID;
+                        CurrentSession.NotifyProfileUpdated();
+
                         MessageDialog.Show("EditProfile_DialogTChangesSaved", "EditProfile_DialogDChangesSaved", AlertType.SUCCESS, () =>
                         {
-                            Close(); // Cierra el formulario
+                            Close();
                         });
                     }
                     else

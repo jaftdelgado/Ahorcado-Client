@@ -101,7 +101,18 @@ namespace AhorcadoClient.Views
                     }
                     opponentUsername = match.Player1.Username;
                 }
-
+                if (resultDeclared)
+                {
+                    var updatedPlayer = client.GetPlayerById(currentPlayerID); // Asegúrate de tener este método
+                    if (updatedPlayer != null)
+                    {
+                        Application.Current.Dispatcher.Invoke(() =>
+                        {
+                            CurrentSession.SetUser(updatedPlayer); // Reemplaza todo el objeto
+                            CurrentSession.NotifyPointsUpdated();   // Notifica al menú
+                        });
+                    }
+                }
                 Application.Current.Dispatcher.Invoke(() =>
                 {
                     if (isWinner) ShowVictoryDialog(opponentUsername);
