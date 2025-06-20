@@ -9,10 +9,11 @@ namespace AhorcadoClient.Views
         public MainWindow()
         {
             InitializeComponent();
+
+            App.ApplyCurrentCulture(); 
+
             NavigationManager.Initialize(MainFrame);
-
             Application.Current.MainWindow = this;
-
             Loaded += MainWindow_Loaded;
         }
 
@@ -26,7 +27,6 @@ namespace AhorcadoClient.Views
         private void NavigateToMainMenu()
         {
             var menuPage = new MainMenuPage();
-            menuPage.SignOutRequested += OnSignOutRequested;
 
             MainFrame.Navigate(menuPage); 
         }

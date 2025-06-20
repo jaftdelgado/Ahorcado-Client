@@ -8,6 +8,8 @@ namespace AhorcadoClient
 {
     public partial class App : Application
     {
+        public static string CurrentCultureCode { get; set; } = "es-MX";
+
         public App()
         {
             Startup += OnStartup;
@@ -15,15 +17,20 @@ namespace AhorcadoClient
 
         private void OnStartup(object sender, StartupEventArgs e)
         {
-            ChangeCulture("es-MX");
+            ChangeCulture(CurrentCultureCode);
         }
 
         public void ChangeCulture(string cultureCode)
         {
+            if (string.IsNullOrWhiteSpace(cultureCode)) return;
+
+            CurrentCultureCode = cultureCode;
+
             Thread.CurrentThread.CurrentCulture = new CultureInfo(cultureCode);
             Thread.CurrentThread.CurrentUICulture = new CultureInfo(cultureCode);
 
             var dictionaries = Current.Resources.MergedDictionaries;
+
             var languageDictionaries = dictionaries
                 .Where(d => d.Source != null && d.Source.OriginalString.Contains("Strings."))
                 .ToList();
@@ -35,8 +42,13 @@ namespace AhorcadoClient
             {
                 Source = new Uri($"pack://application:,,,/Properties/Strings.{cultureCode}.xaml", UriKind.Absolute)
             };
-
             dictionaries.Add(newDict);
+        }
+
+        public static void ApplyCurrentCulture()
+        {
+            var app = (App)Current;
+            app.ChangeCulture(CurrentCultureCode);
         }
     }
 }

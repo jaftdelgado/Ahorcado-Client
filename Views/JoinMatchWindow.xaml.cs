@@ -52,7 +52,7 @@ namespace AhorcadoClient.Views
                         Description = dto.Word.Description,
                         Difficult = dto.Word.Difficult
                     }
-                }).ToList();
+                }).OrderByDescending(m => m.CreateDate).ToList();
 
                 await Application.Current.Dispatcher.InvokeAsync(() =>
                 {
