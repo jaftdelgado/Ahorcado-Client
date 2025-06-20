@@ -4,7 +4,6 @@ using AhorcadoClient.Utilities;
 using AhorcadoClient.Views.Dialogs;
 using System;
 using System.Collections.Generic;
-using System.Net;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -17,11 +16,13 @@ namespace AhorcadoClient.Views
     {
         public SignInWindow()
         {
+            App.ApplyCurrentCulture();
             InitializeComponent();
             UpdateFormButtonState();
 
             var languages = Model.Language.GetDefaultLanguages();
             CbPreferedLanguage.ItemsSource = languages;
+            SetSelectedLanguage();
         }
 
         private void NavigateToMain()
@@ -30,6 +31,19 @@ namespace AhorcadoClient.Views
             mainWindow.Show();
             Close();
         }
+
+        private void SetSelectedLanguage()
+        {
+            foreach (ComboBoxItem item in cbLanguages.Items)
+            {
+                if (item.Tag?.ToString() == App.CurrentCultureCode)
+                {
+                    cbLanguages.SelectedItem = item;
+                    break;
+                }
+            }
+        }
+
 
         private async Task Login()
         {
@@ -320,7 +334,10 @@ namespace AhorcadoClient.Views
             if (cbLanguages.SelectedItem is ComboBoxItem selectedItem)
             {
                 string cultureCode = selectedItem.Tag.ToString();
+
+                App.CurrentCultureCode = cultureCode;
                 ((App)Application.Current).ChangeCulture(cultureCode);
+                App.ApplyCurrentCulture();
             }
         }
 

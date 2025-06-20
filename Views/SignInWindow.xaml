@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AhorcadoClient.Views"
         mc:Ignorable="d"
-        Title="SignInWindow" Height="520" Width="820"
+        Title="SignInWindow" Height="500" Width="780"
         WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid x:Name="RootGrid" Visibility="Visible">
@@ -299,7 +299,7 @@
                           Tag="{DynamicResource Glb_CbLanguage}"
                           SelectionChanged="OnLanguageChanged">
                     <ComboBoxItem Content="{DynamicResource Language_English}" Tag="en-US"/>
-                    <ComboBoxItem Content="{DynamicResource Language_Spanish}" Tag="es-MX" IsSelected="True"/>
+                    <ComboBoxItem Content="{DynamicResource Language_Spanish}" Tag="es-MX"/>
                 </ComboBox>
             </Grid>
         </Grid>

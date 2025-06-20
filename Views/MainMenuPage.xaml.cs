@@ -13,11 +13,14 @@ namespace AhorcadoClient.Views
 
         public MainMenuPage()
         {
+            App.ApplyCurrentCulture();
             InitializeComponent();
             Loaded += MainMenuPage_Loaded;
             CurrentSession.ProfileUpdated += ConfigureProfileButton;
             CurrentSession.PointsUpdated += ConfigureProfileButton;
+            SetSelectedLanguage();
         }
+
         private void MainMenuPage_Loaded(object sender, RoutedEventArgs e)
         {
             ConfigureProfileButton();
@@ -85,6 +88,19 @@ namespace AhorcadoClient.Views
                 ((App)Application.Current).ChangeCulture(cultureCode);
             }
         }
+
+        private void SetSelectedLanguage()
+        {
+            foreach (ComboBoxItem item in cbLanguages.Items)
+            {
+                if (item.Tag?.ToString() == App.CurrentCultureCode)
+                {
+                    cbLanguages.SelectedItem = item;
+                    break;
+                }
+            }
+        }
+
 
         private void Click_BtnSignOut(object sender, RoutedEventArgs e)
         {

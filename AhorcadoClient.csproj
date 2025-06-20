@@ -252,19 +252,19 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\ServiceReference\MainService.wsdl" />
-    <None Include="Connected Services\ServiceReference\MainService.xsd">
+    <None Include="Connected Services\ServiceReference\Service.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\ServiceReference\MainService1.xsd">
+    <None Include="Connected Services\ServiceReference\Service1.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\ServiceReference\MainService2.xsd">
+    <None Include="Connected Services\ServiceReference\Service2.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\ServiceReference\MainService3.xsd">
+    <None Include="Connected Services\ServiceReference\Service3.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\ServiceReference\MainService4.xsd">
+    <None Include="Connected Services\ServiceReference\Service4.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="packages.config" />
@@ -326,7 +326,7 @@
     <WCFMetadataStorage Include="Connected Services\ServiceReference\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Connected Services\ServiceReference\MainService.disco" />
+    <None Include="Connected Services\ServiceReference\Service.disco" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Connected Services\ServiceReference\configuration91.svcinfo" />
@@ -354,6 +354,10 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\signout-hover-icon.png" />
+    <Resource Include="Resources\Icons\signout-icon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

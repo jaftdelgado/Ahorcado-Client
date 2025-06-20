@@ -801,6 +801,12 @@ namespace AhorcadoClient.ServiceReference {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPlayerManager/UpdatePlayerInfo", ReplyAction="http://tempuri.org/IPlayerManager/UpdatePlayerInfoResponse")]
         System.Threading.Tasks.Task<bool> UpdatePlayerInfoAsync(AhorcadoClient.ServiceReference.PlayerDTO player);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPlayerManager/GetPlayerById", ReplyAction="http://tempuri.org/IPlayerManager/GetPlayerByIdResponse")]
+        AhorcadoClient.ServiceReference.PlayerDTO GetPlayerById(int playerId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPlayerManager/GetPlayerById", ReplyAction="http://tempuri.org/IPlayerManager/GetPlayerByIdResponse")]
+        System.Threading.Tasks.Task<AhorcadoClient.ServiceReference.PlayerDTO> GetPlayerByIdAsync(int playerId);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMatchManager/CreateMatch", ReplyAction="http://tempuri.org/IMatchManager/CreateMatchResponse")]
         AhorcadoClient.ServiceReference.MatchDTO CreateMatch(int player1Id, int wordId);
         
@@ -923,6 +929,14 @@ namespace AhorcadoClient.ServiceReference {
         
         public System.Threading.Tasks.Task<bool> UpdatePlayerInfoAsync(AhorcadoClient.ServiceReference.PlayerDTO player) {
             return base.Channel.UpdatePlayerInfoAsync(player);
+        }
+        
+        public AhorcadoClient.ServiceReference.PlayerDTO GetPlayerById(int playerId) {
+            return base.Channel.GetPlayerById(playerId);
+        }
+        
+        public System.Threading.Tasks.Task<AhorcadoClient.ServiceReference.PlayerDTO> GetPlayerByIdAsync(int playerId) {
+            return base.Channel.GetPlayerByIdAsync(playerId);
         }
         
         public AhorcadoClient.ServiceReference.MatchDTO CreateMatch(int player1Id, int wordId) {

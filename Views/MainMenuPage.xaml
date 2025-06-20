@@ -20,11 +20,11 @@
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
 
-            <!-- Barra de navegación superior -->
             <Border Grid.Row="0"
                     Padding="10">
                 <Grid>
                     <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
@@ -34,7 +34,7 @@
                             Style="{StaticResource UserButtonStyle}"
                             Click="Click_BtnProfile"/>
                     <ComboBox x:Name="cbLanguages"
-                              Grid.Column="1"
+                              Grid.Column="2"
                               Width="120" 
                               Style="{StaticResource ComboBoxStyle}"
                               VerticalAlignment="Bottom" HorizontalAlignment="Left"
@@ -42,7 +42,7 @@
                               Tag="{DynamicResource Glb_CbLanguage}"
                               SelectionChanged="OnLanguageChanged">
                         <ComboBoxItem Content="{DynamicResource Language_English}" Tag="en-US"/>
-                        <ComboBoxItem Content="{DynamicResource Language_Spanish}" Tag="es-MX" IsSelected="True"/>
+                        <ComboBoxItem Content="{DynamicResource Language_Spanish}" Tag="es-MX"/>
                     </ComboBox>
 
                 </Grid>
@@ -90,6 +90,12 @@
                             Content="{DynamicResource Glb_SignOut}"
                             Click="Click_BtnSignOut"
                             Margin="20 0">
+                            <Button.Tag>
+                                <ResourceDictionary>
+                                    <sys:String x:Key="IconPath">/Resources/Icons/signout-icon.png</sys:String>
+                                    <sys:String x:Key="HoverIconPath">/Resources/Icons/signout-hover-icon.png</sys:String>
+                                </ResourceDictionary>
+                            </Button.Tag>
                         </Button>
 
                     </StackPanel>
