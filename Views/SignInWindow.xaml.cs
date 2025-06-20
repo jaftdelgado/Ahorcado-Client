@@ -236,7 +236,6 @@ namespace AhorcadoClient.Views
             }
             return true;
         }
-
         private bool ValidateUsername(string username)
         {
             if (username.Length < 4)
