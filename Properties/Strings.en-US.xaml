@@ -92,6 +92,7 @@
     <sys:String x:Key="SignIn_DialogDAccountCreated">Your account has been created successfully. You can now sign in.</sys:String>
     <sys:String x:Key="SignIn_DialogTUserExists">Account creation error</sys:String>
     <sys:String x:Key="SignIn_DialogDUserExists">A user with the same username or email already exists.</sys:String>
+    <sys:String x:Key="SignIn_DialogDEmailInvalidFormat">The email address format is invalid. Example: user@domain.com</sys:String>
     <sys:String x:Key="SignIn_DialogTEmptyFields">Incomplete fields</sys:String>
     <sys:String x:Key="SignIn_DialogDEmptyFields">Please complete all required fields before continuing.</sys:String>
     <sys:String x:Key="SignIn_DialogTInvalidDate">Invalid date</sys:String>

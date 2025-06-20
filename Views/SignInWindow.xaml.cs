@@ -4,6 +4,8 @@ using AhorcadoClient.Utilities;
 using AhorcadoClient.Views.Dialogs;
 using System;
 using System.Collections.Generic;
+using System.Net;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -209,48 +211,70 @@ namespace AhorcadoClient.Views
 
         private bool ValidateFields()
         {
-            if (!System.Text.RegularExpressions.Regex.IsMatch(TbFirstName.Text, @"^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$"))
-            {
-                MessageDialog.Show("SignIn_DialogTValidation", "SignIn_DialogDNameLettersOnly", AlertType.ERROR);
-                return false;
-            }
-            if (!System.Text.RegularExpressions.Regex.IsMatch(TbLastName.Text, @"^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$"))
-            {
-                MessageDialog.Show("SignIn_DialogTValidation", "SignIn_DialogDLastNameLettersOnly", AlertType.ERROR);
-                return false;
-            }
+            if (!ValidateName(TbFirstName.Text, "SignIn_DialogDNameLettersOnly")) return false;
+            if (!ValidateName(TbLastName.Text, "SignIn_DialogDLastNameLettersOnly")) return false;
+            if (!ValidatePhoneNumber(TbPhoneNumber.Text)) return false;
+            if (!ValidateBirthDate(TbBirthDay.Text)) return false;
+            if (!ValidateUsername(TbUserName.Text)) return false;
+            if (!ValidatePassword(PbPassword.Password)) return false;
+            if (!ValidateSpecialCharacters()) return false;
+            if (!ValidateEmailFormat(TbEmailAddress.Text)) return false;
 
-            if (!System.Text.RegularExpressions.Regex.IsMatch(TbPhoneNumber.Text, @"^\d{10}$"))
+            return true;
+        }
+
+        private bool ValidateName(string input, string dialogKey)
+        {
+            if (!Regex.IsMatch(input, @"^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$"))
+            {
+                MessageDialog.Show("SignIn_DialogTValidation", dialogKey, AlertType.ERROR);
+                return false;
+            }
+            return true;
+        }
+
+        private bool ValidatePhoneNumber(string input)
+        {
+            if (!Regex.IsMatch(input, @"^\d{10}$"))
             {
                 MessageDialog.Show("SignIn_DialogTValidation", "SignIn_DialogDPhoneInvalid", AlertType.ERROR);
                 return false;
             }
-
-            if (!System.Text.RegularExpressions.Regex.IsMatch(TbEmailAddress.Text, @"^[^@\s]+@[^@\s]+\.[^@\s]+$"))
-            {
-                MessageDialog.Show("SignIn_DialogTValidation", "SignIn_DialogDEmailInvalid", AlertType.ERROR);
-                return false;
-            }
-
-            if (!DateTime.TryParse(TbBirthDay.Text, out DateTime birthDay) || birthDay > DateTime.Now)
+            return true;
+        }
+        private bool ValidateBirthDate(string input)
+        {
+            if (!DateTime.TryParse(input, out DateTime birthDay) || birthDay > DateTime.Now)
             {
                 MessageDialog.Show("SignIn_DialogTValidation", "SignIn_DialogDBirthDateInvalid", AlertType.ERROR);
                 return false;
             }
-
-            if (TbUserName.Text.Length < 4)
+            return true;
+        }
+        private bool ValidateUsername(string username)
+        {
+            if (username.Length < 4)
             {
                 MessageDialog.Show("SignIn_DialogTValidation", "SignIn_DialogDUserShort", AlertType.ERROR);
                 return false;
             }
-            if (TbPassword.Text.Length < 8)
+            return true;
+        }
+
+        private bool ValidatePassword(string password)
+        {
+            if (password.Length < 8)
             {
                 MessageDialog.Show("SignIn_DialogTValidation", "SignIn_DialogDPasswordShort", AlertType.ERROR);
                 return false;
             }
+            return true;
+        }
 
+        private bool ValidateSpecialCharacters()
+        {
             string[] peligrosos = { "'", "\"", ";", "--", "/*", "*/" };
-            foreach (var campo in new[] { TbFirstName.Text, TbLastName.Text, TbUserName.Text, TbPassword.Text })
+            foreach (var campo in new[] { TbFirstName.Text, TbLastName.Text, TbUserName.Text, PbPassword.Password })
             {
                 foreach (var p in peligrosos)
                 {
@@ -261,7 +285,16 @@ namespace AhorcadoClient.Views
                     }
                 }
             }
+            return true;
+        }
 
+        private bool ValidateEmailFormat(string email)
+        {
+            if (string.IsNullOrWhiteSpace(email) || !Regex.IsMatch(email, @"^[^@\s]+@[^@\s]+\.[^@\s]+$"))
+            {
+                MessageDialog.Show("SignIn_DialogTValidation", "SignIn_DialogDEmailInvalid", AlertType.ERROR);
+                return false;
+            }
             return true;
         }
 
